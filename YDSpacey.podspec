@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "YDSpacey"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "A short description of YDMHome."
 
   spec.homepage     = "https://yourdev.com.br"
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   }
 
   ##
-  spec.source_files = "YDB2WServices/**/*.{h,m,swift}"
+  spec.source_files = "YDSpacey/**/*.{h,m,swift}"
 
   ##
   spec.dependency "YDB2WModels", "~> 1.1.0"
