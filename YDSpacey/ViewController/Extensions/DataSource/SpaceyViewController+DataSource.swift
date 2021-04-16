@@ -10,9 +10,9 @@ import UIKit
 import YDB2WModels
 
 // MARK: Data Source
-extension SpaceyViewController {
+extension SpaceyViewController: UICollectionViewDataSource {
   // How many items
-  public override func collectionView(
+  public func collectionView(
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
@@ -20,7 +20,7 @@ extension SpaceyViewController {
   }
 
   // Dequeue Cell
-  public override func collectionView(
+  public func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
@@ -28,7 +28,7 @@ extension SpaceyViewController {
   }
 
   // Header & Footer
-  public override func collectionView(
+  public func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
     at indexPath: IndexPath
@@ -126,7 +126,7 @@ extension SpaceyViewController {
     withBanner bannerComponent: YDSpaceyComponentsTypes,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView?.dequeueReusableCell(
+    guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
       for: indexPath) as? SpaceyBannerCollectionViewCell,
       let banner = bannerComponent.get() as? YDSpaceyComponentBanner
@@ -143,7 +143,7 @@ extension SpaceyViewController {
 
     cell.config(
       withId: indexPath.row,
-      withWidth: collectionView?.frame.size.width ?? 0,
+      withWidth: collectionView.frame.size.width,
       viewModel: viewModel
     )
 

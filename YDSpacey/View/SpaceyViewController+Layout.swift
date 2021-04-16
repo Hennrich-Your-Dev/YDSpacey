@@ -9,31 +9,47 @@ import UIKit
 
 import YDExtensions
 
-public extension SpaceyViewController {
+extension SpaceyViewController {
   func configureLayout() {
-    collectionView?.backgroundColor = UIColor.Zeplin.grayOpaque
+    view.backgroundColor = UIColor.Zeplin.grayOpaque
 
-    collectionView?.alwaysBounceVertical = true
+    configureCollectionView()
+  }
+
+  func configureCollectionView() {
+    view.addSubview(collectionView)
+
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
+
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.backgroundColor = .clear
+    collectionView.alwaysBounceVertical = true
 
     let layout = UICollectionViewFlowLayout()
-    layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 50)
+    layout.estimatedItemSize = CGSize(width: view.frame.width, height: 50)
 
-    collectionView?.collectionViewLayout = layout
+    collectionView.collectionViewLayout = layout
 
     // Register Cells
-    collectionView?.register(
+    collectionView.register(
       SpaceyBannerCollectionViewCell.self,
       forCellWithReuseIdentifier: SpaceyBannerCollectionViewCell.identifier
     )
 
     // Register Header / Footer
-    collectionView?.register(
+    collectionView.register(
       EmptyCollectionReusableView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
       withReuseIdentifier: EmptyCollectionReusableView.identifier
     )
 
-    collectionView?.register(
+    collectionView.register(
       EmptyCollectionReusableView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
       withReuseIdentifier: EmptyCollectionReusableView.identifier

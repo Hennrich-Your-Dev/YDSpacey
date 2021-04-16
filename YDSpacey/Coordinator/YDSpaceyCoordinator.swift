@@ -16,7 +16,7 @@ public class YDSpaceyCoordinator {
   // MARK: Actions
   func start() -> SpaceyViewController {
     let viewModel = SpaceyViewModel()
-    let vc = SpaceyViewController(collectionViewLayout: UICollectionViewLayout())
+    let vc = SpaceyViewController()
 
     vc.viewModel = viewModel
 

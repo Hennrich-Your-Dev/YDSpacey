@@ -9,11 +9,14 @@ import UIKit
 
 import YDB2WModels
 
-public class SpaceyViewController: UICollectionViewController {
+public class SpaceyViewController: UIViewController {
   // MARK: Properties
   var viewModel: SpaceyViewModelDelegate?
   public weak var delegate: SpaceyDelegate?
   public var largerHeader = false
+
+  // MARK: Components
+  let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 
   // MARK: Life cycle
   public override func viewDidLoad() {
