@@ -10,7 +10,7 @@ import UIKit
 import YDB2WModels
 
 // MARK: Data Source
-extension SpaceyViewController: UICollectionViewDataSource {
+extension YDSpaceyViewController: UICollectionViewDataSource {
   // How many items
   public func collectionView(
     _ collectionView: UICollectionView,
@@ -57,7 +57,7 @@ extension SpaceyViewController: UICollectionViewDataSource {
 }
 
 // MARK: Actions
-extension SpaceyViewController {
+extension YDSpaceyViewController {
   func dequeueCell(at indexPath: IndexPath) -> UICollectionViewCell {
     guard let itemAndType = getItemAndType(at: indexPath) else {
       return UICollectionViewCell()
@@ -76,7 +76,7 @@ extension SpaceyViewController {
 }
 
 // MARK: Carrousel Products
-extension SpaceyViewController {
+extension YDSpaceyViewController {
   func getProductsIds(at row: Int, onCompletion: @escaping ([String]) -> Void) {
 //    viewModel?.getProductsIds(at: row, onCompletion: onCompletion)
   }
@@ -121,7 +121,7 @@ extension SpaceyViewController {
 }
 
 // MARK: Banner
-extension SpaceyViewController {
+extension YDSpaceyViewController {
   func dequeueBannerCell(
     withBanner bannerComponent: YDSpaceyComponentsTypes,
     at indexPath: IndexPath

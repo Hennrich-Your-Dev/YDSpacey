@@ -9,7 +9,7 @@ import UIKit
 
 import YDExtensions
 
-extension SpaceyViewController {
+extension YDSpaceyViewController {
   func configureLayout() {
     view.backgroundColor = UIColor.Zeplin.grayOpaque
 
@@ -58,7 +58,7 @@ extension SpaceyViewController {
 }
 
 // MARK: Flow Delegate
-extension SpaceyViewController: UICollectionViewDelegateFlowLayout {
+extension YDSpaceyViewController: UICollectionViewDelegateFlowLayout {
   // Space between items
   public func collectionView(
     _ collectionView: UICollectionView,

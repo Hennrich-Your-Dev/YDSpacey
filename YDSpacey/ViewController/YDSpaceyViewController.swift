@@ -9,10 +9,10 @@ import UIKit
 
 import YDB2WModels
 
-public class SpaceyViewController: UIViewController {
+public class YDSpaceyViewController: UIViewController {
   // MARK: Properties
   var viewModel: SpaceyViewModelDelegate?
-  public weak var delegate: SpaceyDelegate?
+  public weak var delegate: YDSpaceyDelegate?
   public var largerHeader = false
 
   // MARK: Components
@@ -27,7 +27,7 @@ public class SpaceyViewController: UIViewController {
 }
 
 // MARK: Actions
-public extension SpaceyViewController {
+public extension YDSpaceyViewController {
   // Get current item component and type
   func getItemAndType(
     at indexPath: IndexPath
@@ -42,7 +42,7 @@ public extension SpaceyViewController {
 }
 
 // MARK: Public Actions
-public extension SpaceyViewController {
+public extension YDSpaceyViewController {
   func getSpacey(withId id: String) {
     viewModel?.getSpacey(withId: id)
   }

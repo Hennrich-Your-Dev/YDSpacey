@@ -7,7 +7,7 @@
 
 import UIKit
 
-public extension SpaceyViewController {
+public extension YDSpaceyViewController {
   func configureBinds() {
     viewModel?.loading.bind { [weak self] isLoading in
       guard let self = self else { return }

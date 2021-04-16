@@ -14,9 +14,9 @@ public class YDSpaceyCoordinator {
   public init() {}
 
   // MARK: Actions
-  func start() -> SpaceyViewController {
+  func start() -> YDSpaceyViewController {
     let viewModel = SpaceyViewModel()
-    let vc = SpaceyViewController()
+    let vc = YDSpaceyViewController()
 
     vc.viewModel = viewModel
 

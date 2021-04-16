@@ -7,4 +7,4 @@
 
 import UIKit
 
-public protocol SpaceyDelegate: AnyObject {}
+public protocol YDSpaceyDelegate: AnyObject {}
