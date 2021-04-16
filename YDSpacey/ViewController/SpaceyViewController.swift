@@ -24,7 +24,7 @@ public class SpaceyViewController: UICollectionViewController {
 }
 
 // MARK: Actions
-extension SpaceyViewController {
+public extension SpaceyViewController {
   // Get current item component and type
   func getItemAndType(
     at indexPath: IndexPath

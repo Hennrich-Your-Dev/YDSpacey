@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension SpaceyViewController {
+public extension SpaceyViewController {
   func configureBinds() {
     viewModel?.loading.bind { [weak self] isLoading in
       guard let self = self else { return }
@@ -17,7 +17,7 @@ extension SpaceyViewController {
     viewModel?.componentsList.bind { [weak self] list in
       guard let self = self else { return }
 
-      self.collectionView.reloadData()
+      self.collectionView?.reloadData()
 
       // Invalidate layout to fix auto sizing cell height bug
       let time: Double = Double(list.count)
@@ -28,7 +28,7 @@ extension SpaceyViewController {
       ) { _ in
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
-          self.collectionViewLayout.invalidateLayout()
+          self.collectionView?.collectionViewLayout.invalidateLayout()
         }
       }
     }

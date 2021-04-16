@@ -9,31 +9,31 @@ import UIKit
 
 import YDExtensions
 
-extension SpaceyViewController {
+public extension SpaceyViewController {
   func configureLayout() {
-    collectionView.backgroundColor = UIColor.Zeplin.grayOpaque
+    collectionView?.backgroundColor = UIColor.Zeplin.grayOpaque
 
-    collectionView.alwaysBounceVertical = true
+    collectionView?.alwaysBounceVertical = true
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 50)
 
-    collectionView.collectionViewLayout = layout
+    collectionView?.collectionViewLayout = layout
 
     // Register Cells
-    collectionView.register(
+    collectionView?.register(
       SpaceyBannerCollectionViewCell.self,
       forCellWithReuseIdentifier: SpaceyBannerCollectionViewCell.identifier
     )
 
     // Register Header / Footer
-    collectionView.register(
+    collectionView?.register(
       EmptyCollectionReusableView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
       withReuseIdentifier: EmptyCollectionReusableView.identifier
     )
 
-    collectionView.register(
+    collectionView?.register(
       EmptyCollectionReusableView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
       withReuseIdentifier: EmptyCollectionReusableView.identifier

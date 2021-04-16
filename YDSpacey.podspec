@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "YDSpacey"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "A short description of YDSpacey."
 
   spec.homepage     = "https://yourdev.com.br"
@@ -17,7 +17,6 @@ Pod::Spec.new do |spec|
   spec.author       = { "Douglas Hennrich" => "douglashennrich@yourdev.com.br" }
 
   spec.platform     = :ios, "11.0"
-#  spec.source       = { :git => "file:" + __dir__ + "/" }
   spec.source       = {
     :git => "git@github.com:Hennrich-Your-Dev/YDSpacey.git",
     :tag => "#{spec.version}"

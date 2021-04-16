@@ -126,7 +126,7 @@ extension SpaceyViewController {
     withBanner bannerComponent: YDSpaceyComponentsTypes,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
+    guard let cell = collectionView?.dequeueReusableCell(
       withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
       for: indexPath) as? SpaceyBannerCollectionViewCell,
       let banner = bannerComponent.get() as? YDSpaceyComponentBanner
@@ -143,7 +143,7 @@ extension SpaceyViewController {
 
     cell.config(
       withId: indexPath.row,
-      withWidth: collectionView.frame.size.width,
+      withWidth: collectionView?.frame.size.width ?? 0,
       viewModel: viewModel
     )
 
