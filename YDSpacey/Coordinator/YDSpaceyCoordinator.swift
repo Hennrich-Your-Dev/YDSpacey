@@ -5,7 +5,7 @@
 //  Created by Douglas Hennrich on 14/04/21.
 //
 
-import Foundation
+import UIKit
 
 public typealias YDSpacey = YDSpaceyCoordinator
 
@@ -16,7 +16,7 @@ public class YDSpaceyCoordinator {
   // MARK: Actions
   func start() -> SpaceyViewController {
     let viewModel = SpaceyViewModel()
-    let vc = SpaceyViewController()
+    let vc = SpaceyViewController(collectionViewLayout: UICollectionViewLayout())
 
     vc.viewModel = viewModel
 
