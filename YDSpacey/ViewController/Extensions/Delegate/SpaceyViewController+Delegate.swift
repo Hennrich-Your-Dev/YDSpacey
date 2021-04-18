@@ -7,4 +7,6 @@
 
 import UIKit
 
-public protocol YDSpaceyDelegate: AnyObject {}
+public protocol YDSpaceyDelegate: AnyObject {
+  func onPlayerComponentID(_ videoId: String?)
+}

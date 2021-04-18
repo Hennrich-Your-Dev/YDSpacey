@@ -14,11 +14,13 @@ extension YDSpaceyViewController {
     view.backgroundColor = UIColor.Zeplin.grayOpaque
 
     configureCollectionView()
+    configureShimmerView()
   }
 
   func configureCollectionView() {
     view.addSubview(collectionView)
 
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.topAnchor.constraint(equalTo: view.topAnchor),
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -33,6 +35,13 @@ extension YDSpaceyViewController {
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: view.frame.width, height: 50)
+    layout.minimumLineSpacing = 20
+    layout.sectionInset = UIEdgeInsets(
+      top: 0,
+      left: 0,
+      bottom: view.safeAreaInsets.bottom + 20,
+      right: 0
+    )
 
     collectionView.collectionViewLayout = layout
 
@@ -55,19 +64,34 @@ extension YDSpaceyViewController {
       withReuseIdentifier: EmptyCollectionReusableView.identifier
     )
   }
+
+  func configureShimmerView() {
+    view.addSubview(shimmerTableView)
+
+    shimmerTableView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      shimmerTableView.topAnchor.constraint(equalTo: view.topAnchor),
+      shimmerTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      shimmerTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      shimmerTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
+
+    shimmerTableView.dataSource = self
+    shimmerTableView.delegate = self
+    shimmerTableView.separatorStyle = .none
+
+    // Register Cell
+    shimmerTableView.register(
+      SpaceyBannerShimmerTableViewCell.self,
+      forCellReuseIdentifier: SpaceyBannerShimmerTableViewCell.identifier
+    )
+
+    numberOfShimmers = Int((view.frame.size.height / 96).rounded(.up))
+  }
 }
 
 // MARK: Flow Delegate
 extension YDSpaceyViewController: UICollectionViewDelegateFlowLayout {
-  // Space between items
-  public func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    minimumLineSpacingForSectionAt section: Int
-  ) -> CGFloat {
-    return 20
-  }
-
   // Header Size
   public func collectionView(
     _ collectionView: UICollectionView,
@@ -75,19 +99,5 @@ extension YDSpaceyViewController: UICollectionViewDelegateFlowLayout {
     referenceSizeForHeaderInSection section: Int
   ) -> CGSize {
     return CGSize(width: 0, height: largerHeader ? 40 : 20)
-  }
-
-  // Section Insets
-  public func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    insetForSectionAt section: Int
-  ) -> UIEdgeInsets {
-    return UIEdgeInsets(
-      top: 0,
-      left: 0,
-      bottom: (UIWindow.keyWindow?.safeAreaInsets.bottom ?? 0) + 20,
-      right: 0
-    )
   }
 }

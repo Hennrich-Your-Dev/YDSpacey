@@ -45,10 +45,13 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   ) {
     self.viewModel = viewModel
 
+//    print("viewModel?.bannersOnList[bannerId]?.currentRect", viewModel?.bannersOnList[bannerId]?.currentRect)
     if let rect = viewModel?.bannersOnList[bannerId]?.currentRect {
       imageView.frame = rect
       updateLayout()
     }
+
+    var tempRect = imageContainer.frame
 
     imageView.startShimmer()
     imageView.setImage(viewModel?.bannersOnList[bannerId]?.image) { [weak self] success in
@@ -56,7 +59,8 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
       self.imageView.stopShimmer()
 
       if success != nil {
-        self.viewModel?.bannersOnList[self.bannerId]?.currentRect = self.imageView.frame
+        tempRect.size.height = self.imageView.frame.size.height
+        self.viewModel?.bannersOnList[self.bannerId]?.currentRect = tempRect
       }
 
       self.updateLayout()
@@ -83,8 +87,8 @@ extension SpaceyBannerCollectionViewCell {
 
     imageContainer.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
-      imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 1),
+      imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -1),
       imageContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       imageContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
     ])
@@ -99,8 +103,10 @@ extension SpaceyBannerCollectionViewCell {
     imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 80)
 
     NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+      imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
+      imageView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
       imageViewHeightConstraint,
       imageContainer.heightAnchor.constraint(equalTo: imageView.heightAnchor)
     ])

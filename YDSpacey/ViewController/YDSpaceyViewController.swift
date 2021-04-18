@@ -14,9 +14,14 @@ public class YDSpaceyViewController: UIViewController {
   var viewModel: SpaceyViewModelDelegate?
   public weak var delegate: YDSpaceyDelegate?
   public var largerHeader = false
+  var numberOfShimmers = 0
 
   // MARK: Components
-  let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+  let collectionView = UICollectionView(
+    frame: .zero,
+    collectionViewLayout: UICollectionViewLayout()
+  )
+  let shimmerTableView = UITableView()
 
   // MARK: Life cycle
   public override func viewDidLoad() {
