@@ -8,8 +8,12 @@
 import Foundation
 
 import YDUtilities
+import YDExtensions
 
-public class YDSpacey: Decodable {
+public class YDSpacey: Decodable, Reorderable {
+  public typealias OrderElement = [String]
+  public var orderElement: OrderElement { items.map { $0.key } }
+
   // MARK: Properties
   public var items: [String: YDSpaceyCommonStruct?]
 
