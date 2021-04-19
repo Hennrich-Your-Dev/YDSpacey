@@ -34,24 +34,27 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
 
   override func prepareForReuse() {
     super.prepareForReuse()
+    imageView.image = nil
+    imageView.frame = .zero
     imageView.stopShimmer()
   }
 
   // MARK: Actions
   func config(
     withId bannerId: Int,
-    withWidth width: CGFloat,
     viewModel: SpaceyViewModelDelegate?
   ) {
     self.viewModel = viewModel
+    self.bannerId = bannerId
 
-//    print("viewModel?.bannersOnList[bannerId]?.currentRect", viewModel?.bannersOnList[bannerId]?.currentRect)
     if let rect = viewModel?.bannersOnList[bannerId]?.currentRect {
+      // debugPrint("currentRect", rect)
       imageView.frame = rect
+      imageView.image = viewModel?.bannersOnList[bannerId]?.imageComponent
+      imageView.center = imageContainer.center
       updateLayout()
+      return
     }
-
-    var tempRect = imageContainer.frame
 
     imageView.startShimmer()
     imageView.setImage(viewModel?.bannersOnList[bannerId]?.image) { [weak self] success in
@@ -59,8 +62,8 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
       self.imageView.stopShimmer()
 
       if success != nil {
-        tempRect.size.height = self.imageView.frame.size.height
-        self.viewModel?.bannersOnList[self.bannerId]?.currentRect = tempRect
+        self.viewModel?.bannersOnList[bannerId]?.currentRect = self.imageView.frame
+        self.viewModel?.bannersOnList[bannerId]?.imageComponent = self.imageView.image
       }
 
       self.updateLayout()
@@ -68,7 +71,9 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   }
 
   func updateLayout() {
+    print("imageView.frame.size.height", imageView.frame.size.height)
     imageViewHeightConstraint.constant = imageView.frame.size.height
+    setNeedsLayout()
   }
 }
 
@@ -98,16 +103,17 @@ extension SpaceyBannerCollectionViewCell {
     contentView.addSubview(imageView)
     imageView.backgroundColor = UIColor.Zeplin.grayOpaque
     imageView.layer.cornerRadius = 6
+    imageView.contentMode = .scaleAspectFill
 
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 80)
+    imageViewHeightConstraint.isActive = true
 
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
       imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
       imageView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
       imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
-      imageViewHeightConstraint,
       imageContainer.heightAnchor.constraint(equalTo: imageView.heightAnchor)
     ])
   }

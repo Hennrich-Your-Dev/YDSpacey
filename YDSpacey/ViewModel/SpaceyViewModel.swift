@@ -74,6 +74,10 @@ class SpaceyViewModel {
         continue
       }
 
+      if curr.component.type == "zion-image-carousel" {
+        continue
+      }
+
       if let children = curr.component.children {
         children.forEach { obj in
           let component = YDSpaceyCommonComponent(

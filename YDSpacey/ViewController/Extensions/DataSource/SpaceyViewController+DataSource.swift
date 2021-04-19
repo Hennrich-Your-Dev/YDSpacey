@@ -144,10 +144,8 @@ extension YDSpaceyViewController {
 
     cell.config(
       withId: indexPath.row,
-      withWidth: collectionView.frame.size.width,
       viewModel: viewModel
     )
-
     return cell
   }
 }
@@ -165,6 +163,7 @@ extension YDSpaceyViewController: UITableViewDataSource {
     else {
       return UITableViewCell()
     }
+    cell.config()
 
     return cell
   }
