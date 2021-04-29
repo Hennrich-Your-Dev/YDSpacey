@@ -71,7 +71,6 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   }
 
   func updateLayout() {
-    print("imageView.frame.size.height", imageView.frame.size.height)
     imageViewHeightConstraint.constant = imageView.frame.size.height
     setNeedsLayout()
   }

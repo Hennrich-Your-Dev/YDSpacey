@@ -65,13 +65,10 @@ extension YDSpaceyViewController {
     }
 
     switch itemAndType.type {
-    case .player:
-      return UICollectionViewCell()
-    case .product:
-//      return dequeueProductCell(at: indexPath)
-      return UICollectionViewCell()
-    case .banner:
-      return dequeueBannerCell(withBanner: itemAndType.type, at: indexPath)
+      case .banner:
+        return dequeueBannerCell(withBanner: itemAndType.type, at: indexPath)
+      default:
+        fatalError("type: \(itemAndType.type)")
     }
   }
 }
@@ -79,46 +76,46 @@ extension YDSpaceyViewController {
 // MARK: Carrousel Products
 extension YDSpaceyViewController {
   func getProductsIds(at row: Int, onCompletion: @escaping ([String]) -> Void) {
-//    viewModel?.getProductsIds(at: row, onCompletion: onCompletion)
+    //    viewModel?.getProductsIds(at: row, onCompletion: onCompletion)
   }
 
-//  func dequeueProductCell(at indexPath: IndexPath) -> UICollectionViewCell {
-//    guard let cell = collectionView.dequeueReusableCell(
-//      withReuseIdentifier: YDLiveProductContainerCollectionViewCell.identifier,
-//      for: indexPath) as? YDLiveProductContainerCollectionViewCell,
-//          let component = getItemAndType(at: indexPath),
-//          let viewModel = viewModel
-//      else {
-//        return UICollectionViewCell()
-//    }
-//
-//    cell.widthConstraint.constant = collectionView.frame.size.width
-//    cell.layoutIfNeeded()
-//
-//    getProductsIds(at: indexPath.row) { ids in
-//      if viewModel.carrouselProducts[indexPath.row] == nil {
-//        let carrouselContainer = YDSpaceyProductCarrouselContainer(
-//          id: indexPath.row,
-//          items: [],
-//          ids: [],
-//          pageNumber: -1,
-//          currentRectList: nil
-//        )
-//        viewModel.carrouselProducts[indexPath.row] = carrouselContainer
-//      }
-//
-//      let productsIds = ids.inBatches(ofSize: viewModel.productsBatchesSize)
-//      viewModel.carrouselProducts[indexPath.row]?.ids = productsIds
-//
-//      cell.config(
-//        with: indexPath.row,
-//        headerTitle: component.item.component.showcaseTitle,
-//        viewModel: viewModel
-//      )
-//    }
-//
-//    return cell
-//  }
+  //  func dequeueProductCell(at indexPath: IndexPath) -> UICollectionViewCell {
+  //    guard let cell = collectionView.dequeueReusableCell(
+  //      withReuseIdentifier: YDLiveProductContainerCollectionViewCell.identifier,
+  //      for: indexPath) as? YDLiveProductContainerCollectionViewCell,
+  //          let component = getItemAndType(at: indexPath),
+  //          let viewModel = viewModel
+  //      else {
+  //        return UICollectionViewCell()
+  //    }
+  //
+  //    cell.widthConstraint.constant = collectionView.frame.size.width
+  //    cell.layoutIfNeeded()
+  //
+  //    getProductsIds(at: indexPath.row) { ids in
+  //      if viewModel.carrouselProducts[indexPath.row] == nil {
+  //        let carrouselContainer = YDSpaceyProductCarrouselContainer(
+  //          id: indexPath.row,
+  //          items: [],
+  //          ids: [],
+  //          pageNumber: -1,
+  //          currentRectList: nil
+  //        )
+  //        viewModel.carrouselProducts[indexPath.row] = carrouselContainer
+  //      }
+  //
+  //      let productsIds = ids.inBatches(ofSize: viewModel.productsBatchesSize)
+  //      viewModel.carrouselProducts[indexPath.row]?.ids = productsIds
+  //
+  //      cell.config(
+  //        with: indexPath.row,
+  //        headerTitle: component.item.component.showcaseTitle,
+  //        viewModel: viewModel
+  //      )
+  //    }
+  //
+  //    return cell
+  //  }
 }
 
 // MARK: Banner
@@ -128,11 +125,11 @@ extension YDSpaceyViewController {
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(
-      withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
-      for: indexPath) as? SpaceyBannerCollectionViewCell,
-      let banner = bannerComponent.get() as? YDSpaceyComponentBanner
-      else {
-        return UICollectionViewCell()
+            withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
+            for: indexPath) as? SpaceyBannerCollectionViewCell,
+          let banner = bannerComponent.get() as? YDSpaceyComponentBanner
+    else {
+      return UICollectionViewCell()
     }
 
     if viewModel?.bannersOnList[indexPath.row] == nil {
@@ -172,7 +169,7 @@ extension YDSpaceyViewController: UITableViewDataSource {
 // MARK: Shimmer UITableView Delegate
 extension YDSpaceyViewController: UITableViewDelegate {
   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 96
+    return 180
   }
 
   public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

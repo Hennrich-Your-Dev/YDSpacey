@@ -74,7 +74,15 @@ class SpaceyViewModel {
         continue
       }
 
+      if componentType as? YDSpaceyComponentNextLive != nil {
+        continue
+      }
+
       if curr.component.type == "zion-image-carousel" {
+        continue
+      }
+
+      if curr.component.type == "zion-slideshow" {
         continue
       }
 
