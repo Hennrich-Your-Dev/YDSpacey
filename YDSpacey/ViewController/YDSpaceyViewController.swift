@@ -15,6 +15,7 @@ public class YDSpaceyViewController: UIViewController {
   public weak var delegate: YDSpaceyDelegate?
   public var largerHeader = false
   var numberOfShimmers = 0
+  var bannerCellSize: CGFloat = 180
 
   // MARK: Components
   let collectionView = UICollectionView(

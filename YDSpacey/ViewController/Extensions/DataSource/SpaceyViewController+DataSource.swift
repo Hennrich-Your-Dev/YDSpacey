@@ -169,7 +169,7 @@ extension YDSpaceyViewController: UITableViewDataSource {
 // MARK: Shimmer UITableView Delegate
 extension YDSpaceyViewController: UITableViewDelegate {
   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 180
+    return bannerCellSize
   }
 
   public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

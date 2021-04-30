@@ -86,7 +86,7 @@ extension YDSpaceyViewController {
       forCellReuseIdentifier: SpaceyBannerShimmerTableViewCell.identifier
     )
 
-    numberOfShimmers = Int((view.frame.size.height / 96).rounded(.up))
+    numberOfShimmers = Int((view.frame.size.height / bannerCellSize).rounded(.up))
   }
 }
 
