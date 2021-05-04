@@ -30,6 +30,7 @@ public enum YDConfigProperty: String {
   // Store Mode
   case npsEnabled
   case npsFeedbackMessage
+  case npsMinutesToPrune
   case productsQueryVersion = "lasaB2WProductsQueryVersion"
   case offlineAccountEnabled
 

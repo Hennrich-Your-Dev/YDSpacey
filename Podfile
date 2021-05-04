@@ -14,6 +14,6 @@ target 'YDSpacey' do
 
   pod "YDB2WModels", "~> 1.1.0"
   pod "YDExtensions", "~> 1.0.42"
-  pod "YDUtilities", "~> 1.0.10"
+  pod "YDUtilities", "~> 1.1.0"
   pod "YDB2WServices", "~> 1.1.0"
 end
