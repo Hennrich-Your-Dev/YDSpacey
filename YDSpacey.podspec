@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "YDSpacey"
-  spec.version      = "1.1.0"
+  spec.version      = "1.1.1"
   spec.summary      = "A short description of YDSpacey."
 
   spec.homepage     = "https://yourdev.com.br"
