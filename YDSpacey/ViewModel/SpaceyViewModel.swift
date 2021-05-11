@@ -29,6 +29,7 @@ class SpaceyViewModel {
   // Properties
   lazy var logger = Logger.forClass(Self.self)
   let service: YDB2WServiceDelegate
+  let supportedTypes: [YDSpaceyComponentsTypes.Types]
 
   var loading: Binder<Bool> = Binder(false)
   var error: Binder<String> = Binder("")
@@ -41,8 +42,12 @@ class SpaceyViewModel {
   var spaceyId = ""
 
   // Init
-  init(service: YDB2WServiceDelegate = YDB2WService()) {
+  init(
+    service: YDB2WServiceDelegate = YDB2WService(),
+    supportedTypes: [YDSpaceyComponentsTypes.Types]
+  ) {
     self.service = service
+    self.supportedTypes = supportedTypes
   }
 
   // Actions
@@ -61,6 +66,14 @@ class SpaceyViewModel {
     }
 
     for curr in components {
+      guard let type = YDSpaceyComponentsTypes.Types(
+        rawValue: curr.component.type ?? ""
+      ),
+      supportedTypes.contains(type)
+      else {
+        continue
+      }
+
       guard let componentType = curr.component.children?.first?.get() else {
         continue
       }

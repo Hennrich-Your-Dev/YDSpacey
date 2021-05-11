@@ -19,6 +19,7 @@
 		C1B76AFA2627347000B3D4C0 /* SpaceyViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AF92627347000B3D4C0 /* SpaceyViewController+Layout.swift */; };
 		C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AFE262734E900B3D4C0 /* SpaceyViewController+DataSource.swift */; };
 		C1B76B05262738A800B3D4C0 /* EmptyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */; };
+		C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C1B76AF92627347000B3D4C0 /* SpaceyViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Layout.swift"; sourceTree = "<group>"; };
 		C1B76AFE262734E900B3D4C0 /* SpaceyViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+DataSource.swift"; sourceTree = "<group>"; };
 		C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionReusableView.swift; sourceTree = "<group>"; };
+		C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		D37FCCC8D18E75624DF44D93 /* Pods_YDSpacey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDSpacey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7AE77980BFFE68412EF988 /* Pods-YDSpacey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDSpacey.release.xcconfig"; path = "Target Support Files/Pods-YDSpacey/Pods-YDSpacey.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				C13C69E92629E82E0018D380 /* Banner */,
+				C1CD0A49264A012F00B959A0 /* Title */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -192,6 +195,14 @@
 				C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */,
 			);
 			path = HeaderFooter;
+			sourceTree = "<group>";
+		};
+		C1CD0A49264A012F00B959A0 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */,
+			);
+			path = Title;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 				C1B76B05262738A800B3D4C0 /* EmptyCollectionReusableView.swift in Sources */,
 				C1B76AC92627300500B3D4C0 /* SpaceyViewModel.swift in Sources */,
 				C13C69EB2629E83D0018D380 /* SpaceyBannerCollectionViewCell.swift in Sources */,
+				C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */,
 				C1383A63262C0FBB00AD3928 /* SpaceyBannerShimmerTableViewCell.swift in Sources */,
 				C1B76AFA2627347000B3D4C0 /* SpaceyViewController+Layout.swift in Sources */,
 			);

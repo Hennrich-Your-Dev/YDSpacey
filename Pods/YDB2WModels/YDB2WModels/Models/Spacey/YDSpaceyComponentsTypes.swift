@@ -8,45 +8,75 @@
 import Foundation
 
 public enum YDSpaceyComponentsTypes: Decodable {
+  case banner(YDSpaceyComponentBanner)
+  case bannerCarrousel(YDSpaceyComponentCarrouselBanner)
+  case grid(YDSpaceyComponentGrid)
+  case nextLive(YDSpaceyComponentNextLive)
   case player(YDSpaceyComponentPlayer)
   case product(YDSpaceyComponentProduct)
-  case banner(YDSpaceyComponentBanner)
-  case nextLive(YDSpaceyComponentNextLive)
+  case title(YDSpaceyComponentTitle)
 
   enum CodingKeys: String, CodingKey {
     case type
   }
 
   // Components Types
-  enum `Types`: String, Decodable {
+  public enum `Types`: String, Decodable {
+    case banner = "zion-image"
+    case bannerCarrousel = "zion-image-carousel"
+    case grid = "zion-grid"
+    case nextLive = "live-schedule-item"
     case player = "zion-video"
     case product = "zion-product"
-    case banner = "zion-image"
-    case nextLive = "live-schedule-item"
+    case title = "zion-title"
   }
 
   // MARK: Init
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let type = try container.decode(Types.self, forKey: .type)
+    let singleValueContainer = try decoder.singleValueContainer()
 
     switch type {
-      case .player:
-        let playerContainer = try decoder.singleValueContainer()
-        self = .player(try playerContainer.decode(YDSpaceyComponentPlayer.self))
-
-      case .product:
-        let productContainer = try decoder.singleValueContainer()
-        self = .product(try productContainer.decode(YDSpaceyComponentProduct.self))
-
       case .banner:
-        let bannerContainer = try decoder.singleValueContainer()
-        self = .banner(try bannerContainer.decode(YDSpaceyComponentBanner.self))
+        self = .banner(try singleValueContainer.decode(YDSpaceyComponentBanner.self))
+
+      case .bannerCarrousel:
+        self = .bannerCarrousel(
+          try singleValueContainer.decode(YDSpaceyComponentCarrouselBanner.self)
+        )
+
+      case .grid:
+        self = .grid(try singleValueContainer.decode(YDSpaceyComponentGrid.self))
 
       case .nextLive:
-        let nextLiveContainer = try decoder.singleValueContainer()
-        self = .nextLive(try nextLiveContainer.decode(YDSpaceyComponentNextLive.self))
+        self = .nextLive(try singleValueContainer.decode(YDSpaceyComponentNextLive.self))
+
+      case .player:
+        self = .player(try singleValueContainer.decode(YDSpaceyComponentPlayer.self))
+
+      case .product:
+        self = .product(try singleValueContainer.decode(YDSpaceyComponentProduct.self))
+
+      case .title:
+        self = .title(try singleValueContainer.decode(YDSpaceyComponentTitle.self))
     }
+  }
+
+  public init(banner: YDSpaceyComponentBanner) {
+    self = .banner(banner)
+  }
+
+  public init(bannerCarrousel: YDSpaceyComponentCarrouselBanner) {
+    self = .bannerCarrousel(bannerCarrousel)
+  }
+
+  public init(grid: YDSpaceyComponentGrid) {
+    self = .grid(grid)
+  }
+
+  public init(nextLive: YDSpaceyComponentNextLive) {
+    self = .nextLive(nextLive)
   }
 
   public init(player: YDSpaceyComponentPlayer) {
@@ -57,28 +87,75 @@ public enum YDSpaceyComponentsTypes: Decodable {
     self = .product(product)
   }
 
-  public init(banner: YDSpaceyComponentBanner) {
-    self = .banner(banner)
-  }
-
-  public init(nextLive: YDSpaceyComponentNextLive) {
-    self = .nextLive(nextLive)
+  public init(title: YDSpaceyComponentTitle) {
+    self = .title(title)
   }
 
   // MARK: Actions
   public func get() -> Any {
     switch self {
+      case .banner(let banner):
+        return banner
+
+      case .bannerCarrousel(let carrousel):
+        return carrousel
+
+      case .grid(let grid):
+        return grid
+
+      case .nextLive(let nextLive):
+        return nextLive
+
       case .player(let player):
         return player
 
       case .product(let product):
         return product
 
-      case .banner(let banner):
-        return banner
-
-      case .nextLive(let nextLive):
-        return nextLive
+      case .title(let title):
+        return title
     }
+  }
+}
+
+extension YDSpaceyComponentsTypes: Equatable {
+  // To be able to use [].contains(type)
+  public static func == (lhs: YDSpaceyComponentsTypes, rhs: YDSpaceyComponentsTypes) -> Bool {
+    if case .banner = lhs,
+       case .banner = rhs {
+      return true
+    }
+
+    if case .bannerCarrousel = lhs,
+       case .bannerCarrousel = rhs {
+      return true
+    }
+
+    if case .grid = lhs,
+       case .grid = rhs {
+      return true
+    }
+
+    if case .nextLive = lhs,
+       case .nextLive = rhs {
+      return true
+    }
+
+    if case .player = lhs,
+       case .player = rhs {
+      return true
+    }
+
+    if case .product = lhs,
+       case .product = rhs {
+      return true
+    }
+
+    if case .title = lhs,
+       case .title = rhs {
+      return true
+    }
+
+    return false
   }
 }

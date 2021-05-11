@@ -25,6 +25,9 @@ public class YDB2WService {
   let zipcode: String
   let spacey: String
   let lasaClient: String
+  let youTubeAPI: String
+
+  var youTubeKey = ""
 
   // MARK: Init
   public init() {
@@ -45,7 +48,11 @@ public class YDB2WService {
           let spaceyApi = YDIntegrationHelper.shared
             .getFeature(featureName: YDConfigKeys.spaceyService.rawValue)?.endpoint,
           let lasaApi = YDIntegrationHelper.shared
-            .getFeature(featureName: YDConfigKeys.lasaClientService.rawValue)?.endpoint
+            .getFeature(featureName: YDConfigKeys.lasaClientService.rawValue)?.endpoint,
+
+          let googleServiceConfig = YDIntegrationHelper.shared
+            .getFeature(featureName: YDConfigKeys.googleService.rawValue),
+          let googleServiceApi = googleServiceConfig.endpoint
     else {
       fatalError("Não foi possível resgatar todas APIs")
     }
@@ -59,6 +66,12 @@ public class YDB2WService {
     self.zipcode = zipcodeApi
     self.spacey = spaceyApi
     self.lasaClient = lasaApi
+    self.youTubeAPI = "\(googleServiceApi)/youtube/v3/videos?part=statistics,liveStreamingDetails"
+
+    if let youTubeKey = googleServiceConfig
+    .extras?[YDConfigProperty.youtubeKey.rawValue] as? String {
+      self.youTubeKey = youTubeKey
+    }
   }
 }
 
@@ -118,7 +131,14 @@ extension YDB2WService: YDB2WServiceDelegate {
         withMethod: .get,
         andParameters: parameters
       ) { (response: Swift.Result<YDStores, YDServiceError>) in
-        completion(response)
+        switch response {
+          case .success(let list):
+            list.stores.sort(by: { $0.distance ?? 10000 < $1.distance ?? 10000 })
+            completion(.success(list))
+
+          case .failure(let error):
+            completion(.failure(error))
+        }
       }
     }
   }
@@ -163,14 +183,6 @@ extension YDB2WService: YDB2WServiceDelegate {
       var url = "\(self.restQL)/run-query/app/lasa-and-b2w-product-by-ean/\(self.restQLVersion)?"
 
       eans.forEach { url += "ean=\($0)&" }
-
-      //      self.service.request(
-      //        withUrl: String(url.dropLast()),
-      //        withMethod: .get,
-      //        andParameters: parameters
-      //      ) { (response: Swift.Result<YDProductsRESQL, YDServiceError>) in
-      //        completion(response)
-      //      }
 
       self.service.requestWithFullResponse(
         withUrl: String(url.dropLast()),

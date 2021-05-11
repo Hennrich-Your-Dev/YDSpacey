@@ -5,9 +5,6 @@
       location = "group:YDSpacey.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Podfile">
-   </FileRef>
-   <FileRef
       location = "group:YDSpacey.podspec">
    </FileRef>
    <FileRef
