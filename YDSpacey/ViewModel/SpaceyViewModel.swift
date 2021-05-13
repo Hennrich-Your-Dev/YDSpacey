@@ -72,12 +72,12 @@ class SpaceyViewModel {
     }
 
     for curr in components {
-      guard supportedTypes.contains(curr.component.type)
+      guard let type = curr.component?.type,
+        supportedTypes.contains(type),
+        let children = curr.component?.children
       else {
         continue
       }
-
-      let type = curr.component.type
 
       switch type {
         case .bannerCarrousel:
@@ -87,7 +87,7 @@ class SpaceyViewModel {
           list.append(curr)
 
         default:
-          for component in curr.component.children {
+          for component in children {
             if let data = buildData(from: component, parent: curr) {
               list.append(data)
             }
@@ -194,11 +194,11 @@ extension SpaceyViewModel: SpaceyViewModelDelegate {
     component: YDSpaceyComponentDelegate?,
     type: YDSpaceyComponentsTypes.Types?
   ) {
-    guard let parent = componentsList.value.at(indexPath.row)
+    guard let parent = componentsList.value.at(indexPath.row),
+          let type = parent.component?.type
     else {
       return (nil, nil)
     }
-    let type = parent.component.type
     return (parent.component, type)
   }
 }

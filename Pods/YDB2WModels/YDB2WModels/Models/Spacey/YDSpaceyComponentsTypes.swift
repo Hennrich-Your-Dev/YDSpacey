@@ -11,6 +11,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
   case banner(YDSpaceyComponentBanner)
   case bannerCarrousel(YDSpaceyComponentCarrouselBanner)
   case grid(YDSpaceyComponentGrid)
+  case nextLiveParent(YDSpaceyCommonComponent)
   case nextLive(YDSpaceyComponentNextLive)
   case player(YDSpaceyComponentPlayer)
   case product(YDSpaceyComponentProduct)
@@ -31,6 +32,9 @@ public enum YDSpaceyComponentsTypes: Decodable {
 
       case .grid:
         return .grid
+
+      case .nextLiveParent:
+        return .nextLiveParent
 
       case .nextLive:
         return .nextLive
@@ -54,6 +58,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
     case banner = "zion-image"
     case bannerCarrousel = "zion-image-carousel"
     case grid = "zion-grid"
+    case nextLiveParent = "live-schedule"
     case nextLive = "live-schedule-item"
     case player = "zion-video"
     case product = "zion-product"
@@ -79,6 +84,11 @@ public enum YDSpaceyComponentsTypes: Decodable {
       case .grid:
         self = .grid(try singleValueContainer.decode(YDSpaceyComponentGrid.self))
 
+      case .nextLiveParent:
+        self = .nextLiveParent(
+          try singleValueContainer.decode(YDSpaceyCommonComponent.self)
+        )
+
       case .nextLive:
         self = .nextLive(try singleValueContainer.decode(YDSpaceyComponentNextLive.self))
 
@@ -98,38 +108,6 @@ public enum YDSpaceyComponentsTypes: Decodable {
     }
   }
 
-  public init(banner: YDSpaceyComponentBanner) {
-    self = .banner(banner)
-  }
-
-  public init(bannerCarrousel: YDSpaceyComponentCarrouselBanner) {
-    self = .bannerCarrousel(bannerCarrousel)
-  }
-
-  public init(grid: YDSpaceyComponentGrid) {
-    self = .grid(grid)
-  }
-
-  public init(nextLive: YDSpaceyComponentNextLive) {
-    self = .nextLive(nextLive)
-  }
-
-  public init(player: YDSpaceyComponentPlayer) {
-    self = .player(player)
-  }
-
-  public init(product: YDSpaceyComponentProduct) {
-    self = .product(product)
-  }
-
-  public init(productCarrousel: YDSpaceyComponentCarrouselProduct) {
-    self = .productCarrousel(productCarrousel)
-  }
-
-  public init(title: YDSpaceyComponentTitle) {
-    self = .title(title)
-  }
-
   // MARK: Actions
   public func get() -> Any {
     switch self {
@@ -141,6 +119,9 @@ public enum YDSpaceyComponentsTypes: Decodable {
 
       case .grid(let grid):
         return grid
+
+      case .nextLiveParent(let nextLiveParent):
+        return nextLiveParent
 
       case .nextLive(let nextLive):
         return nextLive
@@ -175,6 +156,11 @@ extension YDSpaceyComponentsTypes: Equatable {
 
     if case .grid = lhs,
        case .grid = rhs {
+      return true
+    }
+
+    if case .nextLiveParent = lhs,
+       case .nextLiveParent = rhs {
       return true
     }
 
