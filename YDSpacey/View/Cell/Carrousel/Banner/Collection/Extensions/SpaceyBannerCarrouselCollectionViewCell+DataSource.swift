@@ -18,7 +18,7 @@ extension SpaceyBannerCarrouselCollectionViewCell: UICollectionViewDataSource {
       return 0
     }
 
-    return carrousel.children?.count ?? 0
+    return carrousel.children.count
   }
 
   func collectionView(
@@ -29,8 +29,7 @@ extension SpaceyBannerCarrouselCollectionViewCell: UICollectionViewDataSource {
     .value.at(carrouselId) != nil,
           let component = viewModel?.componentsList
             .value[carrouselId].component as? YDSpaceyComponentCarrouselBanner,
-          let children = component.children,
-          case .banner(let banner) = children.at(indexPath.row),
+          case .banner(let banner) = component.children.at(indexPath.row),
           let cell = collectionView
             .dequeueReusableCell(
               withReuseIdentifier: SpaceyBannerOnCarrouselCell.identifier,

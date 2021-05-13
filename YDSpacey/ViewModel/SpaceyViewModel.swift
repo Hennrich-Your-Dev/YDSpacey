@@ -25,7 +25,10 @@ protocol SpaceyViewModelDelegate: AnyObject {
   func getSpacey(withId id: String)
   func getComponentAndType(
     at indexPath: IndexPath
-  ) -> (component: YDSpaceyCommonComponent?, type: YDSpaceyComponentsTypes.Types?)
+  ) -> (
+    component: YDSpaceyComponentDelegate?,
+    type: YDSpaceyComponentsTypes.Types?
+  )
 }
 
 class SpaceyViewModel {
@@ -69,11 +72,12 @@ class SpaceyViewModel {
     }
 
     for curr in components {
-      guard let type = curr.component.type,
-      supportedTypes.contains(type)
+      guard supportedTypes.contains(curr.component.type)
       else {
         continue
       }
+
+      let type = curr.component.type
 
       switch type {
         case .bannerCarrousel:
@@ -83,12 +87,7 @@ class SpaceyViewModel {
           list.append(curr)
 
         default:
-          guard let children = curr.component.children
-          else {
-            continue
-          }
-
-          for component in children {
+          for component in curr.component.children {
             if let data = buildData(from: component, parent: curr) {
               list.append(data)
             }
@@ -116,9 +115,8 @@ class SpaceyViewModel {
         return parent
 
       case .grid(let grid):
-        if grid.layout == .vertical,
-           let children = grid.children {
-          for curr in children {
+        if grid.layout == .vertical {
+          for curr in grid.children {
             return buildData(from: curr, parent: parent)
           }
         } else {
@@ -192,13 +190,15 @@ extension SpaceyViewModel: SpaceyViewModelDelegate {
 
   func getComponentAndType(
     at indexPath: IndexPath
-  ) -> (component: YDSpaceyCommonComponent?, type: YDSpaceyComponentsTypes.Types?) {
-    guard let parent = componentsList.value.at(indexPath.row),
-          let type = parent.component.type
+  ) -> (
+    component: YDSpaceyComponentDelegate?,
+    type: YDSpaceyComponentsTypes.Types?
+  ) {
+    guard let parent = componentsList.value.at(indexPath.row)
     else {
       return (nil, nil)
     }
-
+    let type = parent.component.type
     return (parent.component, type)
   }
 }

@@ -75,7 +75,7 @@ extension YDSpaceyViewController {
       )
     }
 
-    guard let item = component.children?.first else {
+    guard let item = component.children.first else {
       fatalError("type: \(type)")
     }
 
