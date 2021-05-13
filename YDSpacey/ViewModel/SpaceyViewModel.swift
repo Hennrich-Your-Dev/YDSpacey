@@ -23,6 +23,9 @@ protocol SpaceyViewModelDelegate: AnyObject {
   var spaceyOrder: [String] { get }
 
   func getSpacey(withId id: String)
+  func getComponentAndType(
+    at indexPath: IndexPath
+  ) -> (component: YDSpaceyCommonComponent?, type: YDSpaceyComponentsTypes.Types?)
 }
 
 class SpaceyViewModel {
@@ -50,7 +53,7 @@ class SpaceyViewModel {
     self.supportedTypes = supportedTypes
   }
 
-  // Actions
+  // MARK: Actions
   func buildList(with spacey: YDB2WModels.YDSpacey) {
     var list: [YDSpaceyCommonStruct] = []
     var components: [YDSpaceyCommonStruct] = []
@@ -66,62 +69,104 @@ class SpaceyViewModel {
     }
 
     for curr in components {
-      guard let type = YDSpaceyComponentsTypes.Types(
-        rawValue: curr.component.type ?? ""
-      ),
+      guard let type = curr.component.type,
       supportedTypes.contains(type)
       else {
         continue
       }
 
-      guard let componentType = curr.component.children?.first?.get() else {
-        continue
-      }
+      switch type {
+        case .bannerCarrousel:
+          list.append(curr)
 
-      if let player = componentType as? YDSpaceyComponentPlayer {
-        playerComponent.value = player
-        continue
-      }
+        case .productCarrousel:
+          list.append(curr)
 
-      if componentType as? YDSpaceyComponentProduct != nil {
-        continue
-      }
+        default:
+          guard let children = curr.component.children
+          else {
+            continue
+          }
 
-      if componentType as? YDSpaceyComponentNextLive != nil {
-        continue
-      }
-
-      if curr.component.type == "zion-image-carousel" {
-        continue
-      }
-
-      if curr.component.type == "zion-slideshow" {
-        continue
-      }
-
-      if let children = curr.component.children {
-        children.forEach { obj in
-          let component = YDSpaceyCommonComponent(
-            id: curr.id,
-            children: [obj],
-            type: curr.component.type,
-            showcaseTitle: curr.component.showcaseTitle
-          )
-
-          let container = YDSpaceyCommonStruct(id: curr.id, component: component)
-          list.append(container)
-        }
-
-      } else {
-        list.append(curr)
+          for component in children {
+            if let data = buildData(from: component, parent: curr) {
+              list.append(data)
+            }
+          }
       }
     }
 
     componentsList.value = list
     loading.value = false
   }
+
+  func buildData(
+    from component: YDSpaceyComponentsTypes,
+    parent: YDSpaceyCommonStruct
+  ) -> YDSpaceyCommonStruct? {
+    if !supportedTypes.contains(component.componentType) { return nil }
+
+    switch component {
+      case .banner(let banner):
+        let obj = extractData(from: banner)
+        obj.children = [component]
+        return YDSpaceyCommonStruct(id: obj.id, component: obj)
+
+      case .bannerCarrousel:
+        return parent
+
+      case .grid(let grid):
+        if grid.layout == .vertical,
+           let children = grid.children {
+          for curr in children {
+            return buildData(from: curr, parent: parent)
+          }
+        } else {
+          return nil
+        }
+
+      case .player(let player):
+        playerComponent.value = player
+
+      case .product:
+        return parent
+
+      case .title(let title):
+        let obj = extractData(from: title)
+        obj.children = [component]
+
+        return YDSpaceyCommonStruct(id: obj.id, component: obj)
+
+      default:
+        return nil
+    }
+
+    return nil
+  }
 }
 
+// MARK: Extract SpaceyCommonComponent
+extension SpaceyViewModel {
+  // Banner
+  func extractData(from banner: YDSpaceyComponentBanner) -> YDSpaceyCommonComponent {
+    return YDSpaceyCommonComponent(
+      id: banner.id,
+      children: [],
+      type: banner.componentType
+    )
+  }
+
+  // Title
+  func extractData(from title: YDSpaceyComponentTitle) -> YDSpaceyCommonComponent {
+    return YDSpaceyCommonComponent(
+      id: title.id,
+      children: [],
+      type: title.componentType
+    )
+  }
+}
+
+// MARK: Delegate
 extension SpaceyViewModel: SpaceyViewModelDelegate {
   func getSpacey(withId id: String) {
     loading.value = true
@@ -144,8 +189,21 @@ extension SpaceyViewModel: SpaceyViewModelDelegate {
       }
     }
   }
+
+  func getComponentAndType(
+    at indexPath: IndexPath
+  ) -> (component: YDSpaceyCommonComponent?, type: YDSpaceyComponentsTypes.Types?) {
+    guard let parent = componentsList.value.at(indexPath.row),
+          let type = parent.component.type
+    else {
+      return (nil, nil)
+    }
+
+    return (parent.component, type)
+  }
 }
 
+// MARK: Mock
 extension SpaceyViewModel {
   func mock() -> YDB2WModels.YDSpacey? {
     let dataString = """

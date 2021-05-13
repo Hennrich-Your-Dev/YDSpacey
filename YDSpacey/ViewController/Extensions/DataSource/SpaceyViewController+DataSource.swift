@@ -60,135 +60,34 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
 // MARK: Actions
 extension YDSpaceyViewController {
   func dequeueCell(at indexPath: IndexPath) -> UICollectionViewCell {
-    guard let itemAndType = getItemAndType(at: indexPath) else {
-      return UICollectionViewCell()
-    }
-
-    switch itemAndType.type {
-      case .banner:
-        return dequeueBannerCell(withBanner: itemAndType.type, at: indexPath)
-      default:
-        fatalError("type: \(itemAndType.type)")
-    }
-  }
-}
-
-// MARK: Carrousel Products
-extension YDSpaceyViewController {
-  func getProductsIds(at row: Int, onCompletion: @escaping ([String]) -> Void) {
-    //    viewModel?.getProductsIds(at: row, onCompletion: onCompletion)
-  }
-
-  //  func dequeueProductCell(at indexPath: IndexPath) -> UICollectionViewCell {
-  //    guard let cell = collectionView.dequeueReusableCell(
-  //      withReuseIdentifier: YDLiveProductContainerCollectionViewCell.identifier,
-  //      for: indexPath) as? YDLiveProductContainerCollectionViewCell,
-  //          let component = getItemAndType(at: indexPath),
-  //          let viewModel = viewModel
-  //      else {
-  //        return UICollectionViewCell()
-  //    }
-  //
-  //    cell.widthConstraint.constant = collectionView.frame.size.width
-  //    cell.layoutIfNeeded()
-  //
-  //    getProductsIds(at: indexPath.row) { ids in
-  //      if viewModel.carrouselProducts[indexPath.row] == nil {
-  //        let carrouselContainer = YDSpaceyProductCarrouselContainer(
-  //          id: indexPath.row,
-  //          items: [],
-  //          ids: [],
-  //          pageNumber: -1,
-  //          currentRectList: nil
-  //        )
-  //        viewModel.carrouselProducts[indexPath.row] = carrouselContainer
-  //      }
-  //
-  //      let productsIds = ids.inBatches(ofSize: viewModel.productsBatchesSize)
-  //      viewModel.carrouselProducts[indexPath.row]?.ids = productsIds
-  //
-  //      cell.config(
-  //        with: indexPath.row,
-  //        headerTitle: component.item.component.showcaseTitle,
-  //        viewModel: viewModel
-  //      )
-  //    }
-  //
-  //    return cell
-  //  }
-}
-
-// MARK: Banner
-extension YDSpaceyViewController {
-  func dequeueBannerCell(
-    withBanner bannerComponent: YDSpaceyComponentsTypes,
-    at indexPath: IndexPath
-  ) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
-            for: indexPath) as? SpaceyBannerCollectionViewCell,
-          let banner = bannerComponent.get() as? YDSpaceyComponentBanner
+    guard let itemAndType = viewModel?.getComponentAndType(at: indexPath),
+          let component = itemAndType.component,
+          let type = itemAndType.type
     else {
       return UICollectionViewCell()
     }
 
-    if viewModel?.bannersOnList[indexPath.row] == nil {
-      viewModel?.bannersOnList[indexPath.row] = YDSpaceyBannerConfig(
-        image: banner.bannerImage ?? "",
-        bannerId: banner.deepLink ?? ""
+    if case .bannerCarrousel = type,
+       let bannerCarrousel = component as? YDSpaceyComponentCarrouselBanner {
+      return dequeueBannerCarrouselCell(
+        withCarrousel: bannerCarrousel,
+        at: indexPath
       )
     }
 
-    cell.config(
-      withId: indexPath.row,
-      viewModel: viewModel
-    )
-    return cell
-  }
-}
-
-// MARK: Shimmer UITableView Data Source
-extension YDSpaceyViewController: UITableViewDataSource {
-  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return numberOfShimmers
-  }
-
-  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(
-      withIdentifier: SpaceyBannerShimmerTableViewCell.identifier
-    ) as? SpaceyBannerShimmerTableViewCell
-    else {
-      return UITableViewCell()
+    guard let item = component.children?.first else {
+      fatalError("type: \(type)")
     }
-    cell.config()
 
-    return cell
-  }
-}
+    switch item {
+      case .banner(let banner):
+        return dequeueBannerCell(withBanner: banner, at: indexPath)
 
-// MARK: Shimmer UITableView Delegate
-extension YDSpaceyViewController: UITableViewDelegate {
-  public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return bannerCellSize
-  }
+      case .title(let title):
+        return dequeueTitleCell(withTitle: title, at: indexPath)
 
-  public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 28
-  }
-
-  public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 28
-  }
-
-  public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let view = UIView()
-    view.backgroundColor = .clear
-    return view
-  }
-
-  public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    let view = UIView()
-    view.backgroundColor = .clear
-    return view
+      default:
+        fatalError("type: \(type) isn't support yet")
+    }
   }
 }

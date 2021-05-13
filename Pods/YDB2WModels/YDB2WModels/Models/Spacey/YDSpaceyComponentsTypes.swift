@@ -14,10 +14,39 @@ public enum YDSpaceyComponentsTypes: Decodable {
   case nextLive(YDSpaceyComponentNextLive)
   case player(YDSpaceyComponentPlayer)
   case product(YDSpaceyComponentProduct)
+  case productCarrousel(YDSpaceyComponentCarrouselProduct)
   case title(YDSpaceyComponentTitle)
 
   enum CodingKeys: String, CodingKey {
     case type
+  }
+
+  public var componentType: `Types` {
+    switch self {
+      case .banner:
+        return .banner
+
+      case .bannerCarrousel:
+        return .bannerCarrousel
+
+      case .grid:
+        return .grid
+
+      case .nextLive:
+        return .nextLive
+
+      case .player:
+        return .player
+
+      case .product:
+        return .product
+
+      case .productCarrousel:
+        return .productCarrousel
+
+      case .title:
+        return .title
+    }
   }
 
   // Components Types
@@ -28,6 +57,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
     case nextLive = "live-schedule-item"
     case player = "zion-video"
     case product = "zion-product"
+    case productCarrousel = "live-carousel"
     case title = "zion-title"
   }
 
@@ -58,6 +88,11 @@ public enum YDSpaceyComponentsTypes: Decodable {
       case .product:
         self = .product(try singleValueContainer.decode(YDSpaceyComponentProduct.self))
 
+      case .productCarrousel:
+        self = .productCarrousel(
+          try singleValueContainer.decode(YDSpaceyComponentCarrouselProduct.self)
+        )
+
       case .title:
         self = .title(try singleValueContainer.decode(YDSpaceyComponentTitle.self))
     }
@@ -87,6 +122,10 @@ public enum YDSpaceyComponentsTypes: Decodable {
     self = .product(product)
   }
 
+  public init(productCarrousel: YDSpaceyComponentCarrouselProduct) {
+    self = .productCarrousel(productCarrousel)
+  }
+
   public init(title: YDSpaceyComponentTitle) {
     self = .title(title)
   }
@@ -111,6 +150,9 @@ public enum YDSpaceyComponentsTypes: Decodable {
 
       case .product(let product):
         return product
+
+      case .productCarrousel(let carrousel):
+        return carrousel
 
       case .title(let title):
         return title
@@ -148,6 +190,11 @@ extension YDSpaceyComponentsTypes: Equatable {
 
     if case .product = lhs,
        case .product = rhs {
+      return true
+    }
+
+    if case .productCarrousel = lhs,
+       case .productCarrousel = rhs {
       return true
     }
 

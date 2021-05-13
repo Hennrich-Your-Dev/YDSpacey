@@ -7,6 +7,7 @@
 
 import UIKit
 
+import YDB2WIntegration
 import YDB2WModels
 
 public typealias YDSpacey = YDSpaceyCoordinator
@@ -18,6 +19,13 @@ public class YDSpaceyCoordinator {
   // MARK: Actions
   public func start(supportedTypes: [YDSpaceyComponentsTypes.Types]) -> YDSpaceyViewController {
     let viewModel = SpaceyViewModel(supportedTypes: supportedTypes)
+
+    if let spaceyOrder = YDIntegrationHelper.shared
+        .getFeature(featureName: YDConfigKeys.spaceyService.rawValue)?
+        .extras?[YDConfigProperty.liveSpaceyOrder.rawValue] as? [String] {
+      viewModel.spaceyOrder = spaceyOrder
+    }
+
     let vc = YDSpaceyViewController()
 
     vc.viewModel = viewModel

@@ -33,19 +33,7 @@ public class YDSpaceyViewController: UIViewController {
 }
 
 // MARK: Actions
-public extension YDSpaceyViewController {
-  // Get current item component and type
-  func getItemAndType(
-    at indexPath: IndexPath
-  ) -> (item: YDSpaceyCommonStruct, type: YDSpaceyComponentsTypes)? {
-    guard let item = viewModel?.componentsList.value.at(indexPath.row),
-          let type = item.component.children?.first
-    else {
-      return nil
-    }
-    return (item, type)
-  }
-}
+public extension YDSpaceyViewController {}
 
 // MARK: Public Actions
 public extension YDSpaceyViewController {
