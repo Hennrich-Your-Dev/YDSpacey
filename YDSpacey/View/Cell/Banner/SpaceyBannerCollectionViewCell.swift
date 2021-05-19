@@ -13,7 +13,12 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   // Components
   let imageContainer = UIView()
   let imageView = UIImageView()
-  var imageViewHeightConstraint = NSLayoutConstraint()
+  lazy var imageViewHeightConstraint: NSLayoutConstraint = {
+    return imageView.heightAnchor.constraint(equalToConstant: 80)
+  }()
+  lazy var contentViewWidthConstraint: NSLayoutConstraint = {
+    return contentView.widthAnchor.constraint(equalToConstant: frame.size.width)
+  }()
 
   // Properties
   var viewModel: SpaceyViewModelDelegate?
@@ -23,7 +28,8 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    contentView.widthAnchor.constraint(equalToConstant: frame.size.width).isActive = true
+    contentViewWidthConstraint.constant = frame.width
+    contentViewWidthConstraint.isActive = true
 
     configureLayout()
   }
@@ -47,23 +53,42 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     self.viewModel = viewModel
     self.bannerId = bannerId
 
-    if let rect = viewModel?.bannersOnList[bannerId]?.currentRect {
-      // debugPrint("currentRect", rect)
-      imageView.frame = rect
-      imageView.image = viewModel?.bannersOnList[bannerId]?.imageComponent
-      imageView.center = imageContainer.center
-      updateLayout()
-      return
-    }
+//    if let rect = viewModel?.bannersOnList[bannerId]?.currentRect {
+//      // debugPrint("currentRect", rect)
+//      imageView.frame = rect
+//      imageView.image = viewModel?.bannersOnList[bannerId]?.imageComponent
+//      imageView.center = imageContainer.center
+//      updateLayout()
+//      return
+//    }
 
     imageView.startShimmer()
-    imageView.setImage(viewModel?.bannersOnList[bannerId]?.image) { [weak self] success in
+    imageView.setImage(
+      viewModel?.bannersOnList[bannerId]?.image
+    ) { [weak self] success in
       guard let self = self else { return }
       self.imageView.stopShimmer()
 
       if success != nil {
-        self.viewModel?.bannersOnList[bannerId]?.currentRect = self.imageView.frame
-        self.viewModel?.bannersOnList[bannerId]?.imageComponent = self.imageView.image
+        guard let image = self.imageView.image else { return }
+
+        let width = self.contentViewWidthConstraint.constant
+        let padding: CGFloat = 32
+        let ratio = (width - padding) / CGFloat(image.size.width)
+
+        let onScreenBannerHeight = Int(
+          CGFloat(image.size.height) * ratio
+        )
+
+        self.imageView.frame.size = CGSize(
+          width: width,
+          height: CGFloat(onScreenBannerHeight)
+        )
+
+        self.viewModel?.bannersOnList[bannerId]?
+          .imageComponent = self.imageView.image
+      } else {
+        self.imageContainer.isHidden = true
       }
 
       self.updateLayout()
@@ -105,7 +130,6 @@ extension SpaceyBannerCollectionViewCell {
     imageView.contentMode = .scaleAspectFill
 
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 80)
     imageViewHeightConstraint.isActive = true
 
     NSLayoutConstraint.activate([
