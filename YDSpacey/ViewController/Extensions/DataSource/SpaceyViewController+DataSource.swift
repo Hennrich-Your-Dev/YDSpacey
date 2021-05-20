@@ -86,6 +86,14 @@ extension YDSpaceyViewController {
       case .title(let title):
         return dequeueTitleCell(withTitle: title, at: indexPath)
 
+      case .npsQuestion(let question):
+        switch question.answerType {
+          case .star:
+            return dequeueStarCell(with: question, at: indexPath)
+          default:
+            fatalError("type: \(question.answerType) isn't support yet")
+        }
+
       default:
         fatalError("type: \(type) isn't support yet")
     }

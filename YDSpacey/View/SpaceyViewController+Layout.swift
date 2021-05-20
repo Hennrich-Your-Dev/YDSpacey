@@ -56,6 +56,11 @@ extension YDSpaceyViewController {
       forCellWithReuseIdentifier: SpaceyTitleCollectionViewCell.identifier
     )
 
+    collectionView.register(
+      SpaceyStarCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyStarCollectionViewCell.identifier
+    )
+
     // Register Header / Footer
     collectionView.register(
       EmptyCollectionReusableView.self,

@@ -115,12 +115,8 @@ class SpaceyViewModel {
         return parent
 
       case .grid(let grid):
-        if grid.layout == .vertical {
-          for curr in grid.children {
-            return buildData(from: curr, parent: parent)
-          }
-        } else {
-          return nil
+        for curr in grid.children {
+          return buildData(from: curr, parent: parent)
         }
 
       case .player(let player):

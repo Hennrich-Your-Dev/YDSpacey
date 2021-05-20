@@ -20,6 +20,9 @@
 		C155E979264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C155E978264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift */; };
 		C18D8726264C954900E3A923 /* SpaceyBannerCarrouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D8725264C954900E3A923 /* SpaceyBannerCarrouselCollectionViewCell.swift */; };
 		C18D872C264CBF2700E3A923 /* SpaceyBannerOnCarrouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D872B264CBF2700E3A923 /* SpaceyBannerOnCarrouselCell.swift */; };
+		C19533212656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19533202656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift */; };
+		C19533232656AC91007BF788 /* SpaceyStarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19533222656AC91007BF788 /* SpaceyStarComponentView.swift */; };
+		C19533262656C212007BF788 /* SpaceyViewController+Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19533252656C212007BF788 /* SpaceyViewController+Star.swift */; };
 		C1B76AB42627290100B3D4C0 /* YDSpacey.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B76AB22627290100B3D4C0 /* YDSpacey.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B76AC326272C1100B3D4C0 /* YDSpaceyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AC226272C1100B3D4C0 /* YDSpaceyCoordinator.swift */; };
 		C1B76AC626272EE700B3D4C0 /* YDSpaceyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AC526272EE700B3D4C0 /* YDSpaceyViewController.swift */; };
@@ -44,6 +47,9 @@
 		C155E978264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Shimmer.swift"; sourceTree = "<group>"; };
 		C18D8725264C954900E3A923 /* SpaceyBannerCarrouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyBannerCarrouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		C18D872B264CBF2700E3A923 /* SpaceyBannerOnCarrouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyBannerOnCarrouselCell.swift; sourceTree = "<group>"; };
+		C19533202656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyStarCollectionViewCell.swift; sourceTree = "<group>"; };
+		C19533222656AC91007BF788 /* SpaceyStarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyStarComponentView.swift; sourceTree = "<group>"; };
+		C19533252656C212007BF788 /* SpaceyViewController+Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Star.swift"; sourceTree = "<group>"; };
 		C1B76AAF2627290100B3D4C0 /* YDSpacey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDSpacey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B76AB22627290100B3D4C0 /* YDSpacey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDSpacey.h; sourceTree = "<group>"; };
 		C1B76AB32627290100B3D4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +209,23 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		C195331F2656A81A007BF788 /* Star */ = {
+			isa = PBXGroup;
+			children = (
+				C19533202656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift */,
+				C19533222656AC91007BF788 /* SpaceyStarComponentView.swift */,
+			);
+			path = Star;
+			sourceTree = "<group>";
+		};
+		C19533242656C1DC007BF788 /* Star */ = {
+			isa = PBXGroup;
+			children = (
+				C19533252656C212007BF788 /* SpaceyViewController+Star.swift */,
+			);
+			path = Star;
+			sourceTree = "<group>";
+		};
 		C1B76AA52627290100B3D4C0 = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +309,7 @@
 				C155E971264D63D100D05AE6 /* Banner */,
 				C13B4453264C697C003CB810 /* Carrousel */,
 				C155E977264D649500D05AE6 /* Shimmer */,
+				C19533242656C1DC007BF788 /* Star */,
 				C155E974264D640D00D05AE6 /* Title */,
 			);
 			path = DataSource;
@@ -296,6 +320,7 @@
 			children = (
 				C18D8723264C952700E3A923 /* Carrousel */,
 				C13C69E92629E82E0018D380 /* Banner */,
+				C195331F2656A81A007BF788 /* Star */,
 				C1CD0A49264A012F00B959A0 /* Title */,
 			);
 			path = Cell;
@@ -425,10 +450,12 @@
 				C13C69E72629E0940018D380 /* SpaceyViewController+Delegate.swift in Sources */,
 				C1B76AC326272C1100B3D4C0 /* YDSpaceyCoordinator.swift in Sources */,
 				C13B4456264C6997003CB810 /* SpaceyViewController+BannerCarrousel.swift in Sources */,
+				C19533262656C212007BF788 /* SpaceyViewController+Star.swift in Sources */,
 				C155E96D264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				C155E979264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift in Sources */,
 				C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */,
 				C13C69E22629DDFB0018D380 /* SpaceyViewController+Binds.swift in Sources */,
+				C19533212656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift in Sources */,
 				C155E973264D63E000D05AE6 /* SpaceyViewController+Banner.swift in Sources */,
 				C18D8726264C954900E3A923 /* SpaceyBannerCarrouselCollectionViewCell.swift in Sources */,
 				C18D872C264CBF2700E3A923 /* SpaceyBannerOnCarrouselCell.swift in Sources */,
@@ -441,6 +468,7 @@
 				C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */,
 				C1383A63262C0FBB00AD3928 /* SpaceyBannerShimmerTableViewCell.swift in Sources */,
 				C1B76AFA2627347000B3D4C0 /* SpaceyViewController+Layout.swift in Sources */,
+				C19533232656AC91007BF788 /* SpaceyStarComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
