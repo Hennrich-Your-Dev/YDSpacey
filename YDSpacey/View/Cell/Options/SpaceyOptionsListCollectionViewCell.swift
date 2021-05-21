@@ -13,7 +13,7 @@ import YDB2WModels
 class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
   // MARK: Components
   lazy var widthConstraint: NSLayoutConstraint = {
-    return widthAnchor.constraint(equalToConstant: 0)
+    return widthAnchor.constraint(equalToConstant: 50)
   }()
   let titleLabel = UILabel()
   let collectionView = UICollectionView(
@@ -28,7 +28,18 @@ class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    widthConstraint.constant = frame.size.width
+    translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      widthAnchor.constraint(equalToConstant: frame.size.width),
+      heightAnchor.constraint(equalToConstant: 70),
+      contentView.topAnchor.constraint(equalTo: topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
+
+    configureLayout()
   }
 
   required init?(coder: NSCoder) {
@@ -46,9 +57,6 @@ class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
 // MARK: Layout
 extension SpaceyOptionsListCollectionViewCell {
   func configureLayout() {
-    contentView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-    widthConstraint.isActive = true
-
     configureTitleLabel()
     configureCollectionView()
   }
@@ -61,22 +69,28 @@ extension SpaceyOptionsListCollectionViewCell {
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: topAnchor),
-      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+      titleLabel.leadingAnchor.constraint(
+        equalTo: contentView.leadingAnchor,
+        constant: 16
+      ),
+      titleLabel.trailingAnchor.constraint(
+        equalTo: contentView.trailingAnchor,
+        constant: -16
+      ),
       titleLabel.heightAnchor.constraint(equalToConstant: 16)
     ])
   }
 
   func configureCollectionView() {
     contentView.addSubview(collectionView)
+    collectionView.backgroundColor = .clear
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: 50, height: 40)
     layout.minimumLineSpacing = 8
     layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     layout.scrollDirection = .horizontal
-
     collectionView.collectionViewLayout = layout
 
     collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,8 +101,12 @@ extension SpaceyOptionsListCollectionViewCell {
       ),
       collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      collectionView.heightAnchor.constraint(equalToConstant: 42)
     ])
+
+    collectionView.delegate = self
+    collectionView.dataSource = self
 
     // Register Cell
     collectionView.register(

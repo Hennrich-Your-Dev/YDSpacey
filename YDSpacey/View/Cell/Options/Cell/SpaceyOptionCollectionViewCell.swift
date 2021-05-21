@@ -16,14 +16,44 @@ class SpaceyOptionCollectionViewCell: UICollectionViewCell {
   let optionLabel = UILabel()
 
   // MARK: Properties
-  let selectedBackgroundColor = Zeplin.grayLight
-  let unselectedBackgroundColor = Zeplin.grayOpaque
-  let selectedLabelColor = Zeplin.white
-  let unselectedLabelColor = Zeplin.grayLight
+  private let selectedBackgroundColor = UIColor(
+    red: 102 / 255,
+    green: 102 / 255,
+    blue: 102 / 255,
+    alpha: 1
+  )
+  private let selectedLabelColor = UIColor(
+    red: 255 / 255,
+    green: 255 / 255,
+    blue: 255 / 255,
+    alpha: 1
+  )
+
+  private let unselectedBackgroundColor = UIColor(
+    red: 235 / 255,
+    green: 235 / 255,
+    blue: 235 / 255,
+    alpha: 1
+  )
+  private let unselectedLabelColor = UIColor(
+    red: 112 / 255,
+    green: 112 / 255,
+    blue: 112 / 255,
+    alpha: 1
+  )
 
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
+    translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      heightAnchor.constraint(equalToConstant: 40),
+      contentView.topAnchor.constraint(equalTo: topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
 
     configureLayout()
     configureOptionLabel()
@@ -51,7 +81,8 @@ class SpaceyOptionCollectionViewCell: UICollectionViewCell {
 // MARK: Layout
 extension SpaceyOptionCollectionViewCell {
   func configureLayout() {
-    heightAnchor.constraint(equalToConstant: 40).isActive = true
+//    contentView.translatesAutoresizingMaskIntoConstraints = false
+//    contentView.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
     configureContainer()
     configureOptionLabel()
@@ -68,6 +99,7 @@ extension SpaceyOptionCollectionViewCell {
       container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
     ])
+    container.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
   }
 
   func configureOptionLabel() {
@@ -88,5 +120,6 @@ extension SpaceyOptionCollectionViewCell {
         constant: -22
       )
     ])
+    optionLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
   }
 }

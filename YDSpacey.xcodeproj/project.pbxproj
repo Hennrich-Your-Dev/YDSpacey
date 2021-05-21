@@ -345,8 +345,8 @@
 		C1BAAD5A26571A03006BC20D /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				C1BAAD5D265724F7006BC20D /* Cell */,
 				C1BAAD5B26571A2E006BC20D /* SpaceyOptionsListCollectionViewCell.swift */,
+				C1BAAD5D265724F7006BC20D /* Cell */,
 			);
 			path = Options;
 			sourceTree = "<group>";

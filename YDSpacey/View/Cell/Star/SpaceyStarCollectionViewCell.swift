@@ -12,6 +12,7 @@ import YDB2WModels
 class SpaceyStarCollectionViewCell: UICollectionViewCell {
   // MARK: Components
   let starComponent = SpaceyStarComponentView()
+  lazy var widthConstraint: CGFloat = 0
 
   // MARK: Properties
   var starNumber: Double {
@@ -31,11 +32,19 @@ class SpaceyStarCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    NSLayoutConstraint.activate([
-      contentView.widthAnchor.constraint(equalToConstant: frame.size.width),
-      contentView.heightAnchor.constraint(equalToConstant: 60)
-    ])
 
+    translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activate([
+      widthAnchor.constraint(equalToConstant: frame.size.width),
+      heightAnchor.constraint(equalToConstant: 60),
+      contentView.topAnchor.constraint(equalTo: topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
+    widthConstraint = frame.size.width
     configureStarComponent()
   }
 
@@ -65,5 +74,6 @@ extension SpaceyStarCollectionViewCell {
       ),
       starComponent.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
     ])
+    starComponent.widthConstraint.constant = widthConstraint
   }
 }
