@@ -75,6 +75,19 @@ extension YDSpaceyViewController {
       )
     }
 
+    if case .npsQuestion = type,
+       let questionComponent = component as? YDSpaceyComponentNPSQuestion {
+      switch questionComponent.answerType {
+        case .star:
+          return dequeueStarCell(with: questionComponent, at: indexPath)
+        case .option:
+          return dequeueOptionsCell(with: questionComponent, at: indexPath)
+
+        default:
+          fatalError("type: \(questionComponent.answerType) isn't support yet")
+      }
+    }
+
     guard let item = component.children.first else {
       fatalError("type: \(type)")
     }
@@ -85,14 +98,6 @@ extension YDSpaceyViewController {
 
       case .title(let title):
         return dequeueTitleCell(withTitle: title, at: indexPath)
-
-      case .npsQuestion(let question):
-        switch question.answerType {
-          case .star:
-            return dequeueStarCell(with: question, at: indexPath)
-          default:
-            fatalError("type: \(question.answerType) isn't support yet")
-        }
 
       default:
         fatalError("type: \(type) isn't support yet")

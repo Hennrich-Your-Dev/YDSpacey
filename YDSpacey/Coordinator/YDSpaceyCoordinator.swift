@@ -17,8 +17,15 @@ public class YDSpaceyCoordinator {
   public init() {}
 
   // MARK: Actions
-  public func start(supportedTypes: [YDSpaceyComponentsTypes.Types]) -> YDSpaceyViewController {
-    let viewModel = SpaceyViewModel(supportedTypes: supportedTypes)
+  public func start(
+    supportedTypes: [YDSpaceyComponentsTypes.Types],
+    supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum] = []
+  ) -> YDSpaceyViewController {
+    //
+    let viewModel = SpaceyViewModel(
+      supportedTypes: supportedTypes,
+      supportedNPSAnswersTypes: supportedNPSAnswersTypes
+    )
 
     if let spaceyOrder = YDIntegrationHelper.shared
         .getFeature(featureName: YDConfigKeys.spaceyService.rawValue)?

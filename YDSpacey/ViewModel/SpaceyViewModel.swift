@@ -36,6 +36,7 @@ class SpaceyViewModel {
   lazy var logger = Logger.forClass(Self.self)
   let service: YDB2WServiceDelegate
   let supportedTypes: [YDSpaceyComponentsTypes.Types]
+  let supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]
 
   var loading: Binder<Bool> = Binder(false)
   var error: Binder<String> = Binder("")
@@ -50,10 +51,12 @@ class SpaceyViewModel {
   // Init
   init(
     service: YDB2WServiceDelegate = YDB2WService(),
-    supportedTypes: [YDSpaceyComponentsTypes.Types]
+    supportedTypes: [YDSpaceyComponentsTypes.Types],
+    supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum] = []
   ) {
     self.service = service
     self.supportedTypes = supportedTypes
+    self.supportedNPSAnswersTypes = supportedNPSAnswersTypes
   }
 
   // MARK: Actions
@@ -131,6 +134,20 @@ class SpaceyViewModel {
 
         return YDSpaceyCommonStruct(id: obj.id, component: obj)
 
+      case .nps(let nps):
+        for curr in nps.children {
+          return buildData(from: curr, parent: parent)
+        }
+
+      case .npsQuestion(let nps):
+        if supportedNPSAnswersTypes.isEmpty {
+          return YDSpaceyCommonStruct(id: nps.id, component: nps)
+        } else {
+          if supportedNPSAnswersTypes.contains(nps.answerType) {
+            return YDSpaceyCommonStruct(id: nps.id, component: nps)
+          }
+        }
+
       default:
         return nil
     }
@@ -158,6 +175,11 @@ extension SpaceyViewModel {
       type: title.componentType
     )
   }
+
+  // NPS Question
+//  func extractData(from npsQuestion: YDSpaceyComponentNPSQuestion) -> YDSpaceyComponentNPSQuestion {
+//
+//  }
 }
 
 // MARK: Delegate
