@@ -12,7 +12,7 @@ import YDB2WModels
 import YDUtilities
 import YDB2WServices
 
-protocol YDSpaceyViewModelDelegate: AnyObject {
+public protocol YDSpaceyViewModelDelegate: AnyObject {
   var loading: Binder<Bool> { get }
   var error: Binder<String> { get }
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
@@ -31,21 +31,21 @@ protocol YDSpaceyViewModelDelegate: AnyObject {
   )
 }
 
-class YDSpaceyViewModel {
+public class YDSpaceyViewModel {
   // Properties
   lazy var logger = Logger.forClass(Self.self)
   let service: YDB2WServiceDelegate
   let supportedTypes: [YDSpaceyComponentsTypes.Types]
   let supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]
 
-  var loading: Binder<Bool> = Binder(false)
-  var error: Binder<String> = Binder("")
-  var spacey: Binder<YDB2WModels.YDSpacey?> = Binder(nil)
-  var componentsList: Binder<[YDSpaceyCommonStruct]> = Binder([])
-  var playerComponent: Binder<YDSpaceyComponentPlayer?> = Binder(nil)
+  public var loading: Binder<Bool> = Binder(false)
+  public var error: Binder<String> = Binder("")
+  public var spacey: Binder<YDB2WModels.YDSpacey?> = Binder(nil)
+  public var componentsList: Binder<[YDSpaceyCommonStruct]> = Binder([])
+  public var playerComponent: Binder<YDSpaceyComponentPlayer?> = Binder(nil)
 
-  var bannersOnList: [Int: YDSpaceyBannerConfig] = [:]
-  var spaceyOrder: [String] = []
+  public var bannersOnList: [Int: YDSpaceyBannerConfig] = [:]
+  public var spaceyOrder: [String] = []
   var spaceyId = ""
 
   // Init
@@ -157,7 +157,7 @@ class YDSpaceyViewModel {
 }
 
 // MARK: Extract SpaceyCommonComponent
-extension YDSpaceyViewModel {
+public extension YDSpaceyViewModel {
   // Banner
   func extractData(from banner: YDSpaceyComponentBanner) -> YDSpaceyCommonComponent {
     return YDSpaceyCommonComponent(
@@ -184,7 +184,7 @@ extension YDSpaceyViewModel {
 
 // MARK: Delegate
 extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
-  func getSpacey(withId id: String) {
+  public func getSpacey(withId id: String) {
     loading.value = true
 
     service.getSpacey(
@@ -206,7 +206,7 @@ extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
     }
   }
 
-  func getComponentAndType(
+  public func getComponentAndType(
     at indexPath: IndexPath
   ) -> (
     component: YDSpaceyComponentDelegate?,
@@ -222,7 +222,7 @@ extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
 }
 
 // MARK: Mock
-extension YDSpaceyViewModel {
+public extension YDSpaceyViewModel {
   func mock() -> YDB2WModels.YDSpacey? {
     let bundle = Bundle(for: Self.self)
     guard let file = getLocalFile(bundle, fileName: "mock", fileType: "json"),
