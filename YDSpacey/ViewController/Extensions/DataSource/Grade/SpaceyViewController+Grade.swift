@@ -10,7 +10,7 @@ import UIKit
 import YDB2WModels
 
 extension YDSpaceyViewController {
-  func dequeueGradeCell(
+  func dequeueOptionsCell(
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
@@ -28,7 +28,7 @@ extension YDSpaceyViewController {
       guard let self = self else { return }
       guard let component = self.viewModel?.componentsList
               .value.at(indexPath.row)?.component as? YDSpaceyComponentNPSQuestion,
-            component.answerType == .grade
+            component.answerType == .option
       else {
         return
       }

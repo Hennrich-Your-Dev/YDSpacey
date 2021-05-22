@@ -21,7 +21,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   }()
 
   // Properties
-  var viewModel: SpaceyViewModelDelegate?
+  var viewModel: YDSpaceyViewModelDelegate?
   var bannerId = 0
 
   // Life cycle
@@ -48,7 +48,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   // MARK: Actions
   func config(
     withId bannerId: Int,
-    viewModel: SpaceyViewModelDelegate?
+    viewModel: YDSpaceyViewModelDelegate?
   ) {
     self.viewModel = viewModel
     self.bannerId = bannerId

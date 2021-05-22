@@ -22,7 +22,7 @@ public class YDSpaceyCoordinator {
     supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum] = []
   ) -> YDSpaceyViewController {
     //
-    let viewModel = SpaceyViewModel(
+    let viewModel = YDSpaceyViewModel(
       supportedTypes: supportedTypes,
       supportedNPSAnswersTypes: supportedNPSAnswersTypes
     )

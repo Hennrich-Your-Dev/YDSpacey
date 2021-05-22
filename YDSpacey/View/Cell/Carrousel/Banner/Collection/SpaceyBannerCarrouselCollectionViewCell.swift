@@ -11,7 +11,7 @@ import YDB2WModels
 
 class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
-  var viewModel: SpaceyViewModelDelegate?
+  var viewModel: YDSpaceyViewModelDelegate?
   var carrouselId: Int = 0
   var previousItemsCount = 0
   var currentFrame: CGRect = .zero
@@ -50,7 +50,7 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
   // MARK: Configure
   func configure(
     with carrouselId: Int,
-    viewModel: SpaceyViewModelDelegate?
+    viewModel: YDSpaceyViewModelDelegate?
   ) {
     self.carrouselId = carrouselId
     self.viewModel = viewModel
