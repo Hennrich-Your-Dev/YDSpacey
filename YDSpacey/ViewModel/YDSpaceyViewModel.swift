@@ -49,7 +49,7 @@ public class YDSpaceyViewModel {
   var spaceyId = ""
 
   // Init
-  init(
+  public init(
     service: YDB2WServiceDelegate = YDB2WService(),
     supportedTypes: [YDSpaceyComponentsTypes.Types],
     supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum] = []
