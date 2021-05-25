@@ -52,14 +52,20 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
     with carrouselId: Int,
     viewModel: YDSpaceyViewModelDelegate?
   ) {
+    guard let component = viewModel?.componentsList
+            .value.at(carrouselId)?.component as? YDSpaceyComponentCarrouselBanner
+    else {
+      return
+    }
+
     self.carrouselId = carrouselId
     self.viewModel = viewModel
 
+    configureCollectionViewLayout(maxItemsOnScreen: component.itemsToShowOnScreen)
+
     collectionView.reloadData()
 
-    if let component = viewModel?.componentsList
-        .value.at(carrouselId)?.component as? YDSpaceyComponentCarrouselBanner,
-      let currentX = component.currentRectList {
+    if let currentX = component.currentRectList {
       collectionViewOffset = currentX
     }
   }
@@ -75,16 +81,7 @@ extension SpaceyBannerCarrouselCollectionViewCell {
   }
 
   func configureCollectionView() {
-    let flowLayout = UICollectionViewFlowLayout()
-    flowLayout.scrollDirection = .horizontal
-    flowLayout.minimumLineSpacing = 12
-    flowLayout.estimatedItemSize = CGSize(
-      width: currentFrame.size.width * 0.79,
-      height: currentFrame.size.height
-    )
-    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-
-    collectionView.collectionViewLayout = flowLayout
+    configureCollectionViewLayout(maxItemsOnScreen: 1)
     collectionView.dataSource = self
 
     // Register Cell
@@ -92,5 +89,30 @@ extension SpaceyBannerCarrouselCollectionViewCell {
       SpaceyBannerOnCarrouselCell.self,
       forCellWithReuseIdentifier: SpaceyBannerOnCarrouselCell.identifier
     )
+  }
+
+  func configureCollectionViewLayout(maxItemsOnScreen: Double) {
+    let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.scrollDirection = .horizontal
+    flowLayout.minimumLineSpacing = 12
+
+    let convertedToFloat = CGFloat(maxItemsOnScreen)
+    let screenPadding: CGFloat = 16
+    let itemSize = (currentFrame.size.width - screenPadding) / convertedToFloat
+
+    flowLayout.itemSize = CGSize(
+      width: itemSize,
+      height: itemSize
+    )
+    
+    flowLayout.sectionInset = UIEdgeInsets(
+      top: 0,
+      left: screenPadding,
+      bottom: 0,
+      right: screenPadding
+    )
+
+    collectionView.collectionViewLayout = flowLayout
+    flowLayout.invalidateLayout()
   }
 }

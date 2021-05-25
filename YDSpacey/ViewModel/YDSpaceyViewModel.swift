@@ -89,6 +89,12 @@ public class YDSpaceyViewModel {
         case .productCarrousel:
           list.append(curr)
 
+          #warning("STAND BY")
+//        case .grid:
+//          curr.component?.children = children
+//            .filter { supportedTypes.contains($0.componentType) }
+//          list.append(curr)
+
         default:
           for component in children {
             if let data = buildData(from: component, parent: curr) {
@@ -175,11 +181,6 @@ public extension YDSpaceyViewModel {
       type: title.componentType
     )
   }
-
-  // NPS Question
-//  func extractData(from npsQuestion: YDSpaceyComponentNPSQuestion) -> YDSpaceyComponentNPSQuestion {
-//
-//  }
 }
 
 // MARK: Delegate

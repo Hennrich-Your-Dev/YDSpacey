@@ -44,8 +44,6 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
       if result == nil {
         self.widthConstraint.constant = 0
         self.layoutIfNeeded()
-      } else {
-        self.imageView.contentMode = .scaleAspectFill
       }
     }
   }
