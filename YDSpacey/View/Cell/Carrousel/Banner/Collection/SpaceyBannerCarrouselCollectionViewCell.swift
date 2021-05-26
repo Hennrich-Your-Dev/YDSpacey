@@ -37,35 +37,11 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
   )
-//  lazy var heightConstraint: NSLayoutConstraint = {
-//    collectionView.heightAnchor.constraint(equalToConstant: 50)
-//  }()
 
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-
-//    translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
-//
-//    NSLayoutConstraint.activate([
-//      contentView.widthAnchor.constraint(
-//        equalToConstant: UIScreen.main.bounds.width
-//      ),
-//      contentView.heightAnchor.constraint(equalToConstant: 137),
-//
-//      contentView.topAnchor.constraint(equalTo: topAnchor),
-//      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//    ])
-
-//    translatesAutoresizingMaskIntoConstraints = false
-//    contentView.translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//      widthAnchor.constraint(equalToConstant: frame.size.width)
-//    ])
-//    contentView.bindFrame(toView: self)
     configureLayout()
   }
 
@@ -104,6 +80,8 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
 
     if let currentX = component.currentRectList {
       collectionViewOffset = currentX
+    } else {
+      collectionViewOffset = 0
     }
   }
 }

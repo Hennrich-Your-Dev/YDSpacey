@@ -55,6 +55,21 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
         fatalError("Header Section")
     }
   }
+
+  public func collectionView(
+    _ collectionView: UICollectionView,
+    didEndDisplaying cell: UICollectionViewCell,
+    forItemAt indexPath: IndexPath
+  ) {
+    guard let cell = cell as? SpaceyBannerCarrouselCollectionViewCell,
+          let component = viewModel?.componentsList
+            .value.at(indexPath.row)?.component as? YDSpaceyComponentCarrouselBanner
+    else {
+      return
+    }
+
+    component.currentRectList = cell.collectionViewOffset
+  }
 }
 
 // MARK: Actions
