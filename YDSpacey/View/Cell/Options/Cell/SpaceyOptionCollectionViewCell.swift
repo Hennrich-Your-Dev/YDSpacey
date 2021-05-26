@@ -45,10 +45,9 @@ class SpaceyOptionCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      heightAnchor.constraint(equalToConstant: 40),
+      contentView.heightAnchor.constraint(equalToConstant: 40),
       contentView.topAnchor.constraint(equalTo: topAnchor),
       contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
       contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -81,9 +80,6 @@ class SpaceyOptionCollectionViewCell: UICollectionViewCell {
 // MARK: Layout
 extension SpaceyOptionCollectionViewCell {
   func configureLayout() {
-//    contentView.translatesAutoresizingMaskIntoConstraints = false
-//    contentView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
     configureContainer()
     configureOptionLabel()
   }

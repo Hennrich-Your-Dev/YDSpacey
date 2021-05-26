@@ -97,6 +97,8 @@ extension YDSpaceyViewController {
           return dequeueStarCell(with: questionComponent, at: indexPath)
         case .option:
           return dequeueOptionsCell(with: questionComponent, at: indexPath)
+        case .grade:
+          return dequeueGradeCell(with: questionComponent, at: indexPath)
 
         default:
           fatalError("type: \(questionComponent.answerType) isn't support yet")

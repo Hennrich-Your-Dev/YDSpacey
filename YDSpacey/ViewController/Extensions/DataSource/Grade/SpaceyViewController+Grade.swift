@@ -16,11 +16,11 @@ extension YDSpaceyViewController {
   ) -> UICollectionViewCell {
     guard let cell = collectionView
             .dequeueReusableCell(
-              withReuseIdentifier: SpaceyOptionsListCollectionViewCell.identifier,
+              withReuseIdentifier: SpaceyGradeListCollectionViewCell.identifier,
               for: indexPath
-            ) as? SpaceyOptionsListCollectionViewCell
+            ) as? SpaceyGradeListCollectionViewCell
     else {
-      fatalError("dequeueReusableCell SpaceyTitleCollectionViewCell")
+      fatalError("dequeueReusableCell SpaceyGradeListCollectionViewCell")
     }
 
     cell.configure(with: component)
@@ -28,7 +28,7 @@ extension YDSpaceyViewController {
       guard let self = self else { return }
       guard let component = self.viewModel?.componentsList
               .value.at(indexPath.row)?.component as? YDSpaceyComponentNPSQuestion,
-            component.answerType == .option
+            component.answerType == .grade
       else {
         return
       }
