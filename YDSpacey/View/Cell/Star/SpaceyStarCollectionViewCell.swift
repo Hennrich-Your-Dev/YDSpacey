@@ -11,8 +11,13 @@ import YDB2WModels
 
 class SpaceyStarCollectionViewCell: UICollectionViewCell {
   // MARK: Components
+  lazy var width: NSLayoutConstraint = {
+    let width = contentView.widthAnchor
+      .constraint(equalToConstant: bounds.size.width)
+    width.isActive = true
+    return width
+  }()
   let starComponent = SpaceyStarComponentView()
-  lazy var widthConstraint: CGFloat = 0
 
   // MARK: Properties
   var starNumber: Double {
@@ -32,24 +37,23 @@ class SpaceyStarCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-
-    translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
-
-    NSLayoutConstraint.activate([
-      widthAnchor.constraint(equalToConstant: frame.size.width),
-      heightAnchor.constraint(equalToConstant: 60),
-      contentView.topAnchor.constraint(equalTo: topAnchor),
-      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
-    widthConstraint = frame.size.width
     configureStarComponent()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  override func systemLayoutSizeFitting(
+    _ targetSize: CGSize,
+    withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+    verticalFittingPriority: UILayoutPriority
+  ) -> CGSize {
+    width.constant = bounds.size.width
+    return contentView.systemLayoutSizeFitting(
+      CGSize(width: targetSize.width, height: 1)
+    )
   }
 
   // MARK: Configure
@@ -64,6 +68,7 @@ extension SpaceyStarCollectionViewCell {
     contentView.addSubview(starComponent)
 
     NSLayoutConstraint.activate([
+      starComponent.topAnchor.constraint(equalTo: contentView.topAnchor),
       starComponent.leadingAnchor.constraint(
         equalTo: contentView.leadingAnchor,
         constant: 16
@@ -72,8 +77,7 @@ extension SpaceyStarCollectionViewCell {
         equalTo: contentView.trailingAnchor,
         constant: -16
       ),
-      starComponent.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+      starComponent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
-    starComponent.widthConstraint.constant = widthConstraint
   }
 }

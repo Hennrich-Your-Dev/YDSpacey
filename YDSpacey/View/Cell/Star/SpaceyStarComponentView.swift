@@ -14,9 +14,6 @@ import YDB2WModels
 
 public class SpaceyStarComponentView: UIView {
   // MARK: Components
-  public lazy var widthConstraint: NSLayoutConstraint = {
-    return widthAnchor.constraint(equalToConstant: 375)
-  }()
   let titleLabel = UILabel()
   public let cosmosView = CosmosView()
 
@@ -54,7 +51,6 @@ public class SpaceyStarComponentView: UIView {
 extension SpaceyStarComponentView {
   func configureLayout() {
     translatesAutoresizingMaskIntoConstraints = false
-    widthConstraint.isActive = true
     heightAnchor.constraint(equalToConstant: 60).isActive = true
 
     configureTitle()

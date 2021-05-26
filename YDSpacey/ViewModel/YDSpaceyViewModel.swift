@@ -67,10 +67,20 @@ public class YDSpaceyViewModel {
     if spaceyOrder.isEmpty {
       components = spacey.allComponents()
     } else {
+      var tempList: [[String: YDSpaceyCommonStruct]] = []
       for property in spaceyOrder {
         if let obj = spacey[property] {
-          components.append(obj)
+          tempList.append([property: obj])
         }
+      }
+
+      let filteredList = spacey.items.filter { curr in
+        return !tempList.contains(where: { $0.keys.first == curr.key })
+      }.compactMap { $0.value }
+
+      components = tempList.map { $0.values.first }.compactMap { $0 }
+      for curr in filteredList {
+        components.append(curr)
       }
     }
 

@@ -15,15 +15,15 @@ extension YDSpaceyViewController {
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(
-      withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
+      withReuseIdentifier: SpaceyBannerCarrouselCollectionViewCell.identifier,
       for: indexPath
-    ) as? SpaceyBannerCollectionViewCell
+    ) as? SpaceyBannerCarrouselCollectionViewCell
     else {
       return UICollectionViewCell()
     }
 
-    cell.config(
-      withId: indexPath.row,
+    cell.configure(
+      with: indexPath.row,
       viewModel: viewModel
     )
     return cell

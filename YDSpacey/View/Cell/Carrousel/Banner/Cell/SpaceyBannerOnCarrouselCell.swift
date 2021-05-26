@@ -13,8 +13,7 @@ import YDExtensions
 class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
   // MARK: Properties
   lazy var widthConstraint: NSLayoutConstraint = {
-    let width = contentView.widthAnchor.constraint(equalToConstant: 0)
-    return width
+    widthAnchor.constraint(equalToConstant: 0)
   }()
 
   // MARK: Components
@@ -23,8 +22,6 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    widthConstraint.constant = frame.size.width
-    widthConstraint.isActive = true
     configureImageView()
   }
 
@@ -39,13 +36,7 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
 
   // MARK: Actions
   func configure(with banner: YDSpaceyComponentBanner) {
-    imageView.setImage(banner.bannerImage) { [weak self] result in
-      guard let self = self else { return }
-      if result == nil {
-        self.widthConstraint.constant = 0
-        self.layoutIfNeeded()
-      }
-    }
+    imageView.setImage(banner.bannerImage)
   }
 }
 
@@ -58,6 +49,7 @@ extension SpaceyBannerOnCarrouselCell {
     imageView.layer.cornerRadius = 6
     imageView.layer.applyShadow()
 
+    imageView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
       imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

@@ -11,6 +11,12 @@ import YDExtensions
 
 class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   // Components
+  lazy var width: NSLayoutConstraint = {
+    let width = contentView.widthAnchor
+      .constraint(equalToConstant: bounds.size.width)
+    width.isActive = true
+    return width
+  }()
   let imageContainer = UIView()
   let imageView = UIImageView()
   lazy var imageViewHeightConstraint: NSLayoutConstraint = {
@@ -27,9 +33,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   // Life cycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-
-    contentViewWidthConstraint.constant = frame.width
-    contentViewWidthConstraint.isActive = true
+    contentView.translatesAutoresizingMaskIntoConstraints = false
 
     configureLayout()
   }
@@ -45,6 +49,17 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     imageView.stopShimmer()
   }
 
+  override func systemLayoutSizeFitting(
+    _ targetSize: CGSize,
+    withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+    verticalFittingPriority: UILayoutPriority
+  ) -> CGSize {
+    width.constant = bounds.size.width
+    return contentView.systemLayoutSizeFitting(
+      CGSize(width: targetSize.width, height: 1)
+    )
+  }
+
   // MARK: Actions
   func config(
     withId bannerId: Int,
@@ -52,15 +67,6 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   ) {
     self.viewModel = viewModel
     self.bannerId = bannerId
-
-//    if let rect = viewModel?.bannersOnList[bannerId]?.currentRect {
-//      // debugPrint("currentRect", rect)
-//      imageView.frame = rect
-//      imageView.image = viewModel?.bannersOnList[bannerId]?.imageComponent
-//      imageView.center = imageContainer.center
-//      updateLayout()
-//      return
-//    }
 
     imageView.startShimmer()
     imageView.setImage(

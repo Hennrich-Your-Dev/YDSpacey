@@ -67,6 +67,11 @@ extension YDSpaceyViewController {
     )
 
     collectionView.register(
+      SpaceyBannerCarrouselCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyBannerCarrouselCollectionViewCell.identifier
+    )
+
+    collectionView.register(
       SpaceyGridCollectionViewCell.self,
       forCellWithReuseIdentifier: SpaceyGridCollectionViewCell.identifier
     )

@@ -8,13 +8,13 @@
 import UIKit
 
 import YDB2WModels
+import YDExtensions
 
 class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
   var viewModel: YDSpaceyViewModelDelegate?
   var carrouselId: Int = 0
   var previousItemsCount = 0
-  var currentFrame: CGRect = .zero
 
   var collectionViewOffset: CGFloat {
     get {
@@ -26,25 +26,62 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
   }
 
   // MARK: Components
+  lazy var width: NSLayoutConstraint = {
+      let width = contentView.widthAnchor
+        .constraint(equalToConstant: bounds.size.width)
+      width.isActive = true
+      return width
+  }()
+
   let collectionView = UICollectionView(
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
   )
+//  lazy var heightConstraint: NSLayoutConstraint = {
+//    collectionView.heightAnchor.constraint(equalToConstant: 50)
+//  }()
 
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    NSLayoutConstraint.activate([
-      contentView.widthAnchor.constraint(equalToConstant: frame.size.width),
-      contentView.heightAnchor.constraint(equalToConstant: 180)
-    ])
+//    translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+//
+//    NSLayoutConstraint.activate([
+//      contentView.widthAnchor.constraint(
+//        equalToConstant: UIScreen.main.bounds.width
+//      ),
+//      contentView.heightAnchor.constraint(equalToConstant: 137),
+//
+//      contentView.topAnchor.constraint(equalTo: topAnchor),
+//      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//    ])
 
-    currentFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: 180)
+//    translatesAutoresizingMaskIntoConstraints = false
+//    contentView.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      widthAnchor.constraint(equalToConstant: frame.size.width)
+//    ])
+//    contentView.bindFrame(toView: self)
+    configureLayout()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  override func systemLayoutSizeFitting(
+    _ targetSize: CGSize,
+    withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+    verticalFittingPriority: UILayoutPriority
+  ) -> CGSize {
+    width.constant = bounds.size.width
+    return contentView.systemLayoutSizeFitting(
+      CGSize(width: targetSize.width, height: 1)
+    )
   }
 
   // MARK: Configure
@@ -81,7 +118,18 @@ extension SpaceyBannerCarrouselCollectionViewCell {
   }
 
   func configureCollectionView() {
-    configureCollectionViewLayout(maxItemsOnScreen: 1)
+    contentView.addSubview(collectionView)
+    collectionView.backgroundColor = .clear
+    collectionView.showsHorizontalScrollIndicator = false
+
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+    ])
+
     collectionView.dataSource = self
 
     // Register Cell
@@ -92,19 +140,19 @@ extension SpaceyBannerCarrouselCollectionViewCell {
   }
 
   func configureCollectionViewLayout(maxItemsOnScreen: Double) {
+    let screenPadding: CGFloat = 16
+    let convertedToFloat = CGFloat(maxItemsOnScreen)
+    let itemSize = (frame.size.width / convertedToFloat).rounded(.up)
+
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.minimumLineSpacing = 12
-
-    let convertedToFloat = CGFloat(maxItemsOnScreen)
-    let screenPadding: CGFloat = 16
-    let itemSize = (currentFrame.size.width - screenPadding) / convertedToFloat
+    flowLayout.minimumLineSpacing = screenPadding
 
     flowLayout.itemSize = CGSize(
       width: itemSize,
       height: itemSize
     )
-    
+
     flowLayout.sectionInset = UIEdgeInsets(
       top: 0,
       left: screenPadding,
@@ -114,5 +162,6 @@ extension SpaceyBannerCarrouselCollectionViewCell {
 
     collectionView.collectionViewLayout = flowLayout
     flowLayout.invalidateLayout()
+    collectionView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
   }
 }

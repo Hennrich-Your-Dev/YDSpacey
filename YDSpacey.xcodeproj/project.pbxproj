@@ -257,8 +257,8 @@
 		C18D8724264C952D00E3A923 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
-				C155E969264D5AE400D05AE6 /* Collection */,
 				C155E96A264D5AEB00D05AE6 /* Cell */,
+				C155E969264D5AE400D05AE6 /* Collection */,
 			);
 			path = Banner;
 			sourceTree = "<group>";

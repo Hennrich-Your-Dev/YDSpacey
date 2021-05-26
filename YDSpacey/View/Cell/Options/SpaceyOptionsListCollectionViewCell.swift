@@ -12,8 +12,11 @@ import YDB2WModels
 
 class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
   // MARK: Components
-  lazy var widthConstraint: NSLayoutConstraint = {
-    return widthAnchor.constraint(equalToConstant: 50)
+  lazy var width: NSLayoutConstraint = {
+    let width = contentView.widthAnchor
+      .constraint(equalToConstant: bounds.size.width)
+    width.isActive = true
+    return width
   }()
   let titleLabel = UILabel()
   let collectionView = UICollectionView(
@@ -28,22 +31,25 @@ class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      widthAnchor.constraint(equalToConstant: frame.size.width),
-      heightAnchor.constraint(equalToConstant: 70),
-      contentView.topAnchor.constraint(equalTo: topAnchor),
-      contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
+    // contentView.heightAnchor.constraint(equalToConstant: 70).isActive = true
 
     configureLayout()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  override func systemLayoutSizeFitting(
+    _ targetSize: CGSize,
+    withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+    verticalFittingPriority: UILayoutPriority
+  ) -> CGSize {
+    width.constant = bounds.size.width
+    return contentView.systemLayoutSizeFitting(
+      CGSize(width: targetSize.width, height: 1)
+    )
   }
 
   // MARK: Configure
@@ -89,7 +95,12 @@ extension SpaceyOptionsListCollectionViewCell {
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: 50, height: 40)
     layout.minimumLineSpacing = 8
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    layout.sectionInset = UIEdgeInsets(
+      top: 0,
+      left: 16,
+      bottom: 0,
+      right: 16
+    )
     layout.scrollDirection = .horizontal
     collectionView.collectionViewLayout = layout
 
@@ -99,9 +110,15 @@ extension SpaceyOptionsListCollectionViewCell {
         equalTo: titleLabel.bottomAnchor,
         constant: 12
       ),
-      collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      collectionView.leadingAnchor.constraint(
+        equalTo: contentView.leadingAnchor
+      ),
+      collectionView.trailingAnchor.constraint(
+        equalTo: contentView.trailingAnchor
+      ),
+      collectionView.bottomAnchor.constraint(
+        equalTo: contentView.bottomAnchor
+      ),
       collectionView.heightAnchor.constraint(equalToConstant: 42)
     ])
 

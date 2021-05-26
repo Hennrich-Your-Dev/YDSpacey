@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "YDSpacey"
-  spec.version      = "1.1.12"
+  spec.version      = "1.1.13"
   spec.summary      = "A short description of YDSpacey."
 
   spec.homepage     = "https://yourdev.com.br"
@@ -24,6 +24,7 @@ Pod::Spec.new do |spec|
 
   ##
   spec.source_files = "YDSpacey/**/*.{h,m,swift}"
+  spec.resources = ["YDSpacey/**/*.json"]
 
   ##
   spec.dependency "Cosmos", "22.1.0"
