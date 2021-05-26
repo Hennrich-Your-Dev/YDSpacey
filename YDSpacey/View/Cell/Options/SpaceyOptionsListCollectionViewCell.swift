@@ -32,8 +32,6 @@ class SpaceyOptionsListCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     contentView.translatesAutoresizingMaskIntoConstraints = false
-    // contentView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-
     configureLayout()
   }
 
@@ -91,6 +89,7 @@ extension SpaceyOptionsListCollectionViewCell {
   func configureCollectionView() {
     contentView.addSubview(collectionView)
     collectionView.backgroundColor = .clear
+    collectionView.showsHorizontalScrollIndicator = false
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: 50, height: 40)

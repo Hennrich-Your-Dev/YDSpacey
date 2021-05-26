@@ -10,7 +10,7 @@ import UIKit
 import YDB2WModels
 
 extension YDSpaceyViewController {
-  func dequeueOptionsCell(
+  func dequeueGradeCell(
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {

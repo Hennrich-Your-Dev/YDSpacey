@@ -89,6 +89,7 @@ extension SpaceyGradeListCollectionViewCell {
   func configureCollectionView() {
     contentView.addSubview(collectionView)
     collectionView.backgroundColor = .clear
+    collectionView.showsHorizontalScrollIndicator = false
 
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: 30, height: 30)
