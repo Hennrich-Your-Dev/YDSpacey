@@ -39,7 +39,7 @@ public extension YDSpaceyViewController {
     at indexPath: IndexPath
   ) -> (item: YDSpaceyCommonStruct, type: YDSpaceyComponentsTypes)? {
     guard let item = viewModel?.componentsList.value.at(indexPath.row),
-          let type = item.component.children?.first
+          let type = item.component?.children.first
     else {
       return nil
     }

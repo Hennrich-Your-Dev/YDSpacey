@@ -10,7 +10,7 @@ import Foundation
 import YDExtensions
 
 public class YDStores: Decodable {
-  public let stores: [YDStore]
+  public var stores: [YDStore]
 }
 
 public class YDStore: Decodable {
@@ -61,10 +61,10 @@ public class YDStore: Decodable {
 
     if let start = todayStruct.start {
       if let end = todayStruct.end {
-        return "\(start) ás \(end)"
+        return "\(start)h às \(end)h"
       }
 
-      return "A partir das \(start)"
+      return "A partir das \(start)h"
     }
 
     return ""

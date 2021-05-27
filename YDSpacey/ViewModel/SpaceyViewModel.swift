@@ -61,7 +61,9 @@ class SpaceyViewModel {
     }
 
     for curr in components {
-      guard let componentType = curr.component.children?.first?.get() else {
+      guard let component = curr.component,
+            let componentType = component.children.first?.get()
+      else {
         continue
       }
 
@@ -78,21 +80,20 @@ class SpaceyViewModel {
         continue
       }
 
-      if curr.component.type == "zion-image-carousel" {
+      if component.type.rawValue == "zion-image-carousel" {
         continue
       }
 
-      if curr.component.type == "zion-slideshow" {
+      if component.type.rawValue == "zion-slideshow" {
         continue
       }
 
-      if let children = curr.component.children {
+      if let children = curr.component?.children {
         children.forEach { obj in
           let component = YDSpaceyCommonComponent(
             id: curr.id,
             children: [obj],
-            type: curr.component.type,
-            showcaseTitle: curr.component.showcaseTitle
+            type: component.type
           )
 
           let container = YDSpaceyCommonStruct(id: curr.id, component: component)
