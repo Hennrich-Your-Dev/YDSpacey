@@ -39,6 +39,9 @@
 		C1BAAD622657379C006BC20D /* SpaceyViewController+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAAD612657379C006BC20D /* SpaceyViewController+Options.swift */; };
 		C1BD0897265E87D1005E68B6 /* SpaceyGradeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD0896265E87D1005E68B6 /* SpaceyGradeListCollectionViewCell.swift */; };
 		C1BD089A265E8AB9005E68B6 /* SpaceyGradeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD0899265E8AB9005E68B6 /* SpaceyGradeCollectionViewCell.swift */; };
+		C1BDB50F265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB50E265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift */; };
+		C1BDB512265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB511265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift */; };
+		C1BDB515265F30570050D793 /* SpaceyViewController+MultipleChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */; };
 		C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,9 @@
 		C1BAAD612657379C006BC20D /* SpaceyViewController+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Options.swift"; sourceTree = "<group>"; };
 		C1BD0896265E87D1005E68B6 /* SpaceyGradeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyGradeListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BD0899265E8AB9005E68B6 /* SpaceyGradeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyGradeCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1BDB50E265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyMultipleChoicesListCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1BDB511265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyMultipleChoicesCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+MultipleChoices.swift"; sourceTree = "<group>"; };
 		C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		D37FCCC8D18E75624DF44D93 /* Pods_YDSpacey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDSpacey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7AE77980BFFE68412EF988 /* Pods-YDSpacey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDSpacey.release.xcconfig"; path = "Target Support Files/Pods-YDSpacey/Pods-YDSpacey.release.xcconfig"; sourceTree = "<group>"; };
@@ -370,6 +376,7 @@
 				C124E4F32658328F008F6E08 /* Grade */,
 				C1554C68265D34730077FFC4 /* Grid */,
 				C155E977264D649500D05AE6 /* Shimmer */,
+				C1BDB513265F303B0050D793 /* Multiple Choices */,
 				C1BAAD6026573777006BC20D /* Options */,
 				C19533242656C1DC007BF788 /* Star */,
 				C155E974264D640D00D05AE6 /* Title */,
@@ -384,6 +391,7 @@
 				C18D8723264C952700E3A923 /* Carrousel */,
 				C1BD0895265E8766005E68B6 /* Grade */,
 				C1554C6B265D36C90077FFC4 /* Grid */,
+				C1BDB50D265EF9340050D793 /* Multiple Choices */,
 				C1BAAD5A26571A03006BC20D /* Options */,
 				C195331F2656A81A007BF788 /* Star */,
 				C1CD0A49264A012F00B959A0 /* Title */,
@@ -439,6 +447,31 @@
 				C1BD0899265E8AB9005E68B6 /* SpaceyGradeCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C1BDB50D265EF9340050D793 /* Multiple Choices */ = {
+			isa = PBXGroup;
+			children = (
+				C1BDB50E265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift */,
+				C1BDB510265EFD500050D793 /* Cell */,
+			);
+			path = "Multiple Choices";
+			sourceTree = "<group>";
+		};
+		C1BDB510265EFD500050D793 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C1BDB511265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C1BDB513265F303B0050D793 /* Multiple Choices */ = {
+			isa = PBXGroup;
+			children = (
+				C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */,
+			);
+			path = "Multiple Choices";
 			sourceTree = "<group>";
 		};
 		C1CD0A49264A012F00B959A0 /* Title */ = {
@@ -560,6 +593,7 @@
 				C13B4456264C6997003CB810 /* SpaceyViewController+BannerCarrousel.swift in Sources */,
 				C1BAAD622657379C006BC20D /* SpaceyViewController+Options.swift in Sources */,
 				C19533262656C212007BF788 /* SpaceyViewController+Star.swift in Sources */,
+				C1BDB50F265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift in Sources */,
 				C155E96D264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				C155E979264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift in Sources */,
 				C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */,
@@ -579,11 +613,13 @@
 				C1554C6A265D34AD0077FFC4 /* YDSpaceyViewController+Grid.swift in Sources */,
 				C1B76AC92627300500B3D4C0 /* YDSpaceyViewModel.swift in Sources */,
 				C13C69EB2629E83D0018D380 /* SpaceyBannerCollectionViewCell.swift in Sources */,
+				C1BDB515265F30570050D793 /* SpaceyViewController+MultipleChoices.swift in Sources */,
 				C155E976264D641E00D05AE6 /* SpaceyViewController+Title.swift in Sources */,
 				C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */,
 				C1383A63262C0FBB00AD3928 /* SpaceyBannerShimmerTableViewCell.swift in Sources */,
 				C1B76AFA2627347000B3D4C0 /* SpaceyViewController+Layout.swift in Sources */,
 				C1BAAD5C26571A2E006BC20D /* SpaceyOptionsListCollectionViewCell.swift in Sources */,
+				C1BDB512265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift in Sources */,
 				C19533232656AC91007BF788 /* SpaceyStarComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  SpaceyGradeListCollectionViewCell.swift
+//  SpaceyMultipleChoicesListCollectionViewCell.swift
 //  YDSpacey
 //
 //  Created by Douglas Hennrich on 26/05/21.
@@ -10,7 +10,7 @@ import UIKit
 import YDExtensions
 import YDB2WModels
 
-class SpaceyGradeListCollectionViewCell: UICollectionViewCell {
+class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
   // MARK: Components
   lazy var width: NSLayoutConstraint = {
     let width = contentView.widthAnchor
@@ -23,10 +23,15 @@ class SpaceyGradeListCollectionViewCell: UICollectionViewCell {
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
   )
+  lazy var height: NSLayoutConstraint = {
+    let height = collectionView.heightAnchor.constraint(equalToConstant: 30)
+    height.isActive = true
+    return height
+  }()
 
   // MARK: Properties
-  var grades: [YDSpaceyComponentNPSQuestionAnswer] = []
-  var callback: ((_ grades: [YDSpaceyComponentNPSQuestionAnswer]) -> Void)?
+  var choices: [YDSpaceyComponentNPSQuestionAnswer] = []
+  var callback: ((_ choices: [YDSpaceyComponentNPSQuestionAnswer]) -> Void)?
 
   // MARK: Init
   override init(frame: CGRect) {
@@ -50,16 +55,21 @@ class SpaceyGradeListCollectionViewCell: UICollectionViewCell {
     )
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    height.constant = collectionView.contentSize.height
+  }
+
   // MARK: Configure
   func configure(with component: YDSpaceyComponentNPSQuestion) {
     titleLabel.text = component.question
-    grades = component.childrenAnswers
+    choices = component.childrenAnswers
     collectionView.reloadData()
   }
 }
 
 // MARK: Layout
-extension SpaceyGradeListCollectionViewCell {
+extension SpaceyMultipleChoicesListCollectionViewCell {
   func configureLayout() {
     configureTitleLabel()
     configureCollectionView()
@@ -117,8 +127,7 @@ extension SpaceyGradeListCollectionViewCell {
       ),
       collectionView.bottomAnchor.constraint(
         equalTo: contentView.bottomAnchor
-      ),
-      collectionView.heightAnchor.constraint(equalToConstant: 30)
+      )
     ])
 
     collectionView.delegate = self
@@ -126,19 +135,19 @@ extension SpaceyGradeListCollectionViewCell {
 
     // Register Cell
     collectionView.register(
-      SpaceyGradeCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyGradeCollectionViewCell.identifier
+      SpaceyMultipleChoicesCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyMultipleChoicesCollectionViewCell.identifier
     )
   }
 }
 
 // MARK: UICollection DataSource
-extension SpaceyGradeListCollectionViewCell: UICollectionViewDataSource {
+extension SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewDataSource {
   func collectionView(
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return grades.count
+    return choices.count
   }
 
   func collectionView(
@@ -146,30 +155,31 @@ extension SpaceyGradeListCollectionViewCell: UICollectionViewDataSource {
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SpaceyGradeCollectionViewCell.identifier,
+            withReuseIdentifier: SpaceyMultipleChoicesCollectionViewCell.identifier,
             for: indexPath
-    ) as? SpaceyGradeCollectionViewCell,
-    let grade = grades.at(indexPath.row)
+    ) as? SpaceyMultipleChoicesCollectionViewCell,
+    let choice = choices.at(indexPath.row)
     else {
       fatalError()
     }
 
-    cell.configure(with: grade)
+    cell.configure(with: choice)
     return cell
   }
 }
 
 // MARK: UICollection Delegate
-extension SpaceyGradeListCollectionViewCell: UICollectionViewDelegate {
+extension SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewDelegate {
   func collectionView(
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath
   ) {
-    for(index, item) in grades.enumerated() {
+    for(index, item) in choices.enumerated() {
       item.selected = index == indexPath.row
     }
 
     collectionView.reloadData()
-    callback?(grades)
+    callback?(choices)
   }
 }
+

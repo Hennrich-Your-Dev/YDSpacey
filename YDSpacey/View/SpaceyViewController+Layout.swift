@@ -81,6 +81,11 @@ extension YDSpaceyViewController {
       forCellWithReuseIdentifier: SpaceyGradeListCollectionViewCell.identifier
     )
 
+    collectionView.register(
+      SpaceyMultipleChoicesListCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyMultipleChoicesListCollectionViewCell.identifier
+    )
+
     // Register Header / Footer
     collectionView.register(
       EmptyCollectionReusableView.self,
