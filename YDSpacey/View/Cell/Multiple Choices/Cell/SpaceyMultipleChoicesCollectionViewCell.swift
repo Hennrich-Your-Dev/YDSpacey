@@ -22,8 +22,6 @@ class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
   let ratioWithinView = UIView()
   let choiceLabel = UILabel()
 
-  // MARK: Properties
-
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -48,7 +46,7 @@ class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
 
   // MARK: Configure
   func configure(with choice: YDSpaceyComponentNPSQuestionAnswer) {
-    choiceLabel.text = choice.answerText
+    choiceLabel.text = .loremIpsum()//choice.answerText
     setStyle(choice.selected)
   }
 
@@ -79,8 +77,7 @@ extension SpaceyMultipleChoicesCollectionViewCell {
     NSLayoutConstraint.activate([
       ratioView.widthAnchor.constraint(equalToConstant: 18),
       ratioView.heightAnchor.constraint(equalToConstant: 18),
-      ratioView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      ratioView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5)
+      ratioView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
     ])
 
     //
@@ -112,8 +109,10 @@ extension SpaceyMultipleChoicesCollectionViewCell {
         equalTo: contentView.trailingAnchor,
         constant: -16
       ),
-      choiceLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 20),
-      choiceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+      choiceLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+      choiceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+
+      ratioView.centerYAnchor.constraint(equalTo: choiceLabel.centerYAnchor)
     ])
   }
 }

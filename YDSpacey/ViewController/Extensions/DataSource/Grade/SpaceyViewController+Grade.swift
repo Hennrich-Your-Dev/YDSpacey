@@ -24,7 +24,7 @@ extension YDSpaceyViewController {
     }
 
     cell.configure(with: component)
-    cell.callback = { [weak self] options in
+    cell.callback = { [weak self] grades in
       guard let self = self else { return }
       guard let component = self.viewModel?.componentsList
               .value.at(indexPath.row)?.component as? YDSpaceyComponentNPSQuestion,
@@ -35,9 +35,9 @@ extension YDSpaceyViewController {
 
       if let component = self.viewModel?.componentsList
           .value[indexPath.row].component as? YDSpaceyComponentNPSQuestion {
-        component.childrenAnswers = options
+        component.childrenAnswers = grades
 
-        component.storedValue = options.first(where: { $0.selected })?.answerText
+        component.storedValue = grades.first(where: { $0.selected })?.answerText
       }
     }
     return cell

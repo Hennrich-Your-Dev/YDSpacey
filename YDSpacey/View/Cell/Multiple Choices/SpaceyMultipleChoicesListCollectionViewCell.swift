@@ -24,7 +24,7 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
     collectionViewLayout: UICollectionViewLayout()
   )
   lazy var height: NSLayoutConstraint = {
-    let height = collectionView.heightAnchor.constraint(equalToConstant: 30)
+    let height = collectionView.heightAnchor.constraint(equalToConstant: 130)
     height.isActive = true
     return height
   }()
@@ -65,6 +65,7 @@ class SpaceyMultipleChoicesListCollectionViewCell: UICollectionViewCell {
     titleLabel.text = component.question
     choices = component.childrenAnswers
     collectionView.reloadData()
+    height.constant = 140
   }
 }
 
@@ -99,18 +100,12 @@ extension SpaceyMultipleChoicesListCollectionViewCell {
   func configureCollectionView() {
     contentView.addSubview(collectionView)
     collectionView.backgroundColor = .clear
-    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.showsVerticalScrollIndicator = false
 
     let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: 30, height: 30)
+    layout.estimatedItemSize = CGSize(width: width.constant, height: 30)
     layout.minimumLineSpacing = 8
-    layout.sectionInset = UIEdgeInsets(
-      top: 0,
-      left: 16,
-      bottom: 0,
-      right: 16
-    )
-    layout.scrollDirection = .horizontal
+    layout.scrollDirection = .vertical
     collectionView.collectionViewLayout = layout
 
     collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +124,7 @@ extension SpaceyMultipleChoicesListCollectionViewCell {
         equalTo: contentView.bottomAnchor
       )
     ])
+    height.constant = 130
 
     collectionView.delegate = self
     collectionView.dataSource = self
