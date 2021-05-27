@@ -17,6 +17,7 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
   }()
 
   // MARK: Components
+  let container = UIView()
   let imageView = UIImageView()
 
   // MARK: Init
@@ -43,18 +44,37 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
 // MARK: Layouts
 extension SpaceyBannerOnCarrouselCell {
   func configureImageView() {
-    contentView.addSubview(imageView)
+    contentView.addSubview(container)
+    container.backgroundColor = .white
+    container.layer.cornerRadius = 6
+    container.layer.applyShadow()
+
+    container.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      container.topAnchor.constraint(
+        equalTo: contentView.topAnchor,
+        constant: 1
+      ),
+      container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      container.bottomAnchor.constraint(
+        equalTo: contentView.bottomAnchor,
+        constant: -1
+      )
+    ])
+
+    //
+    container.addSubview(imageView)
     imageView.contentMode = .scaleAspectFill
-    imageView.backgroundColor = UIColor.Zeplin.grayNight
+    imageView.backgroundColor = .white
     imageView.layer.cornerRadius = 6
-    imageView.layer.applyShadow()
 
     imageView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+      imageView.topAnchor.constraint(equalTo: container.topAnchor),
+      imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+      imageView.bottomAnchor.constraint(equalTo: container.bottomAnchor)
     ])
   }
 }

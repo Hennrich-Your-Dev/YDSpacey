@@ -46,7 +46,7 @@ class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
 
   // MARK: Configure
   func configure(with choice: YDSpaceyComponentNPSQuestionAnswer) {
-    choiceLabel.text = .loremIpsum()//choice.answerText
+    choiceLabel.text = choice.answerText
     setStyle(choice.selected)
   }
 

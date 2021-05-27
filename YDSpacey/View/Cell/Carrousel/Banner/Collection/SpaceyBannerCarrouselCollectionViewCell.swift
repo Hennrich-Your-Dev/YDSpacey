@@ -90,8 +90,6 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
 extension SpaceyBannerCarrouselCollectionViewCell {
   func configureLayout() {
     backgroundColor = .clear
-    contentView.backgroundColor = .clear
-
     configureCollectionView()
   }
 
@@ -124,7 +122,7 @@ extension SpaceyBannerCarrouselCollectionViewCell {
 
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
-    flowLayout.minimumLineSpacing = screenPadding
+    flowLayout.minimumLineSpacing = 12
 
     flowLayout.itemSize = CGSize(
       width: itemSize,
