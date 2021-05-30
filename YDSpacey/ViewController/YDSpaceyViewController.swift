@@ -37,7 +37,7 @@ public extension YDSpaceyViewController {}
 
 // MARK: Public Actions
 public extension YDSpaceyViewController {
-  func getSpacey(withId id: String) {
-    viewModel?.getSpacey(withId: id)
+  func getSpacey(withId id: String, customApi: String? = nil) {
+    viewModel?.getSpacey(withId: id, customApi: customApi)
   }
 }
