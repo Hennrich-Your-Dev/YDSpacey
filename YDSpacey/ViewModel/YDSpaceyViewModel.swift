@@ -199,8 +199,7 @@ extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
     loading.value = true
 
     service.getSpacey(
-      spaceyId: id,
-      customApi: nil
+      spaceyId: id
     ) { [weak self] (response: Result<YDB2WModels.YDSpacey, YDB2WServices.YDServiceError>) in
       guard let self = self else { return }
       switch response {
