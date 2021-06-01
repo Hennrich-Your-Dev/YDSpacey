@@ -29,6 +29,7 @@ class SpaceyEditTextCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
+    contentView.translatesAutoresizingMaskIntoConstraints = false
     configureLayout()
   }
 
@@ -65,14 +66,14 @@ extension SpaceyEditTextCollectionViewCell {
   func configureCountLabel() {
     contentView.addSubview(charactersCountLabel)
     charactersCountLabel.font = .systemFont(ofSize: 14)
-    charactersCountLabel.textColor = Zeplin.black
+    charactersCountLabel.textColor = Zeplin.grayLight
     charactersCountLabel.textAlignment = .right
 
     charactersCountLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      charactersCountLabel.topAnchor.constraint(equalTo: topAnchor),
-      charactersCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-      charactersCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      charactersCountLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+      charactersCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      charactersCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
       charactersCountLabel.heightAnchor.constraint(equalToConstant: 16)
     ])
   }
@@ -80,6 +81,7 @@ extension SpaceyEditTextCollectionViewCell {
   func configureEditText() {
     contentView.addSubview(editText)
     editText.delegate = self
+    editText.tintColor = Zeplin.grayLight
     editText.translatesAutoresizingMaskIntoConstraints = false
 
     NSLayoutConstraint.activate([

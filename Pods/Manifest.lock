@@ -26,7 +26,7 @@ PODS:
   - YDB2WIntegration (1.4.1):
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
-  - YDB2WModels (1.4.2):
+  - YDB2WModels (1.4.3):
     - YDExtensions (~> 1.4.0)
     - YDUtilities (~> 1.4.0)
   - YDB2WServices (1.4.0):
@@ -73,7 +73,7 @@ SPEC CHECKSUMS:
   YDB2WAssets: 193fe0067aad36f0f301b13e14a202f95eb9f62b
   YDB2WComponents: a9e85bdd758836eef0d808ce2d011a60aa19b192
   YDB2WIntegration: 96472c90d5d214c711dfb5acd08e207044bfad89
-  YDB2WModels: f074063359846a0033a1ea09fed3f5ff7cddb1c7
+  YDB2WModels: 3f228acb249cf26a1d221715b6f9aa77e5b1764a
   YDB2WServices: 8438c33b5dafa87a84293477f64b11483260d8c5
   YDExtensions: d2db8d24ca8bba7833f8dfed0d32a743c7a68f36
   YDUtilities: 3a3b74ce2194b381c826977f7dd144d5a7f396c7
