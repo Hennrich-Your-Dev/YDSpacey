@@ -164,6 +164,15 @@ public class YDSpaceyViewModel {
           }
         }
 
+      case .npsEditText(let nps):
+        if supportedNPSAnswersTypes.isEmpty {
+          return YDSpaceyCommonStruct(id: nps.id, component: nps)
+        } else {
+          if supportedNPSAnswersTypes.contains(nps.answerType) {
+            return YDSpaceyCommonStruct(id: nps.id, component: nps)
+          }
+        }
+
       default:
         return nil
     }

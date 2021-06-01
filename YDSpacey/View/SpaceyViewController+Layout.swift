@@ -32,7 +32,7 @@ extension YDSpaceyViewController {
     collectionView.dataSource = self
     collectionView.backgroundColor = .clear
     collectionView.alwaysBounceVertical = true
-    collectionView.keyboardDismissMode = .onDrag
+    collectionView.keyboardDismissMode = .interactive
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: view.frame.width, height: 50)

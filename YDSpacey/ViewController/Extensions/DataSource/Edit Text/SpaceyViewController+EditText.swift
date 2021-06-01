@@ -26,15 +26,16 @@ extension YDSpaceyViewController {
     cell.configure(with: component)
     cell.callback = { [weak self] answer in
       guard let self = self else { return }
-      guard self.viewModel?.componentsList
-              .value.at(indexPath.row)?.component as? YDSpaceyComponentEditText != nil
+      guard let component = self.viewModel?.componentsList
+              .value.at(indexPath.row)?.component as? YDSpaceyComponentNPSQuestion,
+            component.answerType == .textView
       else {
         return
       }
 
       (
         self.viewModel?.componentsList
-          .value[indexPath.row].component as? YDSpaceyComponentEditText
+          .value[indexPath.row].component as? YDSpaceyComponentNPSQuestion
       )?.storedValue = answer
     }
     return cell

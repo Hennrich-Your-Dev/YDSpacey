@@ -19,7 +19,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
   case title(YDSpaceyComponentTitle)
   case nps(YDSpaceyComponentNPS)
   case npsQuestion(YDSpaceyComponentNPSQuestion)
-  case npsEditText(YDSpaceyComponentEditText)
+  case npsEditText(YDSpaceyComponentNPSQuestion)
 
   case custom(YDSpaceyCustomComponentDelegate)
 
@@ -134,7 +134,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
         self = .npsQuestion(try singleValueContainer.decode(YDSpaceyComponentNPSQuestion.self))
 
       case .npsEditText:
-        self = .npsEditText(try singleValueContainer.decode(YDSpaceyComponentEditText.self))
+        self = .npsEditText(try singleValueContainer.decode(YDSpaceyComponentNPSQuestion.self))
 
       case .custom:
         throw NSError(domain: "", code: 1, userInfo: nil)
@@ -186,8 +186,8 @@ public enum YDSpaceyComponentsTypes: Decodable {
   }
 }
 
+// To be able to use [].contains(type)
 extension YDSpaceyComponentsTypes: Equatable {
-  // To be able to use [].contains(type)
   public static func == (lhs: YDSpaceyComponentsTypes, rhs: YDSpaceyComponentsTypes) -> Bool {
     if case .banner = lhs,
        case .banner = rhs {

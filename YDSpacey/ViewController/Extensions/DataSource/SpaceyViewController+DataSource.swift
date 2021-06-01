@@ -101,12 +101,15 @@ extension YDSpaceyViewController {
           return dequeueGradeCell(with: questionComponent, at: indexPath)
         case .multiple:
           return dequeueMultipleChoicesCell(with: questionComponent, at: indexPath)
-        case .textView:
-          return dequeueEditTextCell(with: questionComponent, at: indexPath)
 
         default:
           fatalError("type: \(questionComponent.answerType) isn't support yet")
       }
+    }
+
+    if case .npsEditText = type,
+       let questionComponent = component as? YDSpaceyComponentNPSQuestion {
+      return dequeueEditTextCell(with: questionComponent, at: indexPath)
     }
 
 //    #warning("STAND BY")

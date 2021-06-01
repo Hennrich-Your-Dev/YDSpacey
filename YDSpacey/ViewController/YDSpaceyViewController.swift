@@ -16,6 +16,7 @@ public class YDSpaceyViewController: UIViewController {
   public var largerHeader = false
   var numberOfShimmers = 0
   var bannerCellSize: CGFloat = 180
+  var textViewIndex = 0
 
   // MARK: Components
   let collectionView = UICollectionView(
@@ -29,11 +30,26 @@ public class YDSpaceyViewController: UIViewController {
     super.viewDidLoad()
     configureLayout()
     configureBinds()
+
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardDidShow),
+      name: UIResponder.keyboardDidShowNotification, object: nil
+    )
   }
 }
 
 // MARK: Actions
-public extension YDSpaceyViewController {}
+public extension YDSpaceyViewController {
+  @objc func keyboardDidShow() {
+//    guard let cell = collectionView.cellForItem(
+//      at: IndexPath(row: textViewIndex, section: 0)
+//    ) else { return }
+//
+//    let point = collectionView.convert(cell.frame.origin, to: collectionView)
+//    collectionView.contentOffset = point
+  }
+}
 
 // MARK: Public Actions
 public extension YDSpaceyViewController {
