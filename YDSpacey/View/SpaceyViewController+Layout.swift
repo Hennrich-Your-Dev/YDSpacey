@@ -32,6 +32,7 @@ extension YDSpaceyViewController {
     collectionView.dataSource = self
     collectionView.backgroundColor = .clear
     collectionView.alwaysBounceVertical = true
+    collectionView.keyboardDismissMode = .onDrag
 
     let layout = UICollectionViewFlowLayout()
     layout.estimatedItemSize = CGSize(width: view.frame.width, height: 50)
@@ -84,6 +85,11 @@ extension YDSpaceyViewController {
     collectionView.register(
       SpaceyMultipleChoicesListCollectionViewCell.self,
       forCellWithReuseIdentifier: SpaceyMultipleChoicesListCollectionViewCell.identifier
+    )
+
+    collectionView.register(
+      SpaceyEditTextCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyEditTextCollectionViewCell.identifier
     )
 
     // Register Header / Footer
