@@ -56,4 +56,8 @@ public extension YDSpaceyViewController {
   func getSpacey(withId id: String, customApi: String? = nil) {
     viewModel?.getSpacey(withId: id)
   }
+
+  func getList() {
+
+  }
 }

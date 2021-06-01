@@ -7,6 +7,10 @@
 
 import UIKit
 
+import YDB2WModels
+
 public protocol YDSpaceyDelegate: AnyObject {
   func onPlayerComponentID(_ videoId: String?)
+  func onComponentsList(_ list: [YDSpaceyCommonStruct])
+  func scrollViewDidScroll(_ scrollView: UIScrollView)
 }

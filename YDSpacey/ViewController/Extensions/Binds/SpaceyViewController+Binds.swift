@@ -33,6 +33,7 @@ public extension YDSpaceyViewController {
           self.shimmerTableView.isHidden = true
           self.collectionView.isHidden = false
           self.collectionView.collectionViewLayout.invalidateLayout()
+          self.delegate?.onComponentsList(list)
         }
       }
     }
@@ -44,10 +45,5 @@ public extension YDSpaceyViewController {
 
       self.delegate?.onPlayerComponentID(player.videoId)
     }
-
-//    viewModel?.error.bind { [weak self] _ in
-//      self?.showHideErrorView()
-//    }
-//
   }
 }
