@@ -22,7 +22,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var bannersOnList: [Int: YDSpaceyBannerConfig] { get set }
   var spaceyOrder: [String] { get }
 
-  func getSpacey(withId id: String)
+  func getSpacey(withId id: String, customApi: String?)
   func getComponentAndType(
     at indexPath: IndexPath
   ) -> (
@@ -204,12 +204,12 @@ public extension YDSpaceyViewModel {
 
 // MARK: Delegate
 extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
-  public func getSpacey(withId id: String) {
+  public func getSpacey(withId id: String, customApi: String? = nil) {
     loading.value = true
 
     service.getSpacey(
       spaceyId: id,
-      customApi: nil
+      customApi: customApi
     ) { [weak self] (response: Result<YDB2WModels.YDSpacey, YDB2WServices.YDServiceError>) in
       guard let self = self else { return }
       switch response {
