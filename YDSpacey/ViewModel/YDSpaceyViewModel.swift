@@ -16,7 +16,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var loading: Binder<Bool> { get }
   var error: Binder<String> { get }
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
-  var componentsList: Binder<[YDSpaceyCommonStruct]> { get }
+  var componentsList: Binder<[YDSpaceyCommonStruct]> { get set }
   var playerComponent: Binder<YDSpaceyComponentPlayer?> { get }
 
   var bannersOnList: [Int: YDSpaceyBannerConfig] { get set }

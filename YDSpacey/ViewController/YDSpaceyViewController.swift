@@ -57,7 +57,12 @@ public extension YDSpaceyViewController {
     viewModel?.getSpacey(withId: id, customApi: customApi)
   }
 
-  func getList() {
+  func getList() -> [YDSpaceyCommonStruct] {
+    return viewModel?.componentsList.value ?? []
+  }
 
+  func set(list: [YDSpaceyCommonStruct]) {
+    viewModel?.componentsList.value = list
+    collectionView.reloadData()
   }
 }
