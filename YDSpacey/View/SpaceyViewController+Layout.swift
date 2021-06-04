@@ -92,6 +92,11 @@ extension YDSpaceyViewController {
       forCellWithReuseIdentifier: SpaceyEditTextCollectionViewCell.identifier
     )
 
+    collectionView.register(
+      SpaceyTermsOfUseCollectionViewCell.self,
+      forCellWithReuseIdentifier: SpaceyTermsOfUseCollectionViewCell.identifier
+    )
+
     // Register Header / Footer
     collectionView.register(
       EmptyCollectionReusableView.self,
@@ -127,7 +132,9 @@ extension YDSpaceyViewController {
       forCellReuseIdentifier: SpaceyBannerShimmerTableViewCell.identifier
     )
 
-    numberOfShimmers = Int((view.frame.size.height / bannerCellSize).rounded(.up))
+    numberOfShimmers = hasShimmer ?
+      Int((view.frame.size.height / bannerCellSize).rounded(.up)) :
+      0
   }
 }
 

@@ -36,6 +36,7 @@
 		C1B76AFA2627347000B3D4C0 /* SpaceyViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AF92627347000B3D4C0 /* SpaceyViewController+Layout.swift */; };
 		C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76AFE262734E900B3D4C0 /* SpaceyViewController+DataSource.swift */; };
 		C1B76B05262738A800B3D4C0 /* EmptyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */; };
+		C1BA6131266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BA6130266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift */; };
 		C1BAAD5C26571A2E006BC20D /* SpaceyOptionsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAAD5B26571A2E006BC20D /* SpaceyOptionsListCollectionViewCell.swift */; };
 		C1BAAD5F26572B32006BC20D /* SpaceyOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAAD5E26572B32006BC20D /* SpaceyOptionCollectionViewCell.swift */; };
 		C1BAAD622657379C006BC20D /* SpaceyViewController+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAAD612657379C006BC20D /* SpaceyViewController+Options.swift */; };
@@ -79,6 +80,7 @@
 		C1B76AF92627347000B3D4C0 /* SpaceyViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Layout.swift"; sourceTree = "<group>"; };
 		C1B76AFE262734E900B3D4C0 /* SpaceyViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+DataSource.swift"; sourceTree = "<group>"; };
 		C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionReusableView.swift; sourceTree = "<group>"; };
+		C1BA6130266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyTermsOfUseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BAAD5B26571A2E006BC20D /* SpaceyOptionsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyOptionsListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BAAD5E26572B32006BC20D /* SpaceyOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BAAD612657379C006BC20D /* SpaceyViewController+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Options.swift"; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				C1BDB50D265EF9340050D793 /* Multiple Choices */,
 				C1BAAD5A26571A03006BC20D /* Options */,
 				C195331F2656A81A007BF788 /* Star */,
+				C1BA612F266A68D600B3A860 /* Terms of Use */,
 				C1CD0A49264A012F00B959A0 /* Title */,
 			);
 			path = Cell;
@@ -427,6 +430,14 @@
 				C1B76B04262738A800B3D4C0 /* EmptyCollectionReusableView.swift */,
 			);
 			path = HeaderFooter;
+			sourceTree = "<group>";
+		};
+		C1BA612F266A68D600B3A860 /* Terms of Use */ = {
+			isa = PBXGroup;
+			children = (
+				C1BA6130266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift */,
+			);
+			path = "Terms of Use";
 			sourceTree = "<group>";
 		};
 		C1BAAD5A26571A03006BC20D /* Options */ = {
@@ -634,6 +645,7 @@
 				C155E970264D636D00D05AE6 /* YDSpaceyViewController+ProductsCarrousel.swift in Sources */,
 				C1B76B05262738A800B3D4C0 /* EmptyCollectionReusableView.swift in Sources */,
 				C1554C6A265D34AD0077FFC4 /* YDSpaceyViewController+Grid.swift in Sources */,
+				C1BA6131266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift in Sources */,
 				C1B76AC92627300500B3D4C0 /* YDSpaceyViewModel.swift in Sources */,
 				C13C69EB2629E83D0018D380 /* SpaceyBannerCollectionViewCell.swift in Sources */,
 				C1BDB515265F30570050D793 /* SpaceyViewController+MultipleChoices.swift in Sources */,

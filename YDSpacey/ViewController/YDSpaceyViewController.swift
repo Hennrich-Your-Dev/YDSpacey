@@ -14,14 +14,16 @@ public class YDSpaceyViewController: UIViewController {
   var viewModel: YDSpaceyViewModelDelegate?
   public weak var delegate: YDSpaceyDelegate?
   public var largerHeader = false
-  var numberOfShimmers = 0
-  var bannerCellSize: CGFloat = 180
-  var textViewIndex = 0
   public var collectionContentHeight: CGFloat = 0 {
     didSet {
       delegate?.onChange(contentHeightSize: collectionContentHeight)
     }
   }
+  public var hasShimmer = true
+
+  var numberOfShimmers = 0
+  var bannerCellSize: CGFloat = 180
+  var textViewIndex = 0
 
   // MARK: Components
   let collectionView = UICollectionView(

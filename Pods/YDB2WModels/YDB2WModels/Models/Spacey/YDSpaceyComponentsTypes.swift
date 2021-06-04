@@ -16,6 +16,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
   case player(YDSpaceyComponentPlayer)
   case product(YDSpaceyComponentProduct)
   case productCarrousel(YDSpaceyComponentCarrouselProduct)
+  case termsOfUse(YDSpaceyComponentTermsOfUse)
   case title(YDSpaceyComponentTitle)
   case nps(YDSpaceyComponentNPS)
   case npsQuestion(YDSpaceyComponentNPSQuestion)
@@ -53,6 +54,9 @@ public enum YDSpaceyComponentsTypes: Decodable {
       case .productCarrousel:
         return .productCarrousel
 
+      case .termsOfUse:
+        return .termsOfUse
+
       case .title:
         return .title
 
@@ -80,6 +84,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
     case player = "zion-video"
     case product = "zion-product"
     case productCarrousel = "live-carousel"
+    case termsOfUse = "zion-rich-text"
     case title = "zion-title"
     case nps = "nps-card"
     case npsQuestion = "question"
@@ -122,6 +127,11 @@ public enum YDSpaceyComponentsTypes: Decodable {
       case .productCarrousel:
         self = .productCarrousel(
           try singleValueContainer.decode(YDSpaceyComponentCarrouselProduct.self)
+        )
+
+      case .termsOfUse:
+        self = .termsOfUse(
+          try singleValueContainer.decode(YDSpaceyComponentTermsOfUse.self)
         )
 
       case .title:
@@ -167,6 +177,9 @@ public enum YDSpaceyComponentsTypes: Decodable {
 
       case .productCarrousel(let carrousel):
         return carrousel
+
+      case .termsOfUse(let terms):
+        return terms
 
       case .title(let title):
         return title
@@ -226,6 +239,11 @@ extension YDSpaceyComponentsTypes: Equatable {
 
     if case .productCarrousel = lhs,
        case .productCarrousel = rhs {
+      return true
+    }
+
+    if case .termsOfUse = lhs,
+       case .termsOfUse = rhs {
       return true
     }
 

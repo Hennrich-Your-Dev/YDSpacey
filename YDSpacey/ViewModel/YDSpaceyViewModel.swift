@@ -105,6 +105,9 @@ public class YDSpaceyViewModel {
 //            .filter { supportedTypes.contains($0.componentType) }
 //          list.append(curr)
 
+        case .termsOfUse:
+          list.append(curr)
+
         default:
           for component in children {
             if let data = buildData(from: component, parent: curr) {
