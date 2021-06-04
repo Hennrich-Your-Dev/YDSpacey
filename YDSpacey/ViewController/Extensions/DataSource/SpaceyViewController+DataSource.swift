@@ -112,6 +112,11 @@ extension YDSpaceyViewController {
       return dequeueEditTextCell(with: questionComponent, at: indexPath)
     }
 
+    if case .termsOfUse = type,
+       let termsComponent = component as? YDSpaceyComponentTermsOfUse {
+      return dequeueTermsOfUseCell(with: termsComponent, at: indexPath)
+    }
+
 //    #warning("STAND BY")
 //    if case .grid = type,
 //       let gridComponent = component as? YDSpaceyComponentGrid {
