@@ -11,7 +11,7 @@ import YDExtensions
 
 extension YDSpaceyViewController {
   func configureLayout() {
-    view.backgroundColor = UIColor.Zeplin.grayOpaque
+    view.backgroundColor = .clear
 
     configureCollectionView()
     configureShimmerView()
