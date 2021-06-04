@@ -17,6 +17,11 @@ public class YDSpaceyViewController: UIViewController {
   var numberOfShimmers = 0
   var bannerCellSize: CGFloat = 180
   var textViewIndex = 0
+  public var collectionContentHeight: CGFloat = 0 {
+    didSet {
+      delegate?.onChange(contentHeightSize: collectionContentHeight)
+    }
+  }
 
   // MARK: Components
   let collectionView = UICollectionView(
@@ -36,6 +41,11 @@ public class YDSpaceyViewController: UIViewController {
       selector: #selector(keyboardDidShow),
       name: UIResponder.keyboardDidShowNotification, object: nil
     )
+  }
+
+  public override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    collectionContentHeight = collectionView.contentSize.height
   }
 }
 

@@ -13,4 +13,5 @@ public protocol YDSpaceyDelegate: AnyObject {
   func onPlayerComponentID(_ videoId: String?)
   func onComponentsList(_ list: [YDSpaceyCommonStruct])
   func scrollViewDidScroll(_ scrollView: UIScrollView)
+  func onChange(contentHeightSize: CGFloat)
 }
