@@ -30,6 +30,12 @@ public class YDSpaceyViewController: UIViewController {
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
   )
+  public lazy var collectionHeightConstraint: NSLayoutConstraint = {
+    let height = collectionView.heightAnchor.constraint(equalToConstant: 0)
+    height.isActive = true
+    return height
+  }()
+  
   let shimmerTableView = UITableView()
 
   // MARK: Life cycle
