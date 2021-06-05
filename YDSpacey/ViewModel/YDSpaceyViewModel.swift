@@ -94,6 +94,12 @@ public class YDSpaceyViewModel {
         continue
       }
 
+      if type == .nps,
+         let npsComponent = curr.component as? YDSpaceyComponentNPS,
+         let quantity = npsComponent.previewQuantity {
+        self.spaceyNPSPreviewQuantity = quantity
+      }
+
       switch type {
         case .bannerCarrousel:
           list.append(curr)
@@ -156,10 +162,6 @@ public class YDSpaceyViewModel {
         return YDSpaceyCommonStruct(id: obj.id, component: obj)
 
       case .nps(let nps):
-        if let quantity = nps.previewQuantity {
-          self.spaceyNPSPreviewQuantity = quantity
-        }
-
         for curr in nps.children {
           return buildData(from: curr, parent: parent)
         }
