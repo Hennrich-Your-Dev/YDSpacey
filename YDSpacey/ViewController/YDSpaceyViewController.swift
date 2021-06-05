@@ -16,7 +16,12 @@ public class YDSpaceyViewController: UIViewController {
   public var largerHeader = false
   public var collectionContentHeight: CGFloat = 0 {
     didSet {
-      delegate?.onChange(contentHeightSize: collectionContentHeight)
+      delegate?.onChange(
+        size: CGSize(
+          width: collectionView.contentSize.width,
+          height: collectionContentHeight
+        )
+      )
     }
   }
   public var hasShimmer = true
@@ -35,7 +40,7 @@ public class YDSpaceyViewController: UIViewController {
     height.isActive = true
     return height
   }()
-  
+
   let shimmerTableView = UITableView()
 
   // MARK: Life cycle
@@ -43,31 +48,17 @@ public class YDSpaceyViewController: UIViewController {
     super.viewDidLoad()
     configureLayout()
     configureBinds()
-
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardDidShow),
-      name: UIResponder.keyboardDidShowNotification, object: nil
-    )
   }
 
   public override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    collectionContentHeight = collectionView.contentSize.height
+    collectionContentHeight = collectionView.collectionViewLayout
+      .collectionViewContentSize.height
   }
 }
 
 // MARK: Actions
-public extension YDSpaceyViewController {
-  @objc func keyboardDidShow() {
-//    guard let cell = collectionView.cellForItem(
-//      at: IndexPath(row: textViewIndex, section: 0)
-//    ) else { return }
-//
-//    let point = collectionView.convert(cell.frame.origin, to: collectionView)
-//    collectionView.contentOffset = point
-  }
-}
+public extension YDSpaceyViewController {}
 
 // MARK: Public Actions
 public extension YDSpaceyViewController {
@@ -82,5 +73,7 @@ public extension YDSpaceyViewController {
   func set(list: [YDSpaceyCommonStruct]) {
     viewModel?.componentsList.value = list
     collectionView.reloadData()
+    collectionView.collectionViewLayout.invalidateLayout()
+    view.setNeedsLayout()
   }
 }

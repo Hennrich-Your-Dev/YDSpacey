@@ -21,6 +21,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
 
   var bannersOnList: [Int: YDSpaceyBannerConfig] { get set }
   var spaceyOrder: [String] { get }
+  var spaceyNPSPreviewQuantity: Int { get }
 
   func getSpacey(withId id: String, customApi: String?)
   func getComponentAndType(
@@ -46,7 +47,8 @@ public class YDSpaceyViewModel {
 
   public var bannersOnList: [Int: YDSpaceyBannerConfig] = [:]
   public var spaceyOrder: [String] = []
-  var spaceyId = ""
+  public var spaceyId = ""
+  public var spaceyNPSPreviewQuantity = 0
 
   // Init
   public init(
@@ -154,6 +156,10 @@ public class YDSpaceyViewModel {
         return YDSpaceyCommonStruct(id: obj.id, component: obj)
 
       case .nps(let nps):
+        if let quantity = nps.previewQuantity {
+          self.spaceyNPSPreviewQuantity = quantity
+        }
+
         for curr in nps.children {
           return buildData(from: curr, parent: parent)
         }

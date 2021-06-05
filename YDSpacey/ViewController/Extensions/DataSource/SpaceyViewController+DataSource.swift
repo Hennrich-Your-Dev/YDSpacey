@@ -56,6 +56,17 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
     }
   }
 
+  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+    let referenceHeight: CGFloat = 50
+    let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+      - sectionInset.left
+      - sectionInset.right
+      - collectionView.contentInset.left
+      - collectionView.contentInset.right
+    return CGSize(width: referenceWidth, height: referenceHeight)
+  }
+
   public func collectionView(
     _ collectionView: UICollectionView,
     didEndDisplaying cell: UICollectionViewCell,
