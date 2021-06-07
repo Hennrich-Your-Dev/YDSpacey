@@ -35,6 +35,20 @@ class SpaceyBannerOnCarrouselCell: UICollectionViewCell {
     imageView.image = nil
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    clipsToBounds = false
+    layer.masksToBounds = false
+    contentView.clipsToBounds = false
+    contentView.layer.masksToBounds = false
+
+    container.layer.shadowPath = UIBezierPath(
+      roundedRect: container.bounds,
+      cornerRadius: 6
+    ).cgPath
+  }
+
   // MARK: Actions
   func configure(with banner: YDSpaceyComponentBanner) {
     imageView.setImage(banner.bannerImage)

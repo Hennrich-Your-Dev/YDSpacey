@@ -60,6 +60,15 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
     )
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    clipsToBounds = false
+    layer.masksToBounds = false
+    contentView.clipsToBounds = false
+    contentView.layer.masksToBounds = false
+  }
+
   // MARK: Configure
   func configure(
     with carrouselId: Int,
@@ -74,7 +83,9 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
     self.carrouselId = carrouselId
     self.viewModel = viewModel
 
-    configureCollectionViewLayout(maxItemsOnScreen: component.itemsToShowOnScreen)
+    configureCollectionViewLayout(
+      maxItemsOnScreen: component.itemsToShowOnScreen
+    )
 
     collectionView.reloadData()
 
@@ -89,7 +100,6 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
 // MARK: Layouts
 extension SpaceyBannerCarrouselCollectionViewCell {
   func configureLayout() {
-    backgroundColor = .clear
     configureCollectionView()
   }
 
