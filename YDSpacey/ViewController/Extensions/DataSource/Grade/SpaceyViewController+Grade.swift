@@ -14,14 +14,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyGradeListCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyGradeListCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyGradeListCollectionViewCell")
-    }
+    let cell: SpaceyGradeListCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(with: component)
     cell.callback = { [weak self] grades in

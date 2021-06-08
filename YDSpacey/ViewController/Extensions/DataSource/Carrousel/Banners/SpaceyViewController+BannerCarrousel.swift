@@ -14,13 +14,7 @@ extension YDSpaceyViewController {
     withCarrousel carrousel: YDSpaceyComponentCarrouselBanner,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
-      withReuseIdentifier: SpaceyBannerCarrouselCollectionViewCell.identifier,
-      for: indexPath
-    ) as? SpaceyBannerCarrouselCollectionViewCell
-    else {
-      return UICollectionViewCell()
-    }
+    let cell: SpaceyBannerCarrouselCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(
       with: indexPath.row,

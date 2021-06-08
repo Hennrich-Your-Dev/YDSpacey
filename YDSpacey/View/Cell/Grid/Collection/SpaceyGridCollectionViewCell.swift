@@ -25,6 +25,11 @@ class SpaceyGridCollectionViewCell: UICollectionViewCell {
   // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
+    backgroundColor = .clear
+    layer.masksToBounds = false
+    clipsToBounds = false
+    contentView.clipsToBounds = false
+    contentView.layer.masksToBounds = false
     translatesAutoresizingMaskIntoConstraints = false
     widthAnchor.constraint(equalToConstant: frame.size.width).isActive = true
     configureCollectionView()
@@ -36,13 +41,19 @@ class SpaceyGridCollectionViewCell: UICollectionViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    heightConstraint.constant = collectionView.contentSize.height
+    heightConstraint.constant = collectionView.collectionViewLayout
+      .collectionViewContentSize.height
   }
 
   // MARK: Configure
   func configure(with component: YDSpaceyComponentGrid) {
+    if let numberOfColumns = component.numberOfColumns {
+      configureCollectionViewLayout(numberOfColumns: numberOfColumns)
+    }
+
     items = component.children
     collectionView.reloadData()
+    collectionView.setNeedsLayout()
   }
 }
 
@@ -51,8 +62,10 @@ extension SpaceyGridCollectionViewCell {
   func configureCollectionView() {
     contentView.addSubview(collectionView)
     collectionView.backgroundColor = .clear
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.dataSource = self
+    configureCollectionViewLayout(numberOfColumns: 1)
 
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
       collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -60,5 +73,17 @@ extension SpaceyGridCollectionViewCell {
       collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
     heightConstraint.isActive = true
+
+    // Register Cells
+    YDSpaceyHelper.registerCells(in: collectionView, for: .grid)
+  }
+
+  func configureCollectionViewLayout(numberOfColumns: Int) {
+    collectionView.collectionViewLayout = YDSpaceyHelper.configureCollectionLayout(
+      numberOfColumns: numberOfColumns,
+      inside: contentView
+    )
+
+    collectionView.collectionViewLayout.invalidateLayout()
   }
 }

@@ -14,14 +14,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyMultipleChoicesListCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyMultipleChoicesListCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyMultipleChoicesListCollectionViewCell")
-    }
+    let cell: SpaceyMultipleChoicesListCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(with: component)
     cell.callback = { [weak self] choices in

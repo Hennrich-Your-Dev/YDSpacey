@@ -107,11 +107,10 @@ public class YDSpaceyViewModel {
         case .productCarrousel:
           list.append(curr)
 
-          #warning("STAND BY")
-//        case .grid:
-//          curr.component?.children = children
-//            .filter { supportedTypes.contains($0.componentType) }
-//          list.append(curr)
+        case .grid:
+          curr.component?.children = children
+            .filter { supportedTypes.contains($0.componentType) }
+          list.append(curr)
 
         case .termsOfUse:
           list.append(curr)
@@ -144,16 +143,8 @@ public class YDSpaceyViewModel {
       case .bannerCarrousel:
         return parent
 
-      case .grid(let grid):
-        for curr in grid.children {
-          return buildData(from: curr, parent: parent)
-        }
-
       case .player(let player):
         playerComponent.value = player
-
-      case .product:
-        return parent
 
       case .title(let title):
         let obj = extractData(from: title)

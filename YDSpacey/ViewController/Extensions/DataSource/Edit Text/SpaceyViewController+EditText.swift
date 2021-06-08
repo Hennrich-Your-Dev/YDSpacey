@@ -14,14 +14,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyEditTextCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyEditTextCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyEditTextCollectionViewCell")
-    }
+    let cell: SpaceyEditTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(with: component)
     cell.callback = { [weak self] answer in

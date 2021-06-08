@@ -14,12 +14,7 @@ extension YDSpaceyViewController {
     withBanner banner: YDSpaceyComponentBanner,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SpaceyBannerCollectionViewCell.identifier,
-            for: indexPath) as? SpaceyBannerCollectionViewCell
-    else {
-      return UICollectionViewCell()
-    }
+    let cell: SpaceyBannerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     if viewModel?.bannersOnList[indexPath.row] == nil {
       viewModel?.bannersOnList[indexPath.row] = YDSpaceyBannerConfig(

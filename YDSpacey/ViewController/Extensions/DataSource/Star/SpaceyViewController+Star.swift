@@ -14,14 +14,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentNPSQuestion,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyStarCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyStarCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyTitleCollectionViewCell")
-    }
+    let cell: SpaceyStarCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(with: component)
     cell.callback = { [weak self] starNumber in

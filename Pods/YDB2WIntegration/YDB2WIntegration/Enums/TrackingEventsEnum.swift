@@ -32,7 +32,7 @@ public enum TrackEvents: String {
   case storeOpenBooklet = "O2O-ModoLoja-EncarteDasLojas"
   case storeOnScan = "O2O-ModoLoja-Scan"
   case storeOpenMap = "O2O-Home-Mapa"
-  case sendNPS = "trackStuartEvent"
+  case sendNPS = "StoreModeNps"
 
   // Find a Store
   case findStoreView = "ACOM:StoreFinder:Mapa"

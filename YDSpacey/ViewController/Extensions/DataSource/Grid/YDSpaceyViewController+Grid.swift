@@ -13,14 +13,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentGrid,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyGridCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyGridCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyTitleCollectionViewCell")
-    }
+    let cell: SpaceyGridCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.configure(with: component)
     return cell

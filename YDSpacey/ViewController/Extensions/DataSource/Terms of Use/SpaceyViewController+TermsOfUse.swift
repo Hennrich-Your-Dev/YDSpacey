@@ -14,15 +14,7 @@ extension YDSpaceyViewController {
     with component: YDSpaceyComponentTermsOfUse,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyTermsOfUseCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyTermsOfUseCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyTermsOfUseCollectionViewCell")
-    }
-
+    let cell: SpaceyTermsOfUseCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
     cell.configure(with: component)
     return cell
   }

@@ -129,10 +129,10 @@ extension YDSpaceyViewController {
     }
 
 //    #warning("STAND BY")
-//    if case .grid = type,
-//       let gridComponent = component as? YDSpaceyComponentGrid {
-//      return dequeueGridCell(with: gridComponent, at: indexPath)
-//    }
+    if case .grid = type,
+       let gridComponent = component as? YDSpaceyComponentGrid {
+      return dequeueGridCell(with: gridComponent, at: indexPath)
+    }
 
     guard let item = component.children.first else {
       fatalError("type: \(type)")

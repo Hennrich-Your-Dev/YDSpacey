@@ -47,55 +47,7 @@ extension YDSpaceyViewController {
     collectionView.collectionViewLayout = layout
 
     // Register Cells
-    collectionView.register(
-      SpaceyBannerCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyBannerCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyTitleCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyTitleCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyStarCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyStarCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyOptionsListCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyOptionsListCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyBannerCarrouselCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyBannerCarrouselCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyGridCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyGridCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyGradeListCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyGradeListCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyMultipleChoicesListCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyMultipleChoicesListCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyEditTextCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyEditTextCollectionViewCell.identifier
-    )
-
-    collectionView.register(
-      SpaceyTermsOfUseCollectionViewCell.self,
-      forCellWithReuseIdentifier: SpaceyTermsOfUseCollectionViewCell.identifier
-    )
+    YDSpaceyHelper.registerCells(in: collectionView)
 
     // Register Header / Footer
     collectionView.register(

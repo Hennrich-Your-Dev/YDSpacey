@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import YDB2WModels
 import YDExtensions
 
 class SpaceyBannerCollectionViewCell: UICollectionViewCell {
@@ -93,6 +93,35 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
 
         self.viewModel?.bannersOnList[bannerId]?
           .imageComponent = self.imageView.image
+      } else {
+        self.imageContainer.isHidden = true
+      }
+
+      self.updateLayout()
+    }
+  }
+
+  func config(with component: YDSpaceyComponentBanner) {
+    imageView.startShimmer()
+    imageView.setImage(component.bannerImage) { [weak self] success in
+      guard let self = self else { return }
+      self.imageView.stopShimmer()
+
+      if success != nil {
+        guard let image = self.imageView.image else { return }
+
+        let width = self.contentViewWidthConstraint.constant
+        let padding: CGFloat = 32
+        let ratio = (width - padding) / CGFloat(image.size.width)
+
+        let onScreenBannerHeight = Int(
+          CGFloat(image.size.height) * ratio
+        )
+
+        self.imageView.frame.size = CGSize(
+          width: width,
+          height: CGFloat(onScreenBannerHeight)
+        )
       } else {
         self.imageContainer.isHidden = true
       }

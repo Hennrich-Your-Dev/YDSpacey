@@ -14,15 +14,7 @@ extension YDSpaceyViewController {
     withTitle title: YDSpaceyComponentTitle,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyTitleCollectionViewCell.identifier,
-              for: indexPath
-            ) as? SpaceyTitleCollectionViewCell
-    else {
-      fatalError("dequeueReusableCell SpaceyTitleCollectionViewCell")
-    }
-
+    let cell: SpaceyTitleCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
     cell.configure(withTitle: title.contentTitle)
     return cell
   }
