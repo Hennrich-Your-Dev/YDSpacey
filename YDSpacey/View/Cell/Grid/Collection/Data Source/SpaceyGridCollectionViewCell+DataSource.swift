@@ -21,7 +21,8 @@ extension SpaceyGridCollectionViewCell: UICollectionViewDataSource {
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard let item = items.at(indexPath.item) else {
+    guard !items.isEmpty,
+          let item = items.at(indexPath.item) else {
       fatalError("Grid -> items at \(indexPath.item)")
     }
 
@@ -39,6 +40,21 @@ extension SpaceyGridCollectionViewCell: UICollectionViewDataSource {
         fatalError("\(item.componentType) isn't supported yet")
     }
   }
+
+//  func collectionView(
+//    _ collectionView: UICollectionView,
+//    layout collectionViewLayout: UICollectionViewLayout,
+//    sizeForItemAt indexPath: IndexPath
+//  ) -> CGSize {
+//    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+//    let referenceHeight: CGFloat = 50
+//    let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+//      - sectionInset.left
+//      - sectionInset.right
+//      - collectionView.contentInset.left
+//      - collectionView.contentInset.right
+//    return CGSize(width: referenceWidth, height: referenceHeight)
+//  }
 }
 
 // MARK: Banner
@@ -50,6 +66,10 @@ extension SpaceyGridCollectionViewCell {
     let cell: SpaceyBannerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
     cell.config(with: component)
+    cell.needsToUpdateCallback = { [weak self] in
+      guard let self = self else { return }
+      self.collectionView.setNeedsLayout()
+    }
     return cell
   }
 }
@@ -73,7 +93,6 @@ extension SpaceyGridCollectionViewCell {
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
     let cell: SpaceyGridCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-
     cell.configure(with: component)
     return cell
   }

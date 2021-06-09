@@ -222,8 +222,8 @@
 		C1554C6C265D37E30077FFC4 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				C1DD0640266E994F00978BF5 /* Data Source */,
 				C1554C6D265D38060077FFC4 /* SpaceyGridCollectionViewCell.swift */,
+				C1DD0640266E994F00978BF5 /* Data Source */,
 			);
 			path = Collection;
 			sourceTree = "<group>";

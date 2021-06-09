@@ -86,6 +86,8 @@ public class YDSpaceyViewModel {
       }
     }
 
+    // components = Array(components.prefix(4))
+
     for curr in components {
       guard let type = curr.component?.type,
         supportedTypes.contains(type),
@@ -107,10 +109,14 @@ public class YDSpaceyViewModel {
         case .productCarrousel:
           list.append(curr)
 
-        case .grid:
-          curr.component?.children = children
-            .filter { supportedTypes.contains($0.componentType) }
-          list.append(curr)
+          #warning("Stand by")
+//        case .grid:
+//          curr.component?.children = conformSupportedTimesInside(children: children)
+//          if (curr.component?.children ?? []).isEmpty {
+//            continue
+//          } else {
+//            list.append(curr)
+//          }
 
         case .termsOfUse:
           list.append(curr)
@@ -126,6 +132,28 @@ public class YDSpaceyViewModel {
 
     componentsList.value = list
     loading.value = false
+  }
+
+  func conformSupportedTimesInside(
+    children: [YDSpaceyComponentsTypes]
+  ) -> [YDSpaceyComponentsTypes] {
+    return children.filter {
+      if supportedTypes.contains($0.componentType) {
+        if $0.componentType == .player,
+           let player = $0.get() as? YDSpaceyComponentPlayer {
+          playerComponent.value = player
+          return false
+        } else if $0.componentType == .grid,
+                  let grid = $0.get() as? YDSpaceyComponentGrid {
+          grid.children = conformSupportedTimesInside(children: grid.children)
+          return true
+        } else {
+          return true
+        }
+      }
+
+      return false
+    }
   }
 
   func buildData(

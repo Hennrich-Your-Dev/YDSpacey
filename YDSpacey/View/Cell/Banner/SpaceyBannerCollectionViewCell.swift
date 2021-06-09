@@ -8,6 +8,7 @@
 import UIKit
 import YDB2WModels
 import YDExtensions
+import Kingfisher
 
 class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   // Components
@@ -20,15 +21,13 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   let imageContainer = UIView()
   let imageView = UIImageView()
   lazy var imageViewHeightConstraint: NSLayoutConstraint = {
-    return imageView.heightAnchor.constraint(equalToConstant: 80)
-  }()
-  lazy var contentViewWidthConstraint: NSLayoutConstraint = {
-    return contentView.widthAnchor.constraint(equalToConstant: frame.size.width)
+    return imageView.heightAnchor.constraint(equalToConstant: 200)
   }()
 
   // Properties
   var viewModel: YDSpaceyViewModelDelegate?
   var bannerId = 0
+  var needsToUpdateCallback: (() -> Void)?
 
   // Life cycle
   override init(frame: CGRect) {
@@ -47,6 +46,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     imageView.image = nil
     imageView.frame = .zero
     imageView.stopShimmer()
+    needsToUpdateCallback = nil
   }
 
   override func systemLayoutSizeFitting(
@@ -58,6 +58,14 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     return contentView.systemLayoutSizeFitting(
       CGSize(width: targetSize.width, height: 1)
     )
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    imageContainer.layer.shadowPath = UIBezierPath(
+      roundedRect: imageContainer.bounds,
+      cornerRadius: 6
+    ).cgPath
   }
 
   // MARK: Actions
@@ -73,31 +81,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
       viewModel?.bannersOnList[bannerId]?.image
     ) { [weak self] success in
       guard let self = self else { return }
-      self.imageView.stopShimmer()
-
-      if success != nil {
-        guard let image = self.imageView.image else { return }
-
-        let width = self.contentViewWidthConstraint.constant
-        let padding: CGFloat = 32
-        let ratio = (width - padding) / CGFloat(image.size.width)
-
-        let onScreenBannerHeight = Int(
-          CGFloat(image.size.height) * ratio
-        )
-
-        self.imageView.frame.size = CGSize(
-          width: width,
-          height: CGFloat(onScreenBannerHeight)
-        )
-
-        self.viewModel?.bannersOnList[bannerId]?
-          .imageComponent = self.imageView.image
-      } else {
-        self.imageContainer.isHidden = true
-      }
-
-      self.updateLayout()
+      self.onImageCallback(success)
     }
   }
 
@@ -105,12 +89,19 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     imageView.startShimmer()
     imageView.setImage(component.bannerImage) { [weak self] success in
       guard let self = self else { return }
+      self.onImageCallback(success, fromGrid: true)
+    }
+  }
+
+  func onImageCallback(_ success: RetrieveImageResult?, fromGrid: Bool = false) {
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
       self.imageView.stopShimmer()
 
       if success != nil {
         guard let image = self.imageView.image else { return }
 
-        let width = self.contentViewWidthConstraint.constant
+        let width = self.width.constant
         let padding: CGFloat = 32
         let ratio = (width - padding) / CGFloat(image.size.width)
 
@@ -122,6 +113,11 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
           width: width,
           height: CGFloat(onScreenBannerHeight)
         )
+
+        if !fromGrid {
+          self.viewModel?.bannersOnList[self.bannerId]?
+            .imageComponent = self.imageView.image
+        }
       } else {
         self.imageContainer.isHidden = true
       }
@@ -133,6 +129,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   func updateLayout() {
     imageViewHeightConstraint.constant = imageView.frame.size.height
     setNeedsLayout()
+    needsToUpdateCallback?()
   }
 }
 
@@ -171,7 +168,9 @@ extension SpaceyBannerCollectionViewCell {
       imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
       imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
       imageView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
-      imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
+      imageView.trailingAnchor
+        .constraint(equalTo: imageContainer.trailingAnchor),
+
       imageContainer.heightAnchor.constraint(equalTo: imageView.heightAnchor)
     ])
   }

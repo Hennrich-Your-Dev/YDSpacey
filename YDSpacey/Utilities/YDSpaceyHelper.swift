@@ -38,15 +38,16 @@ enum YDSpaceyHelper {
     inside view: UIView
   ) -> UICollectionViewFlowLayout {
     let layout = UICollectionViewFlowLayout()
-    let padding: CGFloat = 16
-    let width: CGFloat = (view.frame.size.width / CGFloat(columns)) - (padding * 2)
+    let width: CGFloat = (view.frame.size.width / CGFloat(columns)).rounded(.up)
 
     if columns > 1 {
       layout.itemSize = CGSize(width: width, height: width)
+    } else {
+      layout.estimatedItemSize = CGSize(width: view.frame.width, height: 50)
     }
 
     layout.minimumLineSpacing = 16
-    layout.minimumInteritemSpacing = 16
+    // layout.minimumInteritemSpacing = 16
 
     return layout
   }
