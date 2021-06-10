@@ -12,6 +12,11 @@ extension YDSpaceyViewController {
     with component: YDSpaceyCustomComponentDelegate,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
-    return component.getCell(collectionView, forIndexPath: indexPath, withId: component.id)
+    return delegate?
+      .dequeueCustomCell(
+        collectionView,
+        forIndexPath: indexPath,
+        component: component
+      ) ?? UICollectionViewCell()
   }
 }
