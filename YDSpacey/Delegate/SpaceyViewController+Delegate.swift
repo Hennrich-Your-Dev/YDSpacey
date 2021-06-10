@@ -14,12 +14,9 @@ public protocol YDSpaceyDelegate: AnyObject {
   func scrollViewDidScroll(_ scrollView: UIScrollView)
   func onChange(size: CGSize)
   func registerCustomCells(_ collectionView: UICollectionView)
-}
-
-extension YDSpaceyDelegate {
-  func onPlayerComponentID(_ videoId: String?) {}
-  func onComponentsList(_ list: [YDSpaceyCommonStruct]) {}
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {}
-  func onChange(size: CGSize) {}
-  func registerCustomCells(_ collectionView: UICollectionView) {}
+  func dequeueCustomCell(
+    _ collectionView: UICollectionView,
+    forIndexPath indexPath: IndexPath,
+    component: YDSpaceyCustomComponentDelegate
+  ) -> UICollectionViewCell
 }
