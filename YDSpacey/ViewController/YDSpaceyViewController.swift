@@ -11,7 +11,7 @@ import YDB2WModels
 
 public class YDSpaceyViewController: UIViewController {
   // MARK: Properties
-  var viewModel: YDSpaceyViewModelDelegate?
+  public var viewModel: YDSpaceyViewModelDelegate?
   public weak var delegate: YDSpaceyDelegate?
   public var largerHeader = false
   public var collectionContentHeight: CGFloat = 0 {
