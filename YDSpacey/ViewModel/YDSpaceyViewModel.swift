@@ -18,6 +18,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
   var componentsList: Binder<[YDSpaceyCommonStruct]> { get set }
   var playerComponent: Binder<YDSpaceyComponentPlayer?> { get }
+  var firstNextLive: Binder<YDSpaceyComponentNextLive?> { get }
 
   var bannersOnList: [Int: YDSpaceyBannerConfig] { get set }
   var spaceyOrder: [String] { get }
@@ -44,6 +45,7 @@ public class YDSpaceyViewModel {
   public var spacey: Binder<YDB2WModels.YDSpacey?> = Binder(nil)
   public var componentsList: Binder<[YDSpaceyCommonStruct]> = Binder([])
   public var playerComponent: Binder<YDSpaceyComponentPlayer?> = Binder(nil)
+  public var firstNextLive: Binder<YDSpaceyComponentNextLive?> = Binder(nil)
 
   public var bannersOnList: [Int: YDSpaceyBannerConfig] = [:]
   public var spaceyOrder: [String] = []
@@ -86,8 +88,6 @@ public class YDSpaceyViewModel {
       }
     }
 
-    // components = Array(components.prefix(4))
-
     for curr in components {
       guard let type = curr.component?.type,
         supportedTypes.contains(type),
@@ -123,6 +123,12 @@ public class YDSpaceyViewModel {
 
         case .custom:
           list.append(curr)
+
+        case .nextLiveParent:
+          if let component = curr.component?.children
+              .first?.get() as? YDSpaceyComponentNextLive {
+            firstNextLive.value = component
+          }
 
         default:
           for component in children {

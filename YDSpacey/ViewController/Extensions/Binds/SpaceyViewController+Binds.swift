@@ -18,7 +18,7 @@ public extension YDSpaceyViewController {
       }
     }
 
-    viewModel?.componentsList.bind { [weak self] list in
+    viewModel?.componentsList.bindOnce { [weak self] list in
       guard let self = self else { return }
 
       self.collectionView.reloadData()
