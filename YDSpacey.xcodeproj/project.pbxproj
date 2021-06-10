@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B6D025E6643F576F1A787D62 /* Pods_YDSpacey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37FCCC8D18E75624DF44D93 /* Pods_YDSpacey.framework */; };
+		C117579B26726A73008A67BB /* SpaceyViewController+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117579A26726A73008A67BB /* SpaceyViewController+Custom.swift */; };
 		C12355682666481D00D1C2B1 /* SpaceyEditTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12355672666481D00D1C2B1 /* SpaceyEditTextCollectionViewCell.swift */; };
 		C123556B2666578100D1C2B1 /* SpaceyViewController+EditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123556A2666578100D1C2B1 /* SpaceyViewController+EditText.swift */; };
 		C124E4F526583290008F6E08 /* SpaceyViewController+Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124E4F42658328F008F6E08 /* SpaceyViewController+Grade.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		0C17F9FE42C26128B6D5CA39 /* Pods-YDSpacey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDSpacey.debug.xcconfig"; path = "Target Support Files/Pods-YDSpacey/Pods-YDSpacey.debug.xcconfig"; sourceTree = "<group>"; };
+		C117579A26726A73008A67BB /* SpaceyViewController+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Custom.swift"; sourceTree = "<group>"; };
 		C12355672666481D00D1C2B1 /* SpaceyEditTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyEditTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		C123556A2666578100D1C2B1 /* SpaceyViewController+EditText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+EditText.swift"; sourceTree = "<group>"; };
 		C124E4F42658328F008F6E08 /* SpaceyViewController+Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+Grade.swift"; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 				D37FCCC8D18E75624DF44D93 /* Pods_YDSpacey.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C117579926726A5F008A67BB /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				C117579A26726A73008A67BB /* SpaceyViewController+Custom.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		C1235566266647DD00D1C2B1 /* Edit Text */ = {
@@ -351,6 +361,7 @@
 				C1831AAE266E6EFE00BF2330 /* Utilities */,
 				C130068C2659A3CF00867C0A /* Resources */,
 				C1B76ABE26272BCD00B3D4C0 /* Coordinator */,
+				C13C69E52629E03F0018D380 /* Delegate */,
 				C1B76AC126272BE000B3D4C0 /* View */,
 				C1B76ABD26272A4800B3D4C0 /* ViewController */,
 				C1B76AC026272BD800B3D4C0 /* ViewModel */,
@@ -400,7 +411,6 @@
 			children = (
 				C13C69E02629DDC80018D380 /* Binds */,
 				C1B76AFD262734D300B3D4C0 /* DataSource */,
-				C13C69E52629E03F0018D380 /* Delegate */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,6 +421,7 @@
 				C1B76AFE262734E900B3D4C0 /* SpaceyViewController+DataSource.swift */,
 				C155E971264D63D100D05AE6 /* Banner */,
 				C13B4453264C697C003CB810 /* Carrousel */,
+				C117579926726A5F008A67BB /* Custom */,
 				C12355692666576900D1C2B1 /* Edit Text */,
 				C124E4F32658328F008F6E08 /* Grade */,
 				C1554C68265D34730077FFC4 /* Grid */,
@@ -664,6 +675,7 @@
 				C155E96D264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				C1DD0642266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift in Sources */,
 				C155E979264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift in Sources */,
+				C117579B26726A73008A67BB /* SpaceyViewController+Custom.swift in Sources */,
 				C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */,
 				C13C69E22629DDFB0018D380 /* SpaceyViewController+Binds.swift in Sources */,
 				C19533212656A8CF007BF788 /* SpaceyStarCollectionViewCell.swift in Sources */,

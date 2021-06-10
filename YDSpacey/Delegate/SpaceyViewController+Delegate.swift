@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import YDB2WModels
 
 public protocol YDSpaceyDelegate: AnyObject {
@@ -14,4 +13,5 @@ public protocol YDSpaceyDelegate: AnyObject {
   func onComponentsList(_ list: [YDSpaceyCommonStruct])
   func scrollViewDidScroll(_ scrollView: UIScrollView)
   func onChange(size: CGSize)
+  func registerCustomCells(_ collectionView: UICollectionView)
 }

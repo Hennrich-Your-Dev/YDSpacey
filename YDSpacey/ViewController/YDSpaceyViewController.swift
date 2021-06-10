@@ -48,6 +48,7 @@ public class YDSpaceyViewController: UIViewController {
     super.viewDidLoad()
     configureLayout()
     configureBinds()
+    delegate?.registerCustomCells(collectionView)
   }
 
   public override func viewDidLayoutSubviews() {

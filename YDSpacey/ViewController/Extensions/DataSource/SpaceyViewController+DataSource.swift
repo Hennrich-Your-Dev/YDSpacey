@@ -56,7 +56,11 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
     }
   }
 
-  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  public func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
     let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
     let referenceHeight: CGFloat = 50
     let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
@@ -74,7 +78,7 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
   ) {
     guard let cell = cell as? SpaceyBannerCarrouselCollectionViewCell,
           let component = viewModel?.componentsList
-            .value.at(indexPath.row)?.component as? YDSpaceyComponentCarrouselBanner
+            .value.at(indexPath.item)?.component as? YDSpaceyComponentCarrouselBanner
     else {
       return
     }
@@ -129,10 +133,10 @@ extension YDSpaceyViewController {
     }
 
 //    #warning("STAND BY")
-    if case .grid = type,
-       let gridComponent = component as? YDSpaceyComponentGrid {
-      return dequeueGridCell(with: gridComponent, at: indexPath)
-    }
+//    if case .grid = type,
+//       let gridComponent = component as? YDSpaceyComponentGrid {
+//      return dequeueGridCell(with: gridComponent, at: indexPath)
+//    }
 
     guard let item = component.children.first else {
       fatalError("type: \(type)")

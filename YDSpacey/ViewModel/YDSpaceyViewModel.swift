@@ -121,6 +121,9 @@ public class YDSpaceyViewModel {
         case .termsOfUse:
           list.append(curr)
 
+        case .custom:
+          list.append(curr)
+
         default:
           for component in children {
             if let data = buildData(from: component, parent: curr) {
