@@ -58,21 +58,6 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
 
   public func collectionView(
     _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAt indexPath: IndexPath
-  ) -> CGSize {
-    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-    let referenceHeight: CGFloat = 50
-    let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-      - sectionInset.left
-      - sectionInset.right
-      - collectionView.contentInset.left
-      - collectionView.contentInset.right
-    return CGSize(width: referenceWidth, height: referenceHeight)
-  }
-
-  public func collectionView(
-    _ collectionView: UICollectionView,
     didEndDisplaying cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath
   ) {
@@ -137,6 +122,10 @@ extension YDSpaceyViewController {
 //       let gridComponent = component as? YDSpaceyComponentGrid {
 //      return dequeueGridCell(with: gridComponent, at: indexPath)
 //    }
+    if case .custom = type,
+       let customComponent = component as? YDSpaceyCustomComponentDelegate {
+      return dequeueCustomCell(with: customComponent, at: indexPath)
+    }
 
     guard let item = component.children.first else {
       fatalError("type: \(type)")

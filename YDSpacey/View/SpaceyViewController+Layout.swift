@@ -101,4 +101,20 @@ extension YDSpaceyViewController: UICollectionViewDelegateFlowLayout {
   ) -> CGSize {
     return CGSize(width: 0, height: largerHeader ? 40 : 20)
   }
+
+  // Item Size
+  public func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
+    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+    let referenceHeight: CGFloat = 100
+    let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+      - sectionInset.left
+      - sectionInset.right
+      - collectionView.contentInset.left
+      - collectionView.contentInset.right
+    return CGSize(width: referenceWidth, height: referenceHeight)
+  }
 }
