@@ -62,6 +62,7 @@ public enum YDConfigProperty: String {
   case liveAmountPeopleWatchingPolling
 
   // Next Lives
+  case nextLiveSpaceyId = "nextLiveHotsite"
   case nextLivesReminderTimeInMinutes = "nextLivesReminderTime"
 
   // Google Services

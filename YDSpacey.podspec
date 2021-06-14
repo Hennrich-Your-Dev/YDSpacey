@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "YDSpacey"
-  spec.version      = "1.4.23"
+  spec.version      = "1.3.23"
   spec.summary      = "A short description of YDSpacey."
 
   spec.homepage     = "https://yourdev.com.br"
@@ -29,10 +29,10 @@ Pod::Spec.new do |spec|
   ##
   spec.dependency "RichTextView", "3.0.0"
   spec.dependency "Cosmos", "22.1.0"
-  spec.dependency "YDB2WModels", "~> 1.4.0"
-  spec.dependency "YDExtensions", "~> 1.4.0"
-  spec.dependency "YDUtilities", "~> 1.4.0"
-  spec.dependency "YDB2WServices", "~> 1.4.0"
-  spec.dependency "YDB2WAssets", "~> 1.4.0"
-  spec.dependency "YDB2WComponents", "~> 1.4.0"
+  spec.dependency "YDB2WModels", "~> 1.3.0"
+  spec.dependency "YDExtensions", "~> 1.3.0"
+  spec.dependency "YDUtilities", "~> 1.3.0"
+  spec.dependency "YDB2WServices", "~> 1.3.0"
+  spec.dependency "YDB2WAssets", "~> 1.3.0"
+  spec.dependency "YDB2WComponents", "~> 1.3.0"
 end
