@@ -8,6 +8,7 @@
 import UIKit
 
 import YDB2WModels
+import YDUtilities
 
 extension YDSpaceyViewController {
   func dequeueGradeCell(
@@ -31,6 +32,11 @@ extension YDSpaceyViewController {
         component.childrenAnswers = grades
 
         component.storedValue = grades.first(where: { $0.selected })?.answerText
+
+        NotificationCenter.default.post(
+          name: YDConstants.Notification.SpaceyNPSChangeValue,
+          object: nil
+        )
       }
     }
     return cell

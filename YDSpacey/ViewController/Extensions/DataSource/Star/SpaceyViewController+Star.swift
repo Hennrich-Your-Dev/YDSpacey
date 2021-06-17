@@ -8,6 +8,7 @@
 import UIKit
 
 import YDB2WModels
+import YDUtilities
 
 extension YDSpaceyViewController {
   func dequeueStarCell(
@@ -30,6 +31,11 @@ extension YDSpaceyViewController {
         self.viewModel?.componentsList
           .value[indexPath.row].component as? YDSpaceyComponentNPSQuestion
       )?.storedValue = starNumber
+
+      NotificationCenter.default.post(
+        name: YDConstants.Notification.SpaceyNPSChangeValue,
+        object: nil
+      )
     }
     return cell
   }

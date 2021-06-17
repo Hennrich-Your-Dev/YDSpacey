@@ -23,8 +23,8 @@ PODS:
     - iosMath
     - SnapKit
   - SnapKit (5.0.1)
-  - YDB2WAssets (1.3.1)
-  - YDB2WComponents (1.3.10):
+  - YDB2WAssets (1.3.2)
+  - YDB2WComponents (1.3.12):
     - Cosmos
     - YDB2WAssets (~> 1.3.0)
     - YDB2WModels (~> 1.3.0)
@@ -33,7 +33,7 @@ PODS:
   - YDB2WIntegration (1.3.4):
     - YDB2WModels (~> 1.3.0)
     - YDExtensions (~> 1.3.0)
-  - YDB2WModels (1.3.12):
+  - YDB2WModels (1.3.13):
     - YDExtensions (~> 1.3.0)
     - YDUtilities (~> 1.3.0)
   - YDB2WServices (1.3.1):
@@ -43,7 +43,7 @@ PODS:
   - YDExtensions (1.3.1):
     - Kingfisher (~> 5.0)
     - KingfisherWebP (= 1.0.0)
-  - YDUtilities (1.3.0):
+  - YDUtilities (1.3.1):
     - Alamofire (~> 4.0)
 
 DEPENDENCIES:
@@ -86,13 +86,13 @@ SPEC CHECKSUMS:
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   RichTextView: 9a36e8a8661e2674f4b5309ed443c9d34fb8698e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  YDB2WAssets: 264e08acb4a62f3f79ec5b920e0bdf3d45e57c43
-  YDB2WComponents: 35e53f6e5729ec48aee342f0220cf9271f062099
+  YDB2WAssets: 0d2014dd943615647d3f202a3ae09893584c2cbf
+  YDB2WComponents: ac95eb9df8219331c433ae3b1e52326d3a81b91e
   YDB2WIntegration: 884efe5ddf0412ffcb0d0defaa24e67f5eee2cdd
-  YDB2WModels: 0b9f31379091679eb7605c0243c6ec0959393cb4
+  YDB2WModels: 1b465643b473a82bd7bfdc5f4c713b11e47b2bc2
   YDB2WServices: 718e0edb2751206a37842fda207abe2f5c97f0b2
   YDExtensions: 7c52103615ceb945339af861e2c90516af926bf4
-  YDUtilities: eece03b4133d2860eb9fb152a64a7e1358b01a35
+  YDUtilities: a5495f1843f9ee6363aa0303e9dd7e2efe6a7614
 
 PODFILE CHECKSUM: a53e463561effc7e6ee94789fce7c55ae416f96a
 

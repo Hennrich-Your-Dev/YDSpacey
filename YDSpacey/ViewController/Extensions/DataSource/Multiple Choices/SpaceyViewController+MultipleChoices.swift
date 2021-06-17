@@ -8,6 +8,7 @@
 import UIKit
 
 import YDB2WModels
+import YDUtilities
 
 extension YDSpaceyViewController {
   func dequeueMultipleChoicesCell(
@@ -31,6 +32,11 @@ extension YDSpaceyViewController {
         component.childrenAnswers = choices
 
         component.storedValue = choices.first(where: { $0.selected })?.answerText
+
+        NotificationCenter.default.post(
+          name: YDConstants.Notification.SpaceyNPSChangeValue,
+          object: nil
+        )
       }
     }
     return cell
