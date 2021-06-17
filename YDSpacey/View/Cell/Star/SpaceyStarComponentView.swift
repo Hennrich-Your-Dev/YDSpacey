@@ -43,7 +43,13 @@ public class SpaceyStarComponentView: UIView {
     guard let maxStars = component.maxStars else { return }
     titleLabel.text = component.question
     cosmosView.settings.totalStars = maxStars
-    cosmosView.didFinishTouchingCosmos = callback
+    cosmosView.didFinishTouchingCosmos = { [weak self] number in
+      self?.callback?(number)
+    }
+
+    if let currentStarNumber = component.storedValue as? Double {
+      starNumber = currentStarNumber
+    }
   }
 }
 

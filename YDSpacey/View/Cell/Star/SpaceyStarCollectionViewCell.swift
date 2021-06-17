@@ -56,6 +56,11 @@ class SpaceyStarCollectionViewCell: UICollectionViewCell {
     )
   }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    callback = nil
+  }
+
   // MARK: Configure
   func configure(with component: YDSpaceyComponentNPSQuestion) {
     starComponent.configure(with: component)
