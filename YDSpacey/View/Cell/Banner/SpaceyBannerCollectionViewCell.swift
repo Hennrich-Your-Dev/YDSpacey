@@ -21,7 +21,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   let imageContainer = UIView()
   let imageView = UIImageView()
   lazy var imageViewHeightConstraint: NSLayoutConstraint = {
-    return imageView.heightAnchor.constraint(equalToConstant: 200)
+    return imageView.heightAnchor.constraint(equalToConstant: 80)
   }()
 
   // Properties
@@ -46,6 +46,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     imageView.image = nil
     imageView.frame = .zero
     imageView.stopShimmer()
+    imageViewHeightConstraint.constant = 80
     needsToUpdateCallback = nil
   }
 
@@ -60,13 +61,13 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     )
   }
 
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    imageContainer.layer.shadowPath = UIBezierPath(
-      roundedRect: imageContainer.bounds,
-      cornerRadius: 6
-    ).cgPath
-  }
+//  override func layoutSubviews() {
+//    super.layoutSubviews()
+//    imageContainer.layer.shadowPath = UIBezierPath(
+//      roundedRect: imageContainer.bounds,
+//      cornerRadius: 6
+//    ).cgPath
+//  }
 
   // MARK: Actions
   func config(
@@ -120,6 +121,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
         }
       } else {
         self.imageContainer.isHidden = true
+        self.imageView.frame.size = .zero
       }
 
       self.updateLayout()
@@ -156,7 +158,7 @@ extension SpaceyBannerCollectionViewCell {
   }
 
   func configureImageView() {
-    contentView.addSubview(imageView)
+    imageContainer.addSubview(imageView)
     imageView.backgroundColor = UIColor.Zeplin.grayOpaque
     imageView.layer.cornerRadius = 6
     imageView.contentMode = .scaleAspectFill
@@ -169,9 +171,7 @@ extension SpaceyBannerCollectionViewCell {
       imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
       imageView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
       imageView.trailingAnchor
-        .constraint(equalTo: imageContainer.trailingAnchor),
-
-      imageContainer.heightAnchor.constraint(equalTo: imageView.heightAnchor)
+        .constraint(equalTo: imageContainer.trailingAnchor)
     ])
   }
 }
