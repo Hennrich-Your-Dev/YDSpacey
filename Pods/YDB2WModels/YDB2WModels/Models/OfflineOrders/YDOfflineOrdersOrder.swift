@@ -7,8 +7,6 @@
 
 import Foundation
 
-import YDUtilities
-
 public typealias YDOfflineOrdersOrdersList = [YDOfflineOrdersOrder]
 
 public class YDOfflineOrdersOrder: Decodable {
@@ -27,6 +25,7 @@ public class YDOfflineOrdersOrder: Decodable {
 
   // products
   public var products: [YDOfflineOrdersProduct]?
+  public var alreadySearchOnAPI = false
 
   // IndexPath
   public var indexPath: IndexPath?
@@ -69,11 +68,7 @@ public class YDOfflineOrdersOrder: Decodable {
   }
 
   public var dateWithDateType: Date? {
-    guard let date = date else { return nil }
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-DD'T'HH:mm:ss"
-
-    return formatter.date(from: date)
+    return date?.date(withFormat: "yyyy-MM-dd'T'HH:mm:ss")
   }
 
   public var formattedPrice: String? {

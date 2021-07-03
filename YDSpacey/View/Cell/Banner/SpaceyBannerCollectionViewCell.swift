@@ -25,8 +25,8 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
   }()
 
   // Properties
-  var viewModel: YDSpaceyViewModelDelegate?
-  var bannerId = 0
+  var component: YDSpaceyComponentBanner?
+  let padding: CGFloat = 32
   var needsToUpdateCallback: (() -> Void)?
 
   // Life cycle
@@ -46,7 +46,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     imageView.image = nil
     imageView.frame = .zero
     imageView.stopShimmer()
-    imageViewHeightConstraint.constant = 80
+    component = nil
     needsToUpdateCallback = nil
   }
 
@@ -61,32 +61,26 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
     )
   }
 
-//  override func layoutSubviews() {
-//    super.layoutSubviews()
-//    imageContainer.layer.shadowPath = UIBezierPath(
-//      roundedRect: imageContainer.bounds,
-//      cornerRadius: 6
-//    ).cgPath
-//  }
-
-  // MARK: Actions
-  func config(
-    withId bannerId: Int,
-    viewModel: YDSpaceyViewModelDelegate?
-  ) {
-    self.viewModel = viewModel
-    self.bannerId = bannerId
-
-    imageView.startShimmer()
-    imageView.setImage(
-      viewModel?.bannersOnList[bannerId]?.image
-    ) { [weak self] success in
-      guard let self = self else { return }
-      self.onImageCallback(success)
-    }
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    imageContainer.layer.shadowPath = UIBezierPath(
+      roundedRect: imageContainer.bounds,
+      cornerRadius: 6
+    ).cgPath
   }
 
+  // MARK: Actions
   func config(with component: YDSpaceyComponentBanner) {
+    self.component = component
+
+    if let height = component.currentImageHeight {
+      imageView.frame.size = CGSize(width: width.constant - padding, height: height)
+      imageView.setImage(component.bannerImage)
+      updateLayout()
+      return
+    } else {
+      imageViewHeightConstraint.constant = 80
+    }
     imageView.startShimmer()
     imageView.setImage(component.bannerImage) { [weak self] success in
       guard let self = self else { return }
@@ -103,22 +97,16 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
         guard let image = self.imageView.image else { return }
 
         let width = self.width.constant
-        let padding: CGFloat = 32
-        let ratio = (width - padding) / CGFloat(image.size.width)
+        let ratio = (width - self.padding) / CGFloat(image.size.width)
 
-        let onScreenBannerHeight = Int(
-          CGFloat(image.size.height) * ratio
-        )
+        let onScreenBannerHeight = image.size.height * ratio
 
         self.imageView.frame.size = CGSize(
-          width: width,
-          height: CGFloat(onScreenBannerHeight)
+          width: width - self.padding,
+          height: onScreenBannerHeight
         )
 
-        if !fromGrid {
-          self.viewModel?.bannersOnList[self.bannerId]?
-            .imageComponent = self.imageView.image
-        }
+        self.component?.currentImageHeight = onScreenBannerHeight
       } else {
         self.imageContainer.isHidden = true
         self.imageView.frame.size = .zero
@@ -130,7 +118,7 @@ class SpaceyBannerCollectionViewCell: UICollectionViewCell {
 
   func updateLayout() {
     imageViewHeightConstraint.constant = imageView.frame.size.height
-    setNeedsLayout()
+    layoutIfNeeded()
     needsToUpdateCallback?()
   }
 }
@@ -153,7 +141,8 @@ extension SpaceyBannerCollectionViewCell {
       imageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 1),
       imageContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -1),
       imageContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      imageContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+      imageContainer.trailingAnchor
+        .constraint(equalTo: contentView.trailingAnchor, constant: -16)
     ])
   }
 

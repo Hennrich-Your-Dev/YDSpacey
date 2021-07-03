@@ -23,38 +23,40 @@ PODS:
     - iosMath
     - SnapKit
   - SnapKit (5.0.1)
-  - YDB2WAssets (1.3.2)
-  - YDB2WComponents (1.3.12):
+  - YDB2WAssets (1.4.4)
+  - YDB2WComponents (1.4.31):
     - Cosmos
-    - YDB2WAssets (~> 1.3.0)
-    - YDB2WModels (~> 1.3.0)
-    - YDExtensions (~> 1.3.0)
-    - YDUtilities (~> 1.3.0)
-  - YDB2WIntegration (1.3.4):
-    - YDB2WModels (~> 1.3.0)
-    - YDExtensions (~> 1.3.0)
-  - YDB2WModels (1.3.13):
-    - YDExtensions (~> 1.3.0)
-    - YDUtilities (~> 1.3.0)
-  - YDB2WServices (1.3.1):
+    - YDB2WAssets (~> 1.4.0)
+    - YDB2WModels (~> 1.4.0)
+    - YDExtensions (~> 1.4.0)
+    - YDUtilities (~> 1.4.0)
+  - YDB2WIntegration (1.4.5):
+    - YDB2WModels (~> 1.4.0)
+    - YDExtensions (~> 1.4.0)
+  - YDB2WModels (1.4.19):
+    - YDExtensions (~> 1.4.0)
+  - YDB2WServices (1.4.4):
     - Alamofire (~> 4.0)
-    - YDB2WIntegration (~> 1.3.0)
-    - YDB2WModels (~> 1.3.0)
-  - YDExtensions (1.3.1):
+    - YDB2WIntegration (~> 1.4.0)
+    - YDB2WModels (~> 1.4.0)
+    - YDUtilities (~> 1.4.0)
+  - YDExtensions (1.4.2):
     - Kingfisher (~> 5.0)
     - KingfisherWebP (= 1.0.0)
-  - YDUtilities (1.3.1):
+  - YDUtilities (1.4.1):
     - Alamofire (~> 4.0)
+    - YDB2WModels (~> 1.4.0)
+    - YDExtensions (~> 1.4.0)
 
 DEPENDENCIES:
   - Cosmos (= 22.1.0)
   - RichTextView (= 3.0.0)
-  - YDB2WAssets (~> 1.3.0)
-  - YDB2WComponents (~> 1.3.0)
-  - YDB2WModels (~> 1.3.0)
-  - YDB2WServices (~> 1.3.0)
-  - YDExtensions (~> 1.3.0)
-  - YDUtilities (~> 1.3.0)
+  - YDB2WAssets (~> 1.4.0)
+  - YDB2WComponents (~> 1.4.0)
+  - YDB2WModels (~> 1.4.0)
+  - YDB2WServices (~> 1.4.0)
+  - YDExtensions (~> 1.4.0)
+  - YDUtilities (~> 1.4.0)
 
 SPEC REPOS:
   "git@github.com:Hennrich-Your-Dev/YourDev-Pods.git":
@@ -86,14 +88,14 @@ SPEC CHECKSUMS:
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   RichTextView: 9a36e8a8661e2674f4b5309ed443c9d34fb8698e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  YDB2WAssets: 0d2014dd943615647d3f202a3ae09893584c2cbf
-  YDB2WComponents: ac95eb9df8219331c433ae3b1e52326d3a81b91e
-  YDB2WIntegration: 884efe5ddf0412ffcb0d0defaa24e67f5eee2cdd
-  YDB2WModels: 1b465643b473a82bd7bfdc5f4c713b11e47b2bc2
-  YDB2WServices: 718e0edb2751206a37842fda207abe2f5c97f0b2
-  YDExtensions: 7c52103615ceb945339af861e2c90516af926bf4
-  YDUtilities: a5495f1843f9ee6363aa0303e9dd7e2efe6a7614
+  YDB2WAssets: 516dbdf9359c76a7d75cbf592c478b8ee127cf85
+  YDB2WComponents: b710d08516ae05ea263937f78595d256e93ebfe1
+  YDB2WIntegration: 1c9cd2a33e031ad2a4f9fd914176827d43d41b7a
+  YDB2WModels: d8a8c436b58df3b9991d5af7decaccb29131cf13
+  YDB2WServices: f5a135c3a377046f850d658d1b367f2c27b9a5d0
+  YDExtensions: fa093c67b72c07da4621a8132e79a1e84d9eed15
+  YDUtilities: e9e2f5e12ded589bed406ad4d6d00d357bca65e2
 
-PODFILE CHECKSUM: a53e463561effc7e6ee94789fce7c55ae416f96a
+PODFILE CHECKSUM: 41ea7d63015b8874eecbd3d0e2c58bc824a0fb47
 
 COCOAPODS: 1.10.1
