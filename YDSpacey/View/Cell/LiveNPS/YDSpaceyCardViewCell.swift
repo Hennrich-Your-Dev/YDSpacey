@@ -194,6 +194,7 @@ public class SpaceyCardViewCell: UICollectionViewCell {
 
   func questionAnswered(_ card: YDSpaceyComponentLiveNPSCard?, _ cardTag: Int) {
     cards.first(where: { $0.id == card?.id })?.storedValue = card?.storedValue
+    sendNPSCallback?(card)
     moveBack(card: cardTag == 0 ? .first : .second)
   }
 
