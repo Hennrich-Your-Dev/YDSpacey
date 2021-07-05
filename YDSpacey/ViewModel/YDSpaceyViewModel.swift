@@ -121,6 +121,9 @@ public class YDSpaceyViewModel {
 //            list.append(curr)
 //          }
 
+        case .liveNPS:
+          list.append(curr)
+
         case .termsOfUse:
           list.append(curr)
 
