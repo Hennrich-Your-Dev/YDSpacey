@@ -122,8 +122,10 @@ extension YDSpaceyViewController {
 //       let gridComponent = component as? YDSpaceyComponentGrid {
 //      return dequeueGridCell(with: gridComponent, at: indexPath)
 //    }
-    if case .liveNPS = type {
-      
+    
+    if case .liveNPS = type,
+       let liveNPSComponent = component as? YDSpaceyComponentLiveNPS {
+      return dequeueLiveNPSCell(with: liveNPSComponent, at: indexPath)
     }
 
     if case .custom = type,
