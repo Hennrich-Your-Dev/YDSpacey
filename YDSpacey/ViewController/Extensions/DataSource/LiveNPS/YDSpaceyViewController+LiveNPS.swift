@@ -12,16 +12,12 @@ import YDB2WIntegration
 
 extension YDSpaceyViewController {
   func dequeueLiveNPSCell(
-    with component: YDSpaceyCommonComponent,
+    with component: YDSpaceyComponentLiveNPS,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
     let cell: SpaceyCardViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-    guard let cards = component.children as? [YDSpaceyComponentLiveNPSCard]
-    else {
-      fatalError()
-    }
 
-    cell.configure(with: cards)
+    cell.configure(with: component.cards)
 
     cell.sendNPSCallback = { [weak self] nps in
       guard let self = self else { return }
