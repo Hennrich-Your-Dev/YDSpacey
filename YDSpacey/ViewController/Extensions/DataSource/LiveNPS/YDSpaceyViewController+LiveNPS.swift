@@ -39,7 +39,7 @@ extension YDSpaceyViewController {
 
         self.viewModel?.componentsList
           .value.removeAll(where: { $0.component?.id == component.id })
-        self.collectionView.reloadData()
+        self.collectionView.deleteItems(at: [indexPath])
       }
     }
 
