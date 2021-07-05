@@ -26,6 +26,7 @@ public enum TrackEvents: String {
   case productSelected = "ACOM:LiveCarousel:ProductSelected"
   case liveOpenChat = "ACOM-live-chataovivo"
   case preLivePageView = "ACOM:Hotsite:aovivo"
+  case liveNPS = "LiveNps"
 
   // Next Lives
   case nextLivesPageView = "ACOM:Hotsite:youtube-live:proximas-lives"
@@ -63,7 +64,7 @@ public enum TrackEvents: String {
         return ["tipoPagina": "LASA-Scan"]
 
       // Live
-      case .pageView, .playVideo, .addToCart, .productSelected, .liveOpenChat:
+      case .pageView, .playVideo, .addToCart, .productSelected, .liveOpenChat, .liveNPS:
         return [:]
 
       case .preLivePageView, .nextLivesPageView, .nextLivesAddToCalendar:
@@ -141,6 +142,19 @@ public enum TrackEvents: String {
 
       case .preLivePageView:
         return [:]
+
+      case .liveNPS:
+        let liveId = body["liveId"] as? String ?? ""
+        let cardId = body["cardId"] as? String ?? ""
+        let title = body["title"] as? String ?? ""
+        let answer = body["value"] as? String ?? ""
+
+        return [
+          "liveId": liveId,
+          "liveNpsCardId": cardId,
+          "liveNpsCardTitle": title,
+          "liveNpsCardAnswer": answer
+        ]
 
       // Next Lives
       case .nextLivesPageView:

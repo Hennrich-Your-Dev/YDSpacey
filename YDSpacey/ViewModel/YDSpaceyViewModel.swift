@@ -11,11 +11,13 @@ import YDExtensions
 import YDB2WModels
 import YDUtilities
 import YDB2WServices
+import YDB2WIntegration
 
 public protocol YDSpaceyViewModelDelegate: AnyObject {
   var loading: Binder<Bool> { get }
   var error: Binder<String> { get }
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
+  var spaceyId: String { get }
   var componentsList: Binder<[YDSpaceyCommonStruct]> { get set }
   var playerComponent: Binder<YDSpaceyComponentPlayer?> { get }
   var firstNextLive: Binder<YDSpaceyComponentNextLive?> { get }
@@ -31,6 +33,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     component: YDSpaceyComponentDelegate?,
     type: YDSpaceyComponentsTypes.Types?
   )
+  func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any])
 }
 
 public class YDSpaceyViewModel {
@@ -278,6 +281,11 @@ extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
       return (nil, nil)
     }
     return (parent.component, type)
+  }
+
+  public func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any]) {
+    YDIntegrationHelper.shared
+      .trackEvent(withName: name, ofType: type, withParameters: parameters)
   }
 }
 

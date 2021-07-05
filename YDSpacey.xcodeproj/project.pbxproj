@@ -48,6 +48,8 @@
 		C1BDB50F265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB50E265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift */; };
 		C1BDB512265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB511265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift */; };
 		C1BDB515265F30570050D793 /* SpaceyViewController+MultipleChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */; };
+		C1BFE3C8269362A400CE3953 /* YDSpaceyViewController+LiveNPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BFE3C7269362A400CE3953 /* YDSpaceyViewController+LiveNPS.swift */; };
+		C1BFE3CB2693684400CE3953 /* YDSpaceyCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BFE3CA2693684400CE3953 /* YDSpaceyCardViewCell.swift */; };
 		C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */; };
 		C1DD0642266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DD0641266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift */; };
 /* End PBXBuildFile section */
@@ -96,6 +98,8 @@
 		C1BDB50E265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyMultipleChoicesListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BDB511265EFD790050D793 /* SpaceyMultipleChoicesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyMultipleChoicesCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+MultipleChoices.swift"; sourceTree = "<group>"; };
+		C1BFE3C7269362A400CE3953 /* YDSpaceyViewController+LiveNPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YDSpaceyViewController+LiveNPS.swift"; sourceTree = "<group>"; };
+		C1BFE3CA2693684400CE3953 /* YDSpaceyCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDSpaceyCardViewCell.swift; sourceTree = "<group>"; };
 		C1CD0A4A264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1DD0641266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyGridCollectionViewCell+DataSource.swift"; sourceTree = "<group>"; };
 		D37FCCC8D18E75624DF44D93 /* Pods_YDSpacey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDSpacey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,6 +429,7 @@
 				C12355692666576900D1C2B1 /* Edit Text */,
 				C124E4F32658328F008F6E08 /* Grade */,
 				C1554C68265D34730077FFC4 /* Grid */,
+				C1BFE3C62693628700CE3953 /* LiveNPS */,
 				C155E977264D649500D05AE6 /* Shimmer */,
 				C1BDB513265F303B0050D793 /* Multiple Choices */,
 				C1BAAD6026573777006BC20D /* Options */,
@@ -443,6 +448,7 @@
 				C1235566266647DD00D1C2B1 /* Edit Text */,
 				C1BD0895265E8766005E68B6 /* Grade */,
 				C1554C6B265D36C90077FFC4 /* Grid */,
+				C1BFE3C92693670200CE3953 /* LiveNPS */,
 				C1BDB50D265EF9340050D793 /* Multiple Choices */,
 				C1BAAD5A26571A03006BC20D /* Options */,
 				C195331F2656A81A007BF788 /* Star */,
@@ -541,6 +547,22 @@
 				C1BDB514265F30570050D793 /* SpaceyViewController+MultipleChoices.swift */,
 			);
 			path = "Multiple Choices";
+			sourceTree = "<group>";
+		};
+		C1BFE3C62693628700CE3953 /* LiveNPS */ = {
+			isa = PBXGroup;
+			children = (
+				C1BFE3C7269362A400CE3953 /* YDSpaceyViewController+LiveNPS.swift */,
+			);
+			path = LiveNPS;
+			sourceTree = "<group>";
+		};
+		C1BFE3C92693670200CE3953 /* LiveNPS */ = {
+			isa = PBXGroup;
+			children = (
+				C1BFE3CA2693684400CE3953 /* YDSpaceyCardViewCell.swift */,
+			);
+			path = LiveNPS;
 			sourceTree = "<group>";
 		};
 		C1CD0A49264A012F00B959A0 /* Title */ = {
@@ -675,6 +697,7 @@
 				C155E96D264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				C1DD0642266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift in Sources */,
 				C155E979264D64A200D05AE6 /* SpaceyViewController+Shimmer.swift in Sources */,
+				C1BFE3C8269362A400CE3953 /* YDSpaceyViewController+LiveNPS.swift in Sources */,
 				C117579B26726A73008A67BB /* SpaceyViewController+Custom.swift in Sources */,
 				C1B76AFF262734E900B3D4C0 /* SpaceyViewController+DataSource.swift in Sources */,
 				C13C69E22629DDFB0018D380 /* SpaceyViewController+Binds.swift in Sources */,
@@ -686,6 +709,7 @@
 				C124E4F526583290008F6E08 /* SpaceyViewController+Grade.swift in Sources */,
 				C18D872C264CBF2700E3A923 /* SpaceyBannerOnCarrouselCell.swift in Sources */,
 				C1BAAD5F26572B32006BC20D /* SpaceyOptionCollectionViewCell.swift in Sources */,
+				C1BFE3CB2693684400CE3953 /* YDSpaceyCardViewCell.swift in Sources */,
 				C12355682666481D00D1C2B1 /* SpaceyEditTextCollectionViewCell.swift in Sources */,
 				C1BD089A265E8AB9005E68B6 /* SpaceyGradeCollectionViewCell.swift in Sources */,
 				C1B76AC626272EE700B3D4C0 /* YDSpaceyViewController.swift in Sources */,

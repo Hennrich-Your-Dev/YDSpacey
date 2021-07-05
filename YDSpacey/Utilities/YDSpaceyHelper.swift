@@ -27,6 +27,7 @@ enum YDSpaceyHelper {
       collectionView.register(SpaceyBannerCarrouselCollectionViewCell.self)
       collectionView.register(SpaceyGridCollectionViewCell.self)
       collectionView.register(SpaceyGradeListCollectionViewCell.self)
+      collectionView.register(SpaceyCardViewCell.self)
       collectionView.register(SpaceyMultipleChoicesListCollectionViewCell.self)
       collectionView.register(SpaceyEditTextCollectionViewCell.self)
       collectionView.register(SpaceyTermsOfUseCollectionViewCell.self)
