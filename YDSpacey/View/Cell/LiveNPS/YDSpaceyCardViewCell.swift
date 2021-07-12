@@ -8,6 +8,7 @@
 import UIKit
 import YDB2WModels
 import YDB2WComponents
+import YDUtilities
 
 public class SpaceyCardViewCell: UICollectionViewCell {
   // MARK: Enum
@@ -20,6 +21,7 @@ public class SpaceyCardViewCell: UICollectionViewCell {
   let cardPadding: CGFloat = 32
 
   var cards: [YDSpaceyComponentLiveNPSCard] = []
+  var spaceyId: String?
 
   var canTouchFirstCard = true
   var canTouchSecondCard = false
@@ -106,6 +108,7 @@ public class SpaceyCardViewCell: UICollectionViewCell {
   public override func prepareForReuse() {
     sendNPSCallback = nil
     destroyCallback = nil
+    spaceyId = nil
     cards.removeAll()
     firstCardView.cleanUpCard()
     secondCardView.cleanUpCard()
@@ -164,8 +167,15 @@ public class SpaceyCardViewCell: UICollectionViewCell {
   }
 
   // MARK: Actions
-  public func configure(with cards: [YDSpaceyComponentLiveNPSCard]) {
+  public func configure(with cards: [YDSpaceyComponentLiveNPSCard], spaceyId: String?) {
     self.cards = cards
+    self.spaceyId = spaceyId
+
+    for card in cards {
+      if let storedLive = checkIfQuestionAlreadyAnwsered(question: card) {
+        card.storedValue = storedLive.answer
+      }
+    }
 
     if let firstCard = cards.first(where: { $0.storedValue == nil }) {
       firstCardId = firstCard.id
@@ -205,6 +215,16 @@ public class SpaceyCardViewCell: UICollectionViewCell {
 
 // MARK: Private actions
 extension SpaceyCardViewCell {
+  private func checkIfQuestionAlreadyAnwsered(
+    question: YDSpaceyComponentLiveNPSCard
+  ) -> YDManagerLiveNPS? {
+    guard let id = question.id,
+          let spaceyId = spaceyId
+    else { return nil }
+
+    return YDManager.LivesNPS.shared.get(id: id, spaceyId: spaceyId)
+  }
+
   @objc func onSkipButtonAction(_ sender: UIButton) {
     if sender.tag == 0 {
       cards.first(where: { $0.id == firstCardView.card?.id })?.storedValue = ""

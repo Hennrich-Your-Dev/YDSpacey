@@ -38,11 +38,15 @@ public enum TrackEvents: String {
   case storeOpenBooklet = "O2O-ModoLoja-EncarteDasLojas"
   case storeOnScan = "O2O-ModoLoja-Scan"
   case storeOpenMap = "O2O-Home-Mapa"
+
+  // Store Mode NPS
+  case storeModeNPS = "ACOM:ModoLoja:NpsLoja"
   case sendNPS = "StoreModeNps"
 
   // Find a Store
   case findStoreView = "ACOM:StoreFinder:Mapa"
   case findStoreViewDenied = "ACOM:StoreFinder:SemPermissao"
+  case findStore = "ACOM:AcheUmaLoja"
 
   // Offline Account
   case offlineAccountPerfil = "ACOM:MODOLOJA-MeuPerfil"
@@ -74,12 +78,19 @@ public enum TrackEvents: String {
       case .storePageView, .storeOpenBasket, .storeOpenBooklet, .storeOnScan, .storeOpenMap:
         return ["tipoPagina": "O2O-modoloja"]
 
+      // Store Mode NPS
+      case .storeModeNPS:
+        return ["pageType": "O2O-modoloja"]
+
       case .sendNPS:
         return [:]
 
       // Find a Store
       case .findStoreView, .findStoreViewDenied:
         return [:]
+
+      case .findStore:
+        return  ["pageType": "O2O-modoloja"]
 
       // Offline Account
       case .offlineAccountPerfil, .offlineAccountUsersInfo,
@@ -178,9 +189,30 @@ public enum TrackEvents: String {
       case .storeOpenBasket, .storeOpenBooklet, .storeOnScan, .storeOpenMap, .sendNPS:
         return [:]
 
+      case .storeModeNPS:
+        if body.isEmpty { return [:] }
+
+        let question = body["question"] ?? ""
+        let value = body["value"] ?? ""
+
+        return [
+          "category": "modoloja",
+          "action": question,
+          "label": value
+        ]
+
       // Find a Store
       case .findStoreView, .findStoreViewDenied:
         return [:]
+
+      case .findStore:
+        let action = body["action"] as? String ?? ""
+
+        return [
+          "category": "ache uma loja",
+          "action": action,
+          "label": "sucesso"
+        ]
 
       // Offline Account
       case .offlineAccountPerfil, .offlineAccountUsersInfo,

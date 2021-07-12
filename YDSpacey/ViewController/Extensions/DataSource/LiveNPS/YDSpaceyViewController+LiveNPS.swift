@@ -9,40 +9,56 @@ import UIKit
 import YDB2WModels
 import YDExtensions
 import YDB2WIntegration
+import YDUtilities
 
 extension YDSpaceyViewController {
+  private func sendNPS(_ nps: YDSpaceyComponentLiveNPSCard?) {
+    guard let spaceyId = viewModel?.spaceyId else { return }
+
+    let npsToStore = YDManagerLiveNPS(
+      id: nps?.id,
+      spaceyId: spaceyId,
+      question: nps?.title,
+      answer: nps?.storedValue
+    )
+    YDManager.LivesNPS.shared.add(npsToStore)
+
+    let parameters = TrackEvents.liveNPS.parameters(body: [
+      "liveId": spaceyId,
+      "cardId": nps?.id as Any,
+      "title": nps?.title as Any,
+      "value": nps?.storedValue as Any
+    ])
+
+    self.viewModel?
+      .sendMetric(name: .liveNPS, type: .action, parameters: parameters)
+  }
+
+  private func destroy(
+    nps: YDSpaceyComponentLiveNPS,
+    at indexPath: IndexPath
+  ) {
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+
+      self.viewModel?.componentsList
+        .value.removeAll(where: { $0.component?.id == nps.id })
+      self.collectionView.deleteItems(at: [indexPath])
+    }
+  }
+
   func dequeueLiveNPSCell(
     with component: YDSpaceyComponentLiveNPS,
     at indexPath: IndexPath
   ) -> UICollectionViewCell {
     let cell: SpaceyCardViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
-    cell.configure(with: component.cards)
-
-    cell.sendNPSCallback = { [weak self] nps in
+    cell.configure(with: component.cards, spaceyId: viewModel?.spaceyId)
+    cell.sendNPSCallback = sendNPS
+    cell.destroyCallback = { [weak self] in
       guard let self = self else { return }
-      guard let spaceyId = self.viewModel?.spaceyId else { return }
-
-      let parameters = TrackEvents.liveNPS.parameters(body: [
-        "liveId": spaceyId,
-        "cardId": nps?.id as Any,
-        "title": nps?.title as Any,
-        "value": nps?.storedValue as Any
-      ])
-
-      self.viewModel?.sendMetric(name: .liveNPS, type: .action, parameters: parameters)
+      self.destroy(nps: component, at: indexPath)
     }
-
-    cell.destroyCallback = {
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-
-        self.viewModel?.componentsList
-          .value.removeAll(where: { $0.component?.id == component.id })
-        self.collectionView.deleteItems(at: [indexPath])
-      }
-    }
-
     return cell
   }
 }
