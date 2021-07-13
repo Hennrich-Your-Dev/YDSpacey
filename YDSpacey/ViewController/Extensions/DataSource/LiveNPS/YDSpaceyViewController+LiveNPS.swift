@@ -53,12 +53,13 @@ extension YDSpaceyViewController {
   ) -> UICollectionViewCell {
     let cell: SpaceyCardViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
-    cell.configure(with: component.cards, spaceyId: viewModel?.spaceyId)
     cell.sendNPSCallback = sendNPS
     cell.destroyCallback = { [weak self] in
       guard let self = self else { return }
       self.destroy(nps: component, at: indexPath)
     }
+
+    cell.configure(with: component.cards, spaceyId: viewModel?.spaceyId)
     return cell
   }
 }

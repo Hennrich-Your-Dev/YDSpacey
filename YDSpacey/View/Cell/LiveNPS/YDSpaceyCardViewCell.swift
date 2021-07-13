@@ -23,6 +23,8 @@ public class SpaceyCardViewCell: UICollectionViewCell {
   var cards: [YDSpaceyComponentLiveNPSCard] = []
   var spaceyId: String?
 
+  var firstTimeChecking = true
+
   var canTouchFirstCard = true
   var canTouchSecondCard = false
 
@@ -187,19 +189,29 @@ public class SpaceyCardViewCell: UICollectionViewCell {
       secondCardId = secondCard.id
       secondCardView.configure(with: secondCard)
       secondCardView.callback = questionAnswered
+
+      firstTimeChecking = false
       return
     }
 
     if firstCardId != nil {
       secondCardView.stateView = .empty
       phantomCardView.isHidden = true
+
+      firstTimeChecking = false
       return
     }
 
     // No Cards
-    firstCardView.stateView = .empty
-    secondCardView.isHidden = true
-    phantomCardView.isHidden = true
+    if firstTimeChecking {
+      firstTimeChecking = false
+      destroyCallback?()
+
+    } else {
+      firstCardView.stateView = .empty
+      secondCardView.isHidden = true
+      phantomCardView.isHidden = true
+    }
   }
 
   func questionAnswered(_ card: YDSpaceyComponentLiveNPSCard?, _ cardTag: Int) {
