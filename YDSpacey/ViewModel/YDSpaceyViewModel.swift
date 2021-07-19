@@ -251,6 +251,7 @@ public extension YDSpaceyViewModel {
 extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
   public func getSpacey(withId id: String, customApi: String? = nil) {
     loading.value = true
+    spaceyId = id
 
     service.getSpacey(
       spaceyId: id,
