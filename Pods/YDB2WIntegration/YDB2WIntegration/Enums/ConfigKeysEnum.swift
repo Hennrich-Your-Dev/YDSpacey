@@ -19,6 +19,7 @@ public enum YDConfigKeys: String {
   case spaceyService = "spacey_service"
   case addressService = "zip_code_service"
   case lasaClientService = "lasaCustomerPortal"
+  case invoiceService = "offlineOrdersNoteService"
   case googleService = "youtubeStatisticsApi"
 }
 
@@ -31,7 +32,7 @@ public enum YDConfigProperty: String {
   case productsQueryVersion = "lasaB2WProductsQueryVersion"
   case offlineAccountEnabled
 
-  // NPS
+  // Store Mode NPS
   case npsEnabled
   case npsFeedbackMessage
   case npsMinutesToPrune
@@ -60,9 +61,13 @@ public enum YDConfigProperty: String {
   case liveChatLimit
   case liveChatSendDelay
   case liveChatModerators = "chatModerators"
+  case liveHighlightMessageEnabled = "fixedMessageEnabled"
 
   case liveYouTubeCounter = "liveAmountPeopleWatching"
   case liveAmountPeopleWatchingPolling
+
+  case liveNPSEnabled
+  case liveNPSLiveIdEnabled
 
   // Next Lives
   case nextLiveSpaceyId = "nextLiveHotsite"
@@ -73,4 +78,7 @@ public enum YDConfigProperty: String {
 
   // Lasa Client
   case lazyLoadingOrders
+
+  // Offline Orders
+  case offlineOrdersNoteEnabled = "enableOfflineOrdersNote"
 }

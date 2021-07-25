@@ -25,8 +25,11 @@ public enum TrackEvents: String {
   case addToCart = "ACOM:LiveCarousel:AddToCart"
   case productSelected = "ACOM:LiveCarousel:ProductSelected"
   case liveOpenChat = "ACOM-live-chataovivo"
-  case preLivePageView = "ACOM:Hotsite:aovivo"
   case liveNPS = "LiveNps"
+  case sendLike = "MobileApps:LiveLikes"
+
+  // Pre Live
+  case preLivePageView = "ACOM:Hotsite:aovivo"
 
   // Next Lives
   case nextLivesPageView = "ACOM:Hotsite:youtube-live:proximas-lives"
@@ -68,7 +71,7 @@ public enum TrackEvents: String {
         return ["tipoPagina": "LASA-Scan"]
 
       // Live
-      case .pageView, .playVideo, .addToCart, .productSelected, .liveOpenChat, .liveNPS:
+      case .pageView, .playVideo, .addToCart, .productSelected, .liveOpenChat, .liveNPS, .sendLike:
         return [:]
 
       case .preLivePageView, .nextLivesPageView, .nextLivesAddToCalendar:
@@ -167,6 +170,9 @@ public enum TrackEvents: String {
           "liveNpsCardAnswer": answer
         ]
 
+      case .sendLike:
+        return [:]
+
       // Next Lives
       case .nextLivesPageView:
         return [:]
@@ -194,12 +200,20 @@ public enum TrackEvents: String {
 
         let question = body["question"] ?? ""
         let value = body["value"] ?? ""
+        let starType = body["starType"] as? Bool ?? false
 
-        return [
+        var parameters: [String: Any] = [
           "category": "modoloja",
-          "action": question,
-          "label": value
+          "action": question
         ]
+
+        if starType {
+          parameters["nota"] = value
+        } else {
+          parameters["label"] = value
+        }
+
+        return parameters
 
       // Find a Store
       case .findStoreView, .findStoreViewDenied:

@@ -23,27 +23,27 @@ PODS:
     - iosMath
     - SnapKit
   - SnapKit (5.0.1)
-  - YDB2WAssets (1.4.10)
-  - YDB2WComponents (1.4.40):
+  - YDB2WAssets (1.4.12)
+  - YDB2WComponents (1.4.56):
     - Cosmos
     - YDB2WAssets (~> 1.4.0)
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
     - YDUtilities (~> 1.4.0)
-  - YDB2WIntegration (1.4.8):
+  - YDB2WIntegration (1.4.16):
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
-  - YDB2WModels (1.4.27):
+  - YDB2WModels (1.4.33):
     - YDExtensions (~> 1.4.0)
-  - YDB2WServices (1.4.5):
+  - YDB2WServices (1.4.9):
     - Alamofire (~> 4.0)
     - YDB2WIntegration (~> 1.4.0)
     - YDB2WModels (~> 1.4.0)
     - YDUtilities (~> 1.4.0)
-  - YDExtensions (1.4.2):
+  - YDExtensions (1.4.3):
     - Kingfisher (~> 5.0)
     - KingfisherWebP (= 1.0.0)
-  - YDUtilities (1.4.6):
+  - YDUtilities (1.4.12):
     - Alamofire (~> 4.0)
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
@@ -88,13 +88,13 @@ SPEC CHECKSUMS:
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   RichTextView: 9a36e8a8661e2674f4b5309ed443c9d34fb8698e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  YDB2WAssets: f22c30c0b776fe29a73a1ed0738c1649c016916c
-  YDB2WComponents: 08697860af2c1e8bd32e18fca86a7996b836827d
-  YDB2WIntegration: efa2edc589a08703ff3cecff41fa61f07c9d020b
-  YDB2WModels: 35ba0d20429f413c73982f84cf415057602f64d5
-  YDB2WServices: 750088ede95433b4b9751d37718a9fd20527ea97
-  YDExtensions: fa093c67b72c07da4621a8132e79a1e84d9eed15
-  YDUtilities: cccf84d5bea32b0c0ef10de968bf8698206cb6a0
+  YDB2WAssets: c65ea53bdedd40646380b0f748e0812f4b72f3ab
+  YDB2WComponents: 00b75421bb055c6349e1b4d5cc01992d70b76864
+  YDB2WIntegration: 07f3f02c0ac3b92c10c30b34c670e2d681db3942
+  YDB2WModels: f9a830940abcf9bbe8c6f522350a4eadf4de3b0b
+  YDB2WServices: 3ac5eed8276869069ce86f74401e41feb171f253
+  YDExtensions: 9b216106fdbd2df346475187d6e06204afae1bc6
+  YDUtilities: c285ae47ab104eb8292d29e49c443568d1fdf18d
 
 PODFILE CHECKSUM: 41ea7d63015b8874eecbd3d0e2c58bc824a0fb47
 

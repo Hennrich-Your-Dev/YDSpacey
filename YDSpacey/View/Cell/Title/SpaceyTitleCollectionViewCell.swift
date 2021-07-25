@@ -60,7 +60,7 @@ class SpaceyTitleCollectionViewCell: UICollectionViewCell {
 
   // MARK: Configure
   func configure(withTitle title: String?, hasLivePulsing: Bool = false) {
-    titleLabel.text = .loremIpsum()
+    titleLabel.text = .lorem()
 
     if hasLivePulsing {
       trailingPadding.constant = -66
