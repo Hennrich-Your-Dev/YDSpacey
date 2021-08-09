@@ -11,6 +11,15 @@ import YDExtensions
 import YDB2WModels
 
 class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
+  // MARK: Properties
+  let unselectedBorderColor = UIColor(
+    red: 112 / 255,
+    green: 112 / 255,
+    blue: 112 / 255,
+    alpha: 1
+  ).cgColor
+  let selectedBorderColor = Zeplin.redBranding.cgColor
+  
   // MARK: Components
   lazy var width: NSLayoutConstraint = {
     let width = contentView.widthAnchor
@@ -52,6 +61,7 @@ class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
 
   func setStyle(_ selected: Bool) {
     ratioWithinView.isHidden = !selected
+    ratioView.layer.borderColor = selected ? selectedBorderColor : unselectedBorderColor
   }
 }
 
@@ -66,12 +76,7 @@ extension SpaceyMultipleChoicesCollectionViewCell {
     contentView.addSubview(ratioView)
     ratioView.layer.borderWidth = 1
     ratioView.layer.cornerRadius = 9
-    ratioView.layer.borderColor = UIColor(
-      red: 112 / 255,
-      green: 112 / 255,
-      blue: 112 / 255,
-      alpha: 1
-    ).cgColor
+    ratioView.layer.borderColor = unselectedBorderColor
 
     ratioView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -82,7 +87,7 @@ extension SpaceyMultipleChoicesCollectionViewCell {
 
     //
     ratioView.addSubview(ratioWithinView)
-    ratioWithinView.backgroundColor = Zeplin.black
+    ratioWithinView.backgroundColor = Zeplin.redBranding
     ratioWithinView.layer.cornerRadius = 5
 
     ratioWithinView.translatesAutoresizingMaskIntoConstraints = false
