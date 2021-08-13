@@ -87,7 +87,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
   }
 
   // Components Types
-  public enum `Types`: String, Decodable {
+  public enum `Types`: String, CaseIterable, Decodable {
     case banner = "zion-image"
     case bannerCarrousel = "zion-image-carousel"
     case grid = "zion-grid"

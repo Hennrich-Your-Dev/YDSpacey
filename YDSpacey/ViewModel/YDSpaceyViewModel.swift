@@ -58,12 +58,18 @@ public class YDSpaceyViewModel {
   // Init
   public init(
     service: YDB2WServiceDelegate = YDB2WService(),
-    supportedTypes: [YDSpaceyComponentsTypes.Types],
-    supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum] = []
+    supportedTypes: [YDSpaceyComponentsTypes.Types]?,
+    supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]?
   ) {
     self.service = service
-    self.supportedTypes = supportedTypes
-    self.supportedNPSAnswersTypes = supportedNPSAnswersTypes
+    self.supportedTypes = supportedTypes ?? YDSpaceyComponentsTypes.Types.allCases
+    self.supportedNPSAnswersTypes = supportedNPSAnswersTypes ?? YDSpaceyComponentNPSQuestion.AnswerTypeEnum.allCases
+    
+    if let spaceyOrder = YDIntegrationHelper.shared
+        .getFeature(featureName: YDConfigKeys.spaceyService.rawValue)?
+        .extras?[YDConfigProperty.liveSpaceyOrder.rawValue] as? [String] {
+      self.spaceyOrder = spaceyOrder
+    }
   }
 
   // MARK: Actions

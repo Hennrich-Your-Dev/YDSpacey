@@ -25,9 +25,12 @@ public class YDB2WService {
   let zipcode: String
   let spacey: String
   let lasaClient: String
+  let DEBUG_lasaClient: String
   let youTubeAPI: String
   let chatService: String
   let invoiceService: String
+  let neoway: String
+  let neowaySecret: String
 
   var youTubeKey = ""
   var storeMaxRadius: Double = 3500
@@ -64,7 +67,12 @@ public class YDB2WService {
             .endpoint,
 
           let invoiceService = helper.getFeature(featureName: YDConfigKeys.invoiceService.rawValue)?
-            .endpoint
+            .endpoint,
+          
+          let neowayServiceConfig = helper
+            .getFeature(featureName: YDConfigKeys.neowayService.rawValue),
+          let neowayServiceApi = neowayServiceConfig.endpoint,
+          let neowaySecret = neowayServiceConfig.extras?[YDConfigProperty.secret.rawValue] as? String
     else {
       fatalError("Não foi possível resgatar todas APIs")
     }
@@ -78,9 +86,12 @@ public class YDB2WService {
     self.zipcode = zipcodeApi
     self.spacey = spaceyApi
     self.lasaClient = lasaApi
+    self.DEBUG_lasaClient = "https://horus.azure-api.net/cliunicoapp"
     self.youTubeAPI = "\(googleServiceApi)/youtube/v3/videos?part=statistics,liveStreamingDetails"
     self.chatService = chatService
     self.invoiceService = invoiceService
+    self.neoway = neowayServiceApi
+    self.neowaySecret = neowaySecret
 
     if let youTubeKey = googleServiceConfig
     .extras?[YDConfigProperty.youtubeKey.rawValue] as? String {
