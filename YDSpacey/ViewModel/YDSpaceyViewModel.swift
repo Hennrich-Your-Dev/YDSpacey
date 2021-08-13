@@ -140,6 +140,8 @@ public class YDSpaceyViewModel {
           if let component = curr.component?.children
               .first?.get() as? YDSpaceyComponentNextLive {
             firstNextLive.value = component
+          } else {
+            firstNextLive.value = nil
           }
 
         default:
