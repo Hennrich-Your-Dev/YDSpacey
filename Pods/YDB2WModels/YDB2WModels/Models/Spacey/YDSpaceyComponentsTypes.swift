@@ -112,7 +112,7 @@ public enum YDSpaceyComponentsTypes: Decodable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let type = try container.decode(Types.self, forKey: .type)
     let singleValueContainer = try decoder.singleValueContainer()
-
+    
     switch type {
       case .banner:
         self = .banner(try singleValueContainer.decode(YDSpaceyComponentBanner.self))

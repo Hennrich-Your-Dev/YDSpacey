@@ -127,6 +127,11 @@ extension YDSpaceyViewController {
        let liveNPSComponent = component as? YDSpaceyComponentLiveNPS {
       return dequeueLiveNPSCell(with: liveNPSComponent, at: indexPath)
     }
+    
+    if case .nextLiveParent = type,
+       let nextLiveParent = component as? YDSpaceyComponentNextLiveStruct {
+      return dequeueNextLiveCell(with: nextLiveParent, at: indexPath)
+    }
 
     if case .custom = type,
        let customComponent = component as? YDSpaceyCustomComponentDelegate {

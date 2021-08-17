@@ -31,6 +31,8 @@ enum YDSpaceyHelper {
       collectionView.register(SpaceyMultipleChoicesListCollectionViewCell.self)
       collectionView.register(SpaceyEditTextCollectionViewCell.self)
       collectionView.register(SpaceyTermsOfUseCollectionViewCell.self)
+      collectionView.register(SpaceyNextLiveCollectionViewCell.self)
+      collectionView.register(SpaceyNextLiveWithTitleAndButtonCollectionViewCell.self)
     }
   }
 

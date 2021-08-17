@@ -18,6 +18,9 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var error: Binder<String> { get }
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
   var spaceyId: String { get }
+  
+  var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate? { get set }
+  
   var componentsList: Binder<[YDSpaceyCommonStruct]> { get set }
   var playerComponent: Binder<YDSpaceyComponentPlayer?> { get }
   var firstNextLive: Binder<YDSpaceyComponentNextLive?> { get }
@@ -34,6 +37,12 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     type: YDSpaceyComponentsTypes.Types?
   )
   func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any])
+  
+  func openNextLives()
+  func saveNextLiveOnCalendar(
+    live: YDSpaceyComponentNextLive,
+    onCompletion completion: @escaping (_ success: Bool) -> Void
+  )
 }
 
 public class YDSpaceyViewModel {
@@ -42,6 +51,8 @@ public class YDSpaceyViewModel {
   let service: YDB2WServiceDelegate
   let supportedTypes: [YDSpaceyComponentsTypes.Types]
   let supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]
+  
+  public weak var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate?
 
   public var loading: Binder<Bool> = Binder(false)
   public var error: Binder<String> = Binder("")
@@ -143,6 +154,7 @@ public class YDSpaceyViewModel {
           } else {
             firstNextLive.value = nil
           }
+          list.append(curr)
 
         default:
           for component in children {
@@ -157,7 +169,7 @@ public class YDSpaceyViewModel {
     loading.value = false
   }
 
-  func conformSupportedTimesInside(
+  func conformSupportedTypesInside(
     children: [YDSpaceyComponentsTypes]
   ) -> [YDSpaceyComponentsTypes] {
     return children.filter {
@@ -168,7 +180,7 @@ public class YDSpaceyViewModel {
           return false
         } else if $0.componentType == .grid,
                   let grid = $0.get() as? YDSpaceyComponentGrid {
-          grid.children = conformSupportedTimesInside(children: grid.children)
+          grid.children = conformSupportedTypesInside(children: grid.children)
           return true
         } else {
           return true

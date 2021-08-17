@@ -11,12 +11,6 @@ import YDExtensions
 
 class SpaceyTitleCollectionViewCell: UICollectionViewCell {
   // MARK: Components
-//  lazy var width: NSLayoutConstraint = {
-//    let width = contentView.widthAnchor
-//      .constraint(equalToConstant: bounds.size.width)
-//    width.isActive = true
-//    return width
-//  }()
   let titleLabel = UILabel()
   lazy var trailingPadding: NSLayoutConstraint = {
     let padding = titleLabel.trailingAnchor.constraint(
@@ -40,17 +34,6 @@ class SpaceyTitleCollectionViewCell: UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
-//  override func systemLayoutSizeFitting(
-//    _ targetSize: CGSize,
-//    withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
-//    verticalFittingPriority: UILayoutPriority
-//  ) -> CGSize {
-//    width.constant = bounds.size.width
-//    return contentView.systemLayoutSizeFitting(
-//      CGSize(width: targetSize.width, height: 1)
-//    )
-//  }
 
   override func prepareForReuse() {
     super.prepareForReuse()
