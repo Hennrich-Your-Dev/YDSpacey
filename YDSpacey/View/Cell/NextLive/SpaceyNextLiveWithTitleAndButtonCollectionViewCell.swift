@@ -115,6 +115,7 @@ class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
 // MARK: UI
 extension SpaceyNextLiveWithTitleAndButtonCollectionViewCell {
   private func configureLayout() {
+    configureTitle()
     configureNextLiveView()
     configureButton()
   }
