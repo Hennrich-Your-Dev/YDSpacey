@@ -40,8 +40,11 @@ class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
   }()
   
   let nextLiveView = YDNextLiveView(hasButton: true)
+  lazy var nextLiveViewTopConstraint: NSLayoutConstraint = {
+    nextLiveView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16)
+  }()
   
-  let button = YDWireButton(withTitle: "confira nossa programação completa")
+  let button = YDWireButton()
   lazy var buttonTopConstraint: NSLayoutConstraint = {
     button.topAnchor.constraint(equalTo: nextLiveView.bottomAnchor, constant: 12)
   }()
@@ -85,6 +88,7 @@ class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
     nextLiveView.config(with: live)
     
     configureTitle(title)
+    configureButtonTitle(title)
   }
   
   private func configureTitle(_ title: String?) {
@@ -93,6 +97,7 @@ class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
     else {
       titleLabelTopConstraint.constant = 0
       titleLabelHeightConstraint.constant = 0
+      nextLiveViewTopConstraint.constant = 0
       return
     }
     
@@ -144,12 +149,12 @@ extension SpaceyNextLiveWithTitleAndButtonCollectionViewCell {
     nextLiveView.callback = scheduleButtonCallback
 
     NSLayoutConstraint.activate([
-      nextLiveView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
       nextLiveView.leadingAnchor
         .constraint(equalTo: contentView.leadingAnchor, constant: 16),
       nextLiveView.trailingAnchor
         .constraint(equalTo: contentView.trailingAnchor, constant: -16)
     ])
+    nextLiveViewTopConstraint.isActive = true
   }
 
   private func configureButton() {
