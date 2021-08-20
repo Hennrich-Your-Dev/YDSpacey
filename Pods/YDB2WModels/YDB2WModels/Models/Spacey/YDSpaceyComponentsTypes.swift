@@ -24,13 +24,14 @@ public enum YDSpaceyComponentsTypes: Decodable {
   case nps(YDSpaceyComponentNPS)
   case npsEditText(YDSpaceyComponentNPSQuestion)
   case npsQuestion(YDSpaceyComponentNPSQuestion)
-
   case custom(YDSpaceyCustomComponentDelegate)
 
+  // MARK: CodingKeys
   enum CodingKeys: String, CodingKey {
     case type
   }
 
+  // MARK: Variables
   public var componentType: `Types` {
     switch self {
       case .banner:
@@ -177,6 +178,10 @@ public enum YDSpaceyComponentsTypes: Decodable {
       case .custom:
         throw NSError(domain: "", code: 1, userInfo: nil)
     }
+  }
+  
+  public init(_ nextLive: YDSpaceyComponentNextLive) {
+    self = .nextLive(nextLive)
   }
 
   // MARK: Actions

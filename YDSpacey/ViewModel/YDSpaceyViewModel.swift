@@ -37,6 +37,11 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     type: YDSpaceyComponentsTypes.Types?
   )
   func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any])
+  func sendMetricStuart(
+    nameSpace: TrackEventsNameSpace,
+    event: TrackEvents,
+    parameters: [String: Any]
+  )
   
   func openNextLives()
   func saveNextLiveOnCalendar(
@@ -310,6 +315,18 @@ extension YDSpaceyViewModel: YDSpaceyViewModelDelegate {
   public func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any]) {
     YDIntegrationHelper.shared
       .trackEvent(withName: name, ofType: type, withParameters: parameters)
+  }
+  
+  public func sendMetricStuart(
+    nameSpace: TrackEventsNameSpace,
+    event: TrackEvents,
+    parameters: [String: Any]
+  ) {
+    YDIntegrationHelper.shared.trackStuartEvent(
+      namespace: nameSpace,
+      event: event,
+      parameters: parameters
+    )
   }
 }
 

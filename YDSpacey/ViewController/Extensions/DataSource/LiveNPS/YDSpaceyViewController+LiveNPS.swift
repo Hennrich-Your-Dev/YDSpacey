@@ -24,14 +24,15 @@ extension YDSpaceyViewController {
     YDManager.LivesNPS.shared.add(npsToStore)
 
     let parameters = TrackEvents.liveNPS.parameters(body: [
+      "userId": YDIntegrationHelper.shared.currentUser?.id ?? "",
       "liveId": spaceyId,
-      "cardId": nps?.id as Any,
-      "title": nps?.title as Any,
-      "value": nps?.storedValue as Any
+      "cardId": nps?.id ?? "",
+      "title": nps?.title ?? "",
+      "value": nps?.storedValue ?? ""
     ])
 
     self.viewModel?
-      .sendMetric(name: .liveNPS, type: .action, parameters: parameters)
+      .sendMetricStuart(nameSpace: .lives, event: .liveNPS, parameters: parameters)
   }
 
   private func destroy(

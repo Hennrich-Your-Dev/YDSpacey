@@ -239,9 +239,15 @@ extension SpaceyCardViewCell {
 
   @objc func onSkipButtonAction(_ sender: UIButton) {
     if sender.tag == 0 {
-      cards.first(where: { $0.id == firstCardView.card?.id })?.storedValue = ""
+      if let card = cards.first(where: { $0.id == firstCardView.card?.id }) {
+        cards.first(where: { $0.id == firstCardView.card?.id })?.storedValue = ""
+        sendNPSCallback?(card)
+      }
     } else {
-      cards.first(where: { $0.id == secondCardView.card?.id })?.storedValue = ""
+      if let card = cards.first(where: { $0.id == secondCardView.card?.id }) {
+        cards.first(where: { $0.id == secondCardView.card?.id })?.storedValue = ""
+        sendNPSCallback?(card)
+      }
     }
 
     moveBack(card: sender.tag == 0 ? .first : .second)

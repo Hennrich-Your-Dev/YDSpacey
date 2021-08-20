@@ -26,21 +26,23 @@ public extension YDIntegrationHelper {
 //    Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { _ in
 //      UIAlertController.showAlert(title: "Evento: \(name.rawValue)", message: "tipo: \(type.rawValue)\npayload: \(payload)")
 //    }
+    
+    let eventName = name.eventName
 
     if type == .action {
-      trackAdobeAction(actionName: name.rawValue, parameters: payload)
-      trackGAEvent(actionName: name.rawValue, parameters: payload)
+      trackAdobeAction(actionName: eventName, parameters: payload)
+      trackGAEvent(actionName: eventName, parameters: payload)
 
-      trackFacebookEvent(eventName: name.rawValue, parameters: payload)
-      trackFirebaseEvent(eventName: name.rawValue, parameters: payload)
+      trackFacebookEvent(eventName: eventName, parameters: payload)
+      trackFirebaseEvent(eventName: eventName, parameters: payload)
     } else if type == .state {
-      trackAdobeState(stateName: name.rawValue, parameters: payload)
-      trackGAScreen(stateName: name.rawValue, parameters: payload)
+      trackAdobeState(stateName: eventName, parameters: payload)
+      trackGAScreen(stateName: eventName, parameters: payload)
     }
   }
 }
 
-public extension YDIntegrationHelper {
+extension YDIntegrationHelper {
   // MARK: Actions
   func trackAdobeAction(actionName: String, parameters: [String: Any]?) {
     trackingDelegate?.trackAdobeAction(actionName: actionName, parameters: parameters)
@@ -67,12 +69,21 @@ public extension YDIntegrationHelper {
   func trackFirebaseEvent(eventName: String, parameters: [String: Any]?) {
     trackingDelegate?.trackFirebaseEvent(eventName: eventName, parameters: parameters)
   }
-
-  func trackNewRelicEvent(eventName: String, parameters: [String: Any]?) {
+  
+  // MARK: Exposed
+  public func trackNewRelicEvent(eventName: String, parameters: [String: Any]?) {
     trackingDelegate?.trackNewRelicEvent(eventName: eventName, parameters: parameters)
   }
 
-  func trackStuartEvent(eventName: String, parameters: [String: Any]?) {
-    trackingDelegate?.trackStuartEvent(eventName: eventName, parameters: parameters)
+  public func trackStuartEvent(
+    namespace: TrackEventsNameSpace,
+    event: TrackEvents,
+    parameters: [String: Any]?
+  ) {
+    trackingDelegate?.trackStuartEvent(
+      namespace: namespace.rawValue,
+      eventName: event.eventName,
+      parameters: parameters
+    )
   }
 }
