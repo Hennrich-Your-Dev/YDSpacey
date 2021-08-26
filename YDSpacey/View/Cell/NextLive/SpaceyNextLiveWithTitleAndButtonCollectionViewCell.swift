@@ -88,7 +88,7 @@ class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
     nextLiveView.config(with: live)
     
     configureTitle(title)
-    configureButtonTitle(title)
+    configureButtonTitle(buttonTitle)
   }
   
   private func configureTitle(_ title: String?) {
