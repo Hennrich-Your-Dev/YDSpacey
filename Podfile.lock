@@ -24,16 +24,16 @@ PODS:
     - SnapKit
   - SnapKit (5.0.1)
   - YDB2WAssets (1.4.23)
-  - YDB2WComponents (1.4.64):
+  - YDB2WComponents (1.4.67):
     - Cosmos
     - YDB2WAssets (~> 1.4.0)
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
     - YDUtilities (~> 1.4.0)
-  - YDB2WIntegration (1.4.24):
+  - YDB2WIntegration (1.4.32):
     - YDB2WModels (~> 1.4.0)
     - YDExtensions (~> 1.4.0)
-  - YDB2WModels (1.4.47):
+  - YDB2WModels (1.4.55):
     - YDExtensions (~> 1.4.0)
   - YDB2WServices (1.4.18):
     - Alamofire (~> 4.0)
@@ -89,9 +89,9 @@ SPEC CHECKSUMS:
   RichTextView: 9a36e8a8661e2674f4b5309ed443c9d34fb8698e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   YDB2WAssets: 5cfdcbcc5672fb2eb460fae05657fc5b0183dee7
-  YDB2WComponents: 8b796808316caff75a7bfe993370a461677b7309
-  YDB2WIntegration: b99ec1142397e6c98fe2ef504119169df0358296
-  YDB2WModels: 3326061ea7a05585f72caef21172fbbd3f68714c
+  YDB2WComponents: b4bdb45a6852f9d862403e10605369b7137215d5
+  YDB2WIntegration: 21315390c8bbd0c819757e68d12e38a6770a72ea
+  YDB2WModels: 2e68a0ee1003d9a537608b3327e8b1dc7ea4d80a
   YDB2WServices: 1b534ef9d0bb517e9eb130da468fb1242347063d
   YDExtensions: 9b216106fdbd2df346475187d6e06204afae1bc6
   YDUtilities: 4ae8bc92028ebb14c2dcb6fa1330c3f188b423c8

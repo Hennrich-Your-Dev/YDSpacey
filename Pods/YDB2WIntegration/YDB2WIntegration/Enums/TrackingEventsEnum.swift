@@ -75,6 +75,9 @@ public enum TrackEvents: String {
   // Offline Orders
   case offlineOrders = "ACOM:MODOLOJA-MinhasCompras"
   
+  // Miscellaneous
+  case nps
+  
   public var eventName: String {
     switch self {
       case .addToCart, .pageView, .liveOpenChat:
@@ -220,6 +223,12 @@ public enum TrackEvents: String {
       // Offline Orders
       case .offlineOrders:
         return [:]
+        
+      // Miscellaneous
+      case .nps:
+        return [
+          "npsVersion": "v1"
+        ]
     }
   }
 
@@ -281,14 +290,14 @@ public enum TrackEvents: String {
       case .liveNPS:
         let userId = body["userId"] as? String ?? ""
         let liveId = body["liveId"] as? String ?? ""
-        let cardId = body["cardId"] as? String ?? ""
+        let quizzId = body["quizzId"] as? String ?? ""
         let title = body["title"] as? String ?? ""
         let answer = body["value"] as? String ?? ""
 
         return [
           "customerId": userId,
           "liveId": liveId,
-          "quizzId": cardId,
+          "quizzId": quizzId,
           "question": title,
           "answer": answer
         ]
@@ -373,10 +382,29 @@ public enum TrackEvents: String {
       // Offline Orders
       case .offlineOrders:
         return [:]
+        
+      // Miscellaneous
+      case .nps:
+        let userId = body["userId"] as? String ?? ""
+        let answerType = body["type"] as? String ?? ""
+        let question = body["question"] as? String ?? ""
+        let answer = body["answer"] as? String ?? ""
+        let storeId = body["storeId"] as? String ?? ""
+        let maxValue = body["maxValue"] as? String ?? ""
+        
+        return [
+          "customerId": userId,
+          "answerType": answerType,
+          "question": question,
+          "answer": answer,
+          "maxValue": maxValue,
+          "storeId": storeId
+        ]
     }
   }
 }
 
 public enum TrackEventsNameSpace: String {
   case lives
+  case store = "store-mode"
 }

@@ -13,6 +13,10 @@ import YDB2WModels
 public protocol YDIntegrationHelperPresentationDelegate {
   func presentScanner()
   func presentStoreMode(deeplink: String?)
-  func presentLive(navigationController: UINavigationController)
+  func presentLive(navigationController: UINavigationController, deepLink: String?)
   func presentSelectAddress(completion: ((YDAddress?) -> Void)?)
+  func getReactHotsiteView(
+    from path: String,
+    onCompletion completion: @escaping (_ view: UIView?) -> Void
+  )
 }

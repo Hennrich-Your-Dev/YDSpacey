@@ -37,6 +37,10 @@ public class YDOfflineOrdersProduct: Decodable {
       products?.offline?.name ??
       self.item
   }
+  
+  public var originalName: String? {
+    return self.item
+  }
 
   // MARK: Coding Keys
   enum CodingKeys: String, CodingKey {

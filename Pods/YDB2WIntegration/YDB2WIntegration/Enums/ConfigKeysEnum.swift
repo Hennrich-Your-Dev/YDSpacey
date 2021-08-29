@@ -22,6 +22,7 @@ public enum YDConfigKeys: String {
   case invoiceService = "offlineOrdersNoteService"
   case googleService = "youtubeStatisticsApi"
   case neowayService = "neowayService"
+  case customerSupportService = "customer_support_service"
 }
 
 public enum YDConfigProperty: String {
@@ -72,6 +73,7 @@ public enum YDConfigProperty: String {
   
   case afterLiveEnabled
   case afterLiveHotsite
+  case afterLivePollingTimeInSeconds = "afterLivePollingTime"
 
   // Next Lives
   case nextLiveEnabled
@@ -89,4 +91,5 @@ public enum YDConfigProperty: String {
   
   // Miscellaneous
   case secret
+  case urlPrivacyPolicy = "url_privacy_policy"
 }

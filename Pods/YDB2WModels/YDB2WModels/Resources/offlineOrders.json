@@ -1,232 +1,236 @@
 [
   {
-    "cupom": 243,
-    "chaveNfe": "NFe26210133014556077571653010000596611166804275",
-    "data": "2021-01-25T00:00:00",
-    "valorTotal": 68.1,
-    "codigoLoja": 141,
-    "nomeLoja": "SHC RIOMAR",
-    "logradouro": "AVENIDA REPUBLICA DO LIBANO 25",
-    "cep": "51110-900",
-    "cidade": "RECIFE",
-    "uf": "PE",
+    "cupom": 5,
+    "chaveNfe": "NFe33210333014556007956653070002246311800471382",
+    "data": "2021-03-27T00:00:00",
+    "valorTotal": 34.73,
+    "codigoLoja": 175,
+    "pdv": 307,
+    "nomeLoja": "SHC NOVA AMERICA",
+    "logradouro": "AV PASTOR MARTIN LUTHER KING JUNIOR 126 BL01 LJB P",
+    "cep": "20760-005",
+    "cidade": "RIO DE JANEIRO",
+    "uf": "RJ",
     "itens": [
       {
-        "codigoItem": 6,
-        "ean": "7898591450686",
-        "item": "MINI GELATINA BANANAS 15G FINI",
+        "codigoItem": 1,
+        "ean": "7892840816322",
+        "item": "FANDANGOS PRESUNTO 140G ELMA CHIPS M",
         "qtde": 1,
-        "valorTotalItem": 0.99
+        "valorTotalItem": 7.99
       },
       {
         "codigoItem": 2,
-        "ean": "7891010247409",
-        "item": "SAB J&J AMENDOAS 80G",
-        "qtde": 3,
-        "valorTotalItem": 5.07
-      },
-      {
-        "codigoItem": 4,
-        "ean": "7891010249403",
-        "item": "HID J&J LAV/CAM 400ML C/2 C/40% DESC",
+        "ean": "7896499902344",
+        "item": "PIPOCA DOCE DE MILHO 90G LOBITS",
         "qtde": 1,
-        "valorTotalItem": 33.99
-      },
-      {
-        "codigoItem": 5,
-        "ean": "7891008169201",
-        "item": "TABLETE OPERETA 90G GAROTO",
-        "qtde": 3,
-        "valorTotalItem": 10.99
+        "valorTotalItem": 1.99
       },
       {
         "codigoItem": 3,
-        "ean": "7891010247386",
-        "item": "SAB J&J LAVANDA 80G",
-        "qtde": 3,
-        "valorTotalItem": 5.07
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891350034851",
-        "item": "GEL FIXADOR BOZZANO PROTECAO SOLAR 300G",
-        "qtde": 1,
-        "valorTotalItem": 11.99
-      }
-    ]
-  },
-  {
-    "cupom": 120,
-    "chaveNfe": "NFe33210133014556001087653120000102981322326890",
-    "data": "2021-01-25T00:00:00",
-    "valorTotal": 149.94,
-    "codigoLoja": 77,
-    "nomeLoja": "SHC RIOMAR",
-    "logradouro": "AVENIDA REPUBLICA DO LIBANO 25",
-    "cep": "51110-900",
-    "cidade": "RECIFE",
-    "uf": "PE",
-    "itens": [
-      {
-        "codigoItem": 1,
-        "ean": "7896058596571",
-        "item": "OVINHOS DE AMENDOIM 70G DORI",
-        "qtde": 2,
-        "valorTotalItem": 4.98
-      },
-      {
-        "codigoItem": 4,
-        "ean": "7891027291075",
-        "item": "AGENDA ESP D+ MASC M4 TILIBRA",
+        "ean": "7894900011517",
+        "item": "COCA-COLA PET 2L",
         "qtde": 1,
         "valorTotalItem": 9.99
       },
       {
+        "codigoItem": 4,
+        "ean": "7891350035308",
+        "item": "ESM RISQUE MM SAUDADES PASSOU 8ML",
+        "qtde": 1,
+        "valorTotalItem": 4.99
+      },
+      {
+        "codigoItem": 5,
+        "ean": "0000078938830",
+        "item": "DROPS HALLS MENTA 28G MDLZ",
+        "qtde": 1,
+        "valorTotalItem": 1.99
+      },
+      {
+        "codigoItem": 6,
+        "ean": "7896423470994",
+        "item": "CHOC TWIX CARAMELO 40G",
+        "qtde": 1,
+        "valorTotalItem": 3.29
+      },
+      {
+        "codigoItem": 7,
+        "ean": "7622300747442",
+        "item": "BISC RECH CHOCOLICIA CHOC 143G NABISCO",
+        "qtde": 1,
+        "valorTotalItem": 4.49
+      }
+    ]
+  },
+  {
+    "cupom": 122,
+    "chaveNfe": "NFe33210433014556007956653070002261841627546990",
+    "data": "2021-04-09T00:00:00",
+    "valorTotal": 64.96,
+    "codigoLoja": 175,
+    "pdv": 307,
+    "nomeLoja": "SHC NOVA AMERICA",
+    "logradouro": "AV PASTOR MARTIN LUTHER KING JUNIOR 126 BL01 LJB P",
+    "cep": "20760-005",
+    "cidade": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "itens": [
+      {
+        "codigoItem": 1,
+        "ean": "4005900181015",
+        "item": "DEO ROLLON NIVEA DRY COMF C/2 50% DESC",
+        "qtde": 1,
+        "valorTotalItem": 11.99
+      },
+      {
+        "codigoItem": 2,
+        "ean": "7899026400894",
+        "item": "ESM COLORAMA CAFE 8ML",
+        "qtde": 1,
+        "valorTotalItem": 4.99
+      },
+      {
         "codigoItem": 3,
-        "ean": "7896027531688",
-        "item": "JOGO BANCO IMOBILIARIO GDE",
+        "ean": "6942685634221",
+        "item": "KIT 2 BIQUINI B+ B01K RENDA PINK/BCO",
         "qtde": 1,
-        "valorTotalItem": 129.99
+        "valorTotalItem": 19.99
+      },
+      {
+        "codigoItem": 4,
+        "ean": "7896108560750",
+        "item": "PROT C B KIDS FPS50 110ML GTS 30 110ML",
+        "qtde": 1,
+        "valorTotalItem": 27.99
+      }
+    ]
+  },
+  {
+    "cupom": 103,
+    "chaveNfe": "NFe33210633014556007956653060001658181493961892",
+    "data": "2021-06-26T00:00:00",
+    "valorTotal": 35.45,
+    "codigoLoja": 175,
+    "pdv": 306,
+    "nomeLoja": "SHC NOVA AMERICA",
+    "logradouro": "AV PASTOR MARTIN LUTHER KING JUNIOR 126 BL01 LJB P",
+    "cep": "20760-005",
+    "cidade": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "itens": [
+      {
+        "codigoItem": 1,
+        "ean": "7891000289709",
+        "item": "BISC NESFIT DELICE CACAU E AVELA 140G",
+        "qtde": 1,
+        "valorTotalItem": 3.99
       },
       {
         "codigoItem": 2,
-        "ean": "7896058597721",
-        "item": "AMENDOIM JAPONES 120G DORI",
+        "ean": "7622300747442",
+        "item": "BISC RECH CHOCOLICIA CHOC 143G NABISCO",
+        "qtde": 1,
+        "valorTotalItem": 4.49
+      },
+      {
+        "codigoItem": 3,
+        "ean": "7891008166330",
+        "item": "TABLETE BRANCO NEGRESCO 90G GAROTO",
+        "qtde": 1,
+        "valorTotalItem": 3.67
+      },
+      {
+        "codigoItem": 4,
+        "ean": "7891008168877",
+        "item": "TABLETE CAST CAJU 90G GAROTO",
+        "qtde": 1,
+        "valorTotalItem": 3.67
+      },
+      {
+        "codigoItem": 5,
+        "ean": "7891008168853",
+        "item": "TABLETE CORES 90G GAROTO",
+        "qtde": 1,
+        "valorTotalItem": 3.65
+      },
+      {
+        "codigoItem": 6,
+        "ean": "7891150060227",
+        "item": "REFIL SAB LIQ LUX LAVANDA 200ML",
+        "qtde": 1,
+        "valorTotalItem": 5.99
+      },
+      {
+        "codigoItem": 7,
+        "ean": "7891350034103",
+        "item": "ESM RISQUE COLORS AZULIVRE MENTE 8ML",
+        "qtde": 1,
+        "valorTotalItem": 3.33
+      },
+      {
+        "codigoItem": 8,
+        "ean": "7891350034134",
+        "item": "ESM RISQUE COLORS LAVANDA ALMA 8ML",
+        "qtde": 1,
+        "valorTotalItem": 3.33
+      },
+      {
+        "codigoItem": 9,
+        "ean": "7891182014793",
+        "item": "ESM RISQUE NUDE JOIA DAS AGUAS 8ML",
+        "qtde": 1,
+        "valorTotalItem": 3.33
+      }
+    ]
+  },
+  {
+    "cupom": 112,
+    "chaveNfe": "NFe33210733014556007956653060001672431126899231",
+    "data": "2021-07-14T00:00:00",
+    "valorTotal": 38.93,
+    "codigoLoja": 175,
+    "pdv": 306,
+    "nomeLoja": "SHC NOVA AMERICA",
+    "logradouro": "AV PASTOR MARTIN LUTHER KING JUNIOR 126 BL01 LJB P",
+    "cep": "20760-005",
+    "cidade": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "itens": [
+      {
+        "codigoItem": 1,
+        "ean": "7896221802232",
+        "item": "DESCOLORANTE RAPIDO MARCIA CAMOMILA 20G",
+        "qtde": 1,
+        "valorTotalItem": 3.99
+      },
+      {
+        "codigoItem": 2,
+        "ean": "7896679230472",
+        "item": "AGUA OXIGENADA BASIC + 20 VOL 70ML",
+        "qtde": 1,
+        "valorTotalItem": 1.99
+      },
+      {
+        "codigoItem": 3,
+        "ean": "7899706180924",
+        "item": "SH ELSEVE LISO DOS SONHOS 200ML",
+        "qtde": 1,
+        "valorTotalItem": 15.99
+      },
+      {
+        "codigoItem": 4,
+        "ean": "7898554840660",
+        "item": "CHIPS DE SOJA AZEITE DE OLIVA 30G LEVEN",
         "qtde": 2,
-        "valorTotalItem": 4.98
-      }
-    ]
-  },
-  {
-    "cupom": 167,
-    "chaveNfe": "NFe50210133014556008170653090000125851175181874",
-    "data": "2021-01-25T00:00:00",
-    "valorTotal": 9.26,
-    "codigoLoja": 176,
-    "nomeLoja": "SHC RIOMAR",
-    "logradouro": "AVENIDA REPUBLICA DO LIBANO 25",
-    "cep": "51110-900",
-    "cidade": "RECIFE",
-    "uf": "PE",
-    "itens": [
-      {
-        "codigoItem": 2,
-        "ean": "7898925201748",
-        "item": "AGUA MINERAL LEVEN S/GAS 310ML",
-        "qtde": 1,
-        "valorTotalItem": 1.79
+        "valorTotalItem": 7.98
       },
       {
-        "codigoItem": 1,
-        "ean": "7896058503784",
-        "item": "AMENDOIM CROCANTE NATURAL 90G DORI",
-        "qtde": 3,
-        "valorTotalItem": 7.47
-      }
-    ]
-  },
-  {
-    "cupom": 6,
-    "chaveNfe": "NFe27210133014556128907653030001623121642747009",
-    "data": "2021-01-05T00:00:00",
-    "valorTotal": 69.96,
-    "codigoLoja": 1287,
-    "nomeLoja": "RUA DO COMÉRCIO",
-    "logradouro": "R DO COMERCIO 173, TERREOPRIM",
-    "cep": "57020-000",
-    "cidade": "MACEIO",
-    "uf": "AL",
-    "itens": [
-      {
-        "codigoItem": 6,
-        "ean": "7897807454098",
-        "item": "PORTA DETERGENTE/BUCHA DOUBLE 5409 ARTHI",
-        "qtde": 1,
-        "valorTotalItem": 14.99
-      },
-      {
-        "codigoItem": 8,
-        "ean": "6920388659321",
-        "item": "JOAO TEIMOSO ANIMAIS JILONG BRINK",
-        "qtde": 1,
-        "valorTotalItem": 19.99
-      },
-      {
-        "codigoItem": 6,
-        "ean": "7897807454098",
-        "item": "PORTA DETERGENTE/BUCHA DOUBLE 5409 ARTHI",
-        "qtde": 1,
-        "valorTotalItem": 14.99
-      },
-      {
-        "codigoItem": 8,
-        "ean": "6920388659321",
-        "item": "JOAO TEIMOSO ANIMAIS JILONG BRINK",
-        "qtde": 1,
-        "valorTotalItem": 19.99
-      }
-    ]
-  },
-  {
-    "cupom": 1,
-    "chaveNfe": "NFe21201233014556116658653060000071951662105676",
-    "data": "2020-12-10T00:00:00",
-    "valorTotal": 2093,
-    "codigoLoja": 1230,
-    "nomeLoja": "PINHEIRO",
-    "logradouro": "PRACA JOSE SARNEY S N",
-    "cep": "65200-000",
-    "cidade": "PINHEIRO",
-    "uf": "MA",
-    "itens": [
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "0",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "9999",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "0",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "9999",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "0",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "0",
-        "qtde": 1,
-        "valorTotalItem": 299
-      },
-      {
-        "codigoItem": 1,
-        "ean": "7891356075599",
-        "item": "9999",
-        "qtde": 1,
-        "valorTotalItem": 299
+        "codigoItem": 5,
+        "ean": "7622300747442",
+        "item": "BISC RECH CHOCOLICIA CHOC 143G NABISCO",
+        "qtde": 2,
+        "valorTotalItem": 8.98
       }
     ]
   }

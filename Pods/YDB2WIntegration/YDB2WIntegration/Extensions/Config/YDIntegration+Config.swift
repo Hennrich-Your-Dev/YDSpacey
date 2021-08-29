@@ -12,4 +12,8 @@ extension YDIntegrationHelper {
   public func getFeature(featureName: String) -> YDConfigFeature? {
     return configDelegate?.getFeature(featureName: featureName)
   }
+  
+  public func getNavigationContextParameters() -> [String: String] {
+    return configDelegate?.getNavigationContextParameters() ?? [:]
+  }
 }

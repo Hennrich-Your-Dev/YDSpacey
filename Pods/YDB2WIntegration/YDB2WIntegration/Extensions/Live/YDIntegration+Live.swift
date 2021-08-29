@@ -9,8 +9,11 @@ import UIKit
 
 // MARK: Open live module
 public extension YDIntegrationHelper {
-  func openLive(navigationController: UINavigationController) {
-    presentationDelegate?.presentLive(navigationController: navigationController)
+  func openLive(navigationController: UINavigationController, deepLink: String?) {
+    presentationDelegate?.presentLive(
+      navigationController: navigationController,
+      deepLink: deepLink
+    )
   }
 }
 

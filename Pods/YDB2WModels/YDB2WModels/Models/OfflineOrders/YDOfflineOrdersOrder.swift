@@ -15,6 +15,7 @@ public class YDOfflineOrdersOrder: Decodable {
   public var date: String?
   public var totalPrice: Double?
   public var storeId: Int?
+  public var pdv: Int?
 
   // address
   public var addressStreet: String?
@@ -98,6 +99,7 @@ public class YDOfflineOrdersOrder: Decodable {
     case addressCity = "cidade"
     case addressState = "uf"
     case products = "itens"
+    case pdv
   }
 }
 

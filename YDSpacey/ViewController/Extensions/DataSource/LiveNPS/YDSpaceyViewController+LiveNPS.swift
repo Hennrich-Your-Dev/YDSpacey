@@ -26,7 +26,7 @@ extension YDSpaceyViewController {
     let parameters = TrackEvents.liveNPS.parameters(body: [
       "userId": YDIntegrationHelper.shared.currentUser?.id ?? "",
       "liveId": spaceyId,
-      "cardId": nps?.id ?? "",
+      "quizzId": nps?.quizzId ?? "",
       "title": nps?.title ?? "",
       "value": nps?.storedValue ?? ""
     ])

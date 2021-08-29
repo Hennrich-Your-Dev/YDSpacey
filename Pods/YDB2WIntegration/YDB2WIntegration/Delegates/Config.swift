@@ -10,4 +10,5 @@ import Foundation
 
 public protocol YDIntegrationHelperConfigDelegate {
   func getFeature(featureName: String) -> YDConfigFeature?
+  func getNavigationContextParameters() -> [String: String]
 }
