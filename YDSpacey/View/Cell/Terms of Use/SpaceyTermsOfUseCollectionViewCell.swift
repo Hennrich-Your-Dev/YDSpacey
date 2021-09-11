@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RichTextView
 import YDB2WModels
 import YDExtensions
 
@@ -18,7 +17,7 @@ class SpaceyTermsOfUseCollectionViewCell: UICollectionViewCell {
     width.isActive = true
     return width
   }()
-  let richTextComponent = RichTextView(frame: .zero)
+//  let richTextComponent = RichTextView(frame: .zero)
 
   // MARK: Init
   override init(frame: CGRect) {
@@ -44,32 +43,32 @@ class SpaceyTermsOfUseCollectionViewCell: UICollectionViewCell {
 
   // MARK: Configure
   func configure(with component: YDSpaceyComponentTermsOfUse) {
-    guard let text = component.contentJson else { return }
+//    guard let text = component.contentJson else { return }
 
-    richTextComponent.update(
-      input: text,
-      latexParser: LatexParser(),
-      font: .systemFont(ofSize: 16),
-      textColor: Zeplin.black,
-      latexTextBaselineOffset: 0,
-      interactiveTextColor: .blue,
-      customAdditionalAttributes: nil,
-      completion: nil
-    )
+//    richTextComponent.update(
+//      input: text,
+//      latexParser: LatexParser(),
+//      font: .systemFont(ofSize: 16),
+//      textColor: Zeplin.black,
+//      latexTextBaselineOffset: 0,
+//      interactiveTextColor: .blue,
+//      customAdditionalAttributes: nil,
+//      completion: nil
+//    )
   }
 }
 
 // MARK: UI
 extension SpaceyTermsOfUseCollectionViewCell {
   private func configure() {
-    contentView.addSubview(richTextComponent)
-    richTextComponent.translatesAutoresizingMaskIntoConstraints = false
-
-    NSLayoutConstraint.activate([
-      richTextComponent.topAnchor.constraint(equalTo: contentView.topAnchor),
-      richTextComponent.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      richTextComponent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      richTextComponent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-    ])
+//    contentView.addSubview(richTextComponent)
+//    richTextComponent.translatesAutoresizingMaskIntoConstraints = false
+//
+//    NSLayoutConstraint.activate([
+//      richTextComponent.topAnchor.constraint(equalTo: contentView.topAnchor),
+//      richTextComponent.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+//      richTextComponent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//      richTextComponent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+//    ])
   }
 }

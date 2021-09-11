@@ -12,7 +12,6 @@ target 'YDSpacey' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod "RichTextView", "3.0.0"
   pod "Cosmos", "22.1.0"
   pod "YDB2WModels", "~> 1.4.0"
   pod "YDExtensions", "~> 1.4.0"
