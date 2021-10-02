@@ -20,12 +20,17 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var spaceyId: String { get }
   
   var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate? { get set }
+  var productDelegate: YDSpaceyViewModelProductDelegate? { get set }
   
   var componentsList: Binder<[YDSpaceyCommonStruct]> { get set }
   var playerComponent: Binder<YDSpaceyComponentPlayer?> { get }
   var firstNextLive: Binder<YDSpaceyComponentNextLive?> { get }
 
   var bannersOnList: [Int: YDSpaceyBannerConfig] { get set }
+  
+  var productsBatchesSize: Int { get }
+  var carrouselProducts: [Int: YDSpaceyProductCarrouselContainer] { get set }
+  
   var spaceyOrder: [String] { get }
   var spaceyNPSPreviewQuantity: Int { get }
 
@@ -36,6 +41,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     component: YDSpaceyComponentDelegate?,
     type: YDSpaceyComponentsTypes.Types?
   )
+  
   func sendMetric(name: TrackEvents, type: TrackType, parameters: [String: Any])
   func sendMetricStuart(
     nameSpace: TrackEventsNameSpace,
@@ -48,6 +54,17 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     live: YDSpaceyComponentNextLive,
     onCompletion completion: @escaping (_ success: Bool) -> Void
   )
+  
+  func getProductsIds(
+    at: Int,
+    onCompletion: @escaping ([ (id: String, sellerId: String) ]) -> Void
+  )
+  func getProducts(
+    ofIds ids: [ (id: String, sellerId: String) ],
+    onCompletion completion: @escaping (Result<[YDSpaceyProduct], YDServiceError>) -> Void
+  )
+  func selectProductOnCarrousel(_ product: YDSpaceyProduct)
+  func addProductToCart(_ product: YDSpaceyProduct)
 }
 
 public class YDSpaceyViewModel {
@@ -58,6 +75,7 @@ public class YDSpaceyViewModel {
   let supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]
   
   public weak var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate?
+  public weak var productDelegate: YDSpaceyViewModelProductDelegate?
 
   public var loading: Binder<Bool> = Binder(false)
   public var error: Binder<String> = Binder("")
@@ -67,6 +85,10 @@ public class YDSpaceyViewModel {
   public var firstNextLive: Binder<YDSpaceyComponentNextLive?> = Binder(nil)
 
   public var bannersOnList: [Int: YDSpaceyBannerConfig] = [:]
+  
+  public var carrouselProducts: [Int: YDSpaceyProductCarrouselContainer] = [:]
+  public var productsBatchesSize = 5
+  
   public var spaceyOrder: [String] = []
   public var spaceyId = ""
   public var spaceyNPSPreviewQuantity = 0
@@ -85,6 +107,12 @@ public class YDSpaceyViewModel {
         .getFeature(featureName: YDConfigKeys.spaceyService.rawValue)?
         .extras?[YDConfigProperty.liveSpaceyOrder.rawValue] as? [String] {
       self.spaceyOrder = spaceyOrder
+    }
+    
+    if let productsBatchesSize = YDIntegrationHelper.shared
+        .getFeature(featureName: YDConfigKeys.live.rawValue)?
+        .extras?[YDConfigProperty.liveCarrouselProductsBatches.rawValue] as? Int {
+      self.productsBatchesSize = productsBatchesSize
     }
   }
 
@@ -134,7 +162,7 @@ public class YDSpaceyViewModel {
         case .productCarrousel:
           list.append(curr)
 
-          #warning("Stand by")
+          #warning("STAND BY")
 //        case .grid:
 //          curr.component?.children = conformSupportedTimesInside(children: children)
 //          if (curr.component?.children ?? []).isEmpty {
@@ -159,6 +187,7 @@ public class YDSpaceyViewModel {
           } else {
             firstNextLive.value = nil
           }
+          
           list.append(curr)
 
         default:

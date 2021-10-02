@@ -61,20 +61,23 @@ extension YDSpaceyViewController: UICollectionViewDataSource {
     didEndDisplaying cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath
   ) {
-    guard let cell = cell as? SpaceyBannerCarrouselCollectionViewCell,
-          let component = viewModel?.componentsList
-            .value.at(indexPath.item)?.component as? YDSpaceyComponentCarrouselBanner
-    else {
-      return
+    switch cell {
+      case is SpaceyBannerCarrouselCollectionViewCell:
+        guard let cell = cell as? SpaceyBannerCarrouselCollectionViewCell else { return }
+        didEndDisplayBannerCarrouselCell(cell, forItemAt: indexPath)
+        
+      case is SpaceyProductCarrouselCollectionViewCell:
+        guard let cell = cell as? SpaceyProductCarrouselCollectionViewCell else { return }
+        didEndDisplayProductCarrouselCell(cell, forItemAt: indexPath)
+        
+      default: break
     }
-
-    component.currentRectList = cell.collectionViewOffset
   }
 }
 
 // MARK: Actions
 extension YDSpaceyViewController {
-  func dequeueCell(at indexPath: IndexPath) -> UICollectionViewCell {
+  private func dequeueCell(at indexPath: IndexPath) -> UICollectionViewCell {
     guard let itemAndType = viewModel?.getComponentAndType(at: indexPath),
           let component = itemAndType.component,
           let type = itemAndType.type
@@ -88,6 +91,11 @@ extension YDSpaceyViewController {
         withCarrousel: bannerCarrousel,
         at: indexPath
       )
+    }
+    
+    if case .productCarrousel = type,
+       let productCarrousel = component as? YDSpaceyComponentCarrouselProduct {
+      return dequeueProductCarrouselCell(withCarroulse: productCarrousel, at: indexPath)
     }
 
     if case .npsQuestion = type,
@@ -152,5 +160,26 @@ extension YDSpaceyViewController {
       default:
         fatalError("type: \(type) isn't support yet")
     }
+  }
+  
+  private func didEndDisplayBannerCarrouselCell(
+    _ cell: SpaceyBannerCarrouselCollectionViewCell,
+    forItemAt indexPath: IndexPath
+  ) {
+    guard let component = viewModel?.componentsList.value.at(
+      indexPath.item
+    )?.component as? YDSpaceyComponentCarrouselBanner
+    else {
+      return
+    }
+    
+    component.currentRectList = cell.collectionViewOffset
+  }
+  
+  private func didEndDisplayProductCarrouselCell(
+    _ cell: SpaceyProductCarrouselCollectionViewCell,
+    forItemAt indexPath: IndexPath
+  ) {
+    viewModel?.carrouselProducts[indexPath.item]?.currentRectList = cell.collectionViewOffset
   }
 }
