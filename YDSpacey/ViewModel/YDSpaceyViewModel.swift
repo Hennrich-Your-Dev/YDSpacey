@@ -19,6 +19,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   var spacey: Binder<YDB2WModels.YDSpacey?> { get }
   var spaceyId: String { get }
   
+  var bannerDelegate: YDSpaceyViewModelBannerDelegate? { get set }
   var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate? { get set }
   var productDelegate: YDSpaceyViewModelProductDelegate? { get set }
   
@@ -65,6 +66,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
   )
   func selectProductOnCarrousel(_ product: YDSpaceyProduct)
   func addProductToCart(_ product: YDSpaceyProduct)
+  func onOpenBanner(with url: String?)
 }
 
 public class YDSpaceyViewModel {
@@ -74,6 +76,7 @@ public class YDSpaceyViewModel {
   let supportedTypes: [YDSpaceyComponentsTypes.Types]
   let supportedNPSAnswersTypes: [YDSpaceyComponentNPSQuestion.AnswerTypeEnum]
   
+  public weak var bannerDelegate: YDSpaceyViewModelBannerDelegate?
   public weak var nextLiveDelegate: YDSpaceyViewModelNextLiveDelegate?
   public weak var productDelegate: YDSpaceyViewModelProductDelegate?
 

@@ -97,6 +97,21 @@ class SpaceyBannerCarrouselCollectionViewCell: UICollectionViewCell {
   }
 }
 
+// MARK: Actions
+extension SpaceyBannerCarrouselCollectionViewCell {
+  func getBannerComponent(at indexPath: IndexPath) -> YDSpaceyComponentBanner? {
+    guard viewModel?.componentsList.value.at(carrouselId) != nil,
+          let component = viewModel?.componentsList.value[carrouselId].component as?
+            YDSpaceyComponentCarrouselBanner,
+          case .banner(let banner) = component.children.at(indexPath.item)
+    else {
+      return nil
+    }
+    
+    return banner
+  }
+}
+
 // MARK: Layouts
 extension SpaceyBannerCarrouselCollectionViewCell {
   func configureLayout() {
@@ -117,6 +132,7 @@ extension SpaceyBannerCarrouselCollectionViewCell {
     ])
 
     collectionView.dataSource = self
+    collectionView.delegate = self
 
     // Register Cell
     collectionView.register(
@@ -147,7 +163,6 @@ extension SpaceyBannerCarrouselCollectionViewCell {
     )
 
     collectionView.collectionViewLayout = flowLayout
-    flowLayout.invalidateLayout()
     collectionView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
   }
 }

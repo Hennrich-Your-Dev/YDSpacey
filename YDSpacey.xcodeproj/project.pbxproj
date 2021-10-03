@@ -12,6 +12,9 @@
 		929FC52F26CC2536001E4A9E /* SpaceyNextLiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929FC52E26CC2536001E4A9E /* SpaceyNextLiveCollectionViewCell.swift */; };
 		929FC53326CC2789001E4A9E /* SpaceyViewModel+NextLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929FC53226CC2789001E4A9E /* SpaceyViewModel+NextLive.swift */; };
 		929FC53526CC2AB5001E4A9E /* SpaceyNextLiveWithTitleAndButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929FC53426CC2AB5001E4A9E /* SpaceyNextLiveWithTitleAndButtonCollectionViewCell.swift */; };
+		92D4AC4C27095D930021343F /* SpaceyViewModel+Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4AC4B27095D930021343F /* SpaceyViewModel+Banner.swift */; };
+		92D4AC4F270970860021343F /* SpaceyViewController+CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4AC4E270970860021343F /* SpaceyViewController+CollectionDelegate.swift */; };
+		92D4AC53270A308E0021343F /* SpaceyBannerCarrouselCollectionViewCell+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4AC52270A308E0021343F /* SpaceyBannerCarrouselCollectionViewCell+Delegate.swift */; };
 		92E9480527067CE200DC4D72 /* SpaceyViewModel+Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9480427067CE200DC4D72 /* SpaceyViewModel+Products.swift */; };
 		92E948082706A2FC00DC4D72 /* SpaceyProductCarrouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E948072706A2FC00DC4D72 /* SpaceyProductCarrouselCollectionViewCell.swift */; };
 		92E9480C2706BDC900DC4D72 /* SpaceyProductCarrouselCollectionViewCell+Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9480B2706BDC900DC4D72 /* SpaceyProductCarrouselCollectionViewCell+Layouts.swift */; };
@@ -73,6 +76,9 @@
 		929FC52E26CC2536001E4A9E /* SpaceyNextLiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyNextLiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		929FC53226CC2789001E4A9E /* SpaceyViewModel+NextLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewModel+NextLive.swift"; sourceTree = "<group>"; };
 		929FC53426CC2AB5001E4A9E /* SpaceyNextLiveWithTitleAndButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyNextLiveWithTitleAndButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		92D4AC4B27095D930021343F /* SpaceyViewModel+Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewModel+Banner.swift"; sourceTree = "<group>"; };
+		92D4AC4E270970860021343F /* SpaceyViewController+CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewController+CollectionDelegate.swift"; sourceTree = "<group>"; };
+		92D4AC52270A308E0021343F /* SpaceyBannerCarrouselCollectionViewCell+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyBannerCarrouselCollectionViewCell+Delegate.swift"; sourceTree = "<group>"; };
 		92E9480427067CE200DC4D72 /* SpaceyViewModel+Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyViewModel+Products.swift"; sourceTree = "<group>"; };
 		92E948072706A2FC00DC4D72 /* SpaceyProductCarrouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceyProductCarrouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		92E9480B2706BDC900DC4D72 /* SpaceyProductCarrouselCollectionViewCell+Layouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceyProductCarrouselCollectionViewCell+Layouts.swift"; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 		929FC53026CC2766001E4A9E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				92D4AC4A27095D790021343F /* Banner */,
 				929FC53126CC2777001E4A9E /* NextLive */,
 				92E9480327067CC800DC4D72 /* Products */,
 			);
@@ -199,6 +206,38 @@
 				929FC53226CC2789001E4A9E /* SpaceyViewModel+NextLive.swift */,
 			);
 			path = NextLive;
+			sourceTree = "<group>";
+		};
+		92D4AC4A27095D790021343F /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				92D4AC4B27095D930021343F /* SpaceyViewModel+Banner.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		92D4AC4D270962BD0021343F /* CollectionDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				92D4AC4E270970860021343F /* SpaceyViewController+CollectionDelegate.swift */,
+			);
+			path = CollectionDelegate;
+			sourceTree = "<group>";
+		};
+		92D4AC50270A307B0021343F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				C155E96C264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		92D4AC51270A30820021343F /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				92D4AC52270A308E0021343F /* SpaceyBannerCarrouselCollectionViewCell+Delegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		92E9480327067CC800DC4D72 /* Products */ = {
@@ -414,7 +453,8 @@
 		C155E96B264D5AFE00D05AE6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C155E96C264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift */,
+				92D4AC50270A307B0021343F /* DataSource */,
+				92D4AC51270A30820021343F /* Delegate */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				C13C69E02629DDC80018D380 /* Binds */,
+				92D4AC4D270962BD0021343F /* CollectionDelegate */,
 				C1B76AFD262734D300B3D4C0 /* DataSource */,
 			);
 			path = Extensions;
@@ -852,6 +893,7 @@
 				92E948192707848E00DC4D72 /* SpaceyProductHeaderView.swift in Sources */,
 				C1BDB50F265EFA780050D793 /* SpaceyMultipleChoicesListCollectionViewCell.swift in Sources */,
 				C1831AB0266E6F1D00BF2330 /* YDSpaceyHelper.swift in Sources */,
+				92D4AC53270A308E0021343F /* SpaceyBannerCarrouselCollectionViewCell+Delegate.swift in Sources */,
 				C155E96D264D5B1100D05AE6 /* SpaceyBannerCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				929FC52F26CC2536001E4A9E /* SpaceyNextLiveCollectionViewCell.swift in Sources */,
 				C1DD0642266E996700978BF5 /* SpaceyGridCollectionViewCell+DataSource.swift in Sources */,
@@ -880,6 +922,7 @@
 				C1B76B05262738A800B3D4C0 /* EmptyCollectionReusableView.swift in Sources */,
 				C1554C6A265D34AD0077FFC4 /* YDSpaceyViewController+Grid.swift in Sources */,
 				C1BA6131266A690900B3A860 /* SpaceyTermsOfUseCollectionViewCell.swift in Sources */,
+				92D4AC4C27095D930021343F /* SpaceyViewModel+Banner.swift in Sources */,
 				C1B76AC92627300500B3D4C0 /* YDSpaceyViewModel.swift in Sources */,
 				C1BA6134266A76C300B3A860 /* SpaceyViewController+TermsOfUse.swift in Sources */,
 				C13C69EB2629E83D0018D380 /* SpaceyBannerCollectionViewCell.swift in Sources */,
@@ -888,6 +931,7 @@
 				C123556B2666578100D1C2B1 /* SpaceyViewController+EditText.swift in Sources */,
 				92E948082706A2FC00DC4D72 /* SpaceyProductCarrouselCollectionViewCell.swift in Sources */,
 				929FC53326CC2789001E4A9E /* SpaceyViewModel+NextLive.swift in Sources */,
+				92D4AC4F270970860021343F /* SpaceyViewController+CollectionDelegate.swift in Sources */,
 				92E9480F27077D5E00DC4D72 /* SpaceyProductCarrouselCollectionViewCell+DataSource.swift in Sources */,
 				C155E976264D641E00D05AE6 /* SpaceyViewController+Title.swift in Sources */,
 				C1CD0A4B264A015000B959A0 /* SpaceyTitleCollectionViewCell.swift in Sources */,

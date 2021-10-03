@@ -25,16 +25,9 @@ extension SpaceyBannerCarrouselCollectionViewCell: UICollectionViewDataSource {
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath
   ) -> UICollectionViewCell {
-    guard viewModel?.componentsList
-    .value.at(carrouselId) != nil,
-          let component = viewModel?.componentsList
-            .value[carrouselId].component as? YDSpaceyComponentCarrouselBanner,
-          case .banner(let banner) = component.children.at(indexPath.row),
-          let cell = collectionView
-            .dequeueReusableCell(
-              withReuseIdentifier: SpaceyBannerOnCarrouselCell.identifier,
-              for: indexPath
-            ) as? SpaceyBannerOnCarrouselCell
+    let cell: SpaceyBannerOnCarrouselCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+    
+    guard let banner = getBannerComponent(at: indexPath)
     else {
       return UICollectionViewCell()
     }
