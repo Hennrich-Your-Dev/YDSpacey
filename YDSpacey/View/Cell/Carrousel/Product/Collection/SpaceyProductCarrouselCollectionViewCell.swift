@@ -83,7 +83,6 @@ class SpaceyProductCarrouselCollectionViewCell: UICollectionViewCell {
     canLoadMore = false
     collectionView.reloadData()
     livePulseView.isHidden = false
-    livePulseView.stopPulsating()
     headerLabelHeightConstraint.constant = headerHeightConstant
     livePulseViewHeightConstraint.constant = livePulseViewHeightConstant
     headerLabelTrailingConstraint.constant = -16
@@ -154,12 +153,15 @@ class SpaceyProductCarrouselCollectionViewCell: UICollectionViewCell {
       return
     }
 
-    guard hasLivePulsing else { return }
+    guard hasLivePulsing else {
+      livePulseView.isHidden = true
+      return
+    }
     
     headerLabelTrailingConstraint.constant = -66
 
-    livePulseView.startPulsating()
     livePulseView.isHidden = false
+    startPulsatingView()
     
     NotificationCenter.default.addObserver(
       self,
@@ -241,16 +243,14 @@ extension SpaceyProductCarrouselCollectionViewCell {
   @objc func startPulsatingView() {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
-      self.livePulseView.startPulsating()
-      self.livePulseView.layer.cornerRadius = 8
+      self.livePulseView.isHidden = false
     }
   }
 
   @objc func stopPulsatingView() {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
-      self.livePulseView.stopPulsating()
-      self.livePulseView.layer.cornerRadius = 8
+      self.livePulseView.isHidden = true
     }
   }
 
@@ -313,17 +313,20 @@ fileprivate extension UIView {
     fadeAndScale2.repeatCount = .infinity
     fadeAndScale2.beginTime = CACurrentMediaTime() + 0.5
 
+    layerAnim.name = "pulsatingAnimation"
     layerAnim.add(fadeAndScale, forKey: "pulsatingAnimation")
+    
+    layerAnim2.name = "pulsatingAnimation2"
     layerAnim2.add(fadeAndScale2, forKey: "pulsatingAnimation2")
 
-    self.layer.insertSublayer(layerAnim, at: 0)
-    self.layer.insertSublayer(layerAnim2, at: 0)
+    layer.insertSublayer(layerAnim, at: 0)
+    layer.insertSublayer(layerAnim2, at: 0)
   }
 
-  func stopPulsating() {
-    layer.removeAnimation(forKey: "pulsatingAnimation")
-    layer.removeAnimation(forKey: "pulsatingAnimation2")
-    layer.sublayers?.first(where: { $0.name == "pulsatingAnimation" })?.removeFromSuperlayer()
-    layer.sublayers?.first(where: { $0.name == "pulsatingAnimation2" })?.removeFromSuperlayer()
-  }
+//  func stopPulsating() {
+//    layer.removeAnimation(forKey: "pulsatingAnimation")
+//    layer.removeAnimation(forKey: "pulsatingAnimation2")
+//    layer.sublayers?.removeAll(where: { $0.name == "pulsatingAnimation" })
+//    layer.sublayers?.removeAll(where: { $0.name == "pulsatingAnimation2" })
+//  }
 }

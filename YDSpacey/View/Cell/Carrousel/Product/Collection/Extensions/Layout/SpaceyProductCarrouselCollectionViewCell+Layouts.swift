@@ -42,14 +42,13 @@ extension SpaceyProductCarrouselCollectionViewCell {
 
     livePulseView.backgroundColor = Zeplin.redNight
     livePulseView.layer.cornerRadius = 8
+    livePulseView.isHidden = true
 
     livePulseView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      livePulseView.topAnchor.constraint(
-        equalTo: contentView.topAnchor,
-        constant: 9.5
-      ),
+      livePulseView.centerYAnchor.constraint(equalTo: headerLabel.centerYAnchor),
       livePulseView.widthAnchor.constraint(equalToConstant: 46),
+      livePulseView.heightAnchor.constraint(equalToConstant: 16),
       livePulseView.trailingAnchor.constraint(
         equalTo: contentView.trailingAnchor,
         constant: -16
@@ -69,6 +68,12 @@ extension SpaceyProductCarrouselCollectionViewCell {
       message.centerXAnchor.constraint(equalTo: livePulseView.centerXAnchor),
       message.centerYAnchor.constraint(equalTo: livePulseView.centerYAnchor)
     ])
+    
+    //
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      self.livePulseView.startPulsating()
+    }
   }
 }
 
@@ -118,3 +123,64 @@ extension SpaceyProductCarrouselCollectionViewCell {
     )
   }
 }
+
+// MARK: View extension
+fileprivate extension UIView {
+  func startPulsating() {
+    let layerAnim = CALayer()
+    layerAnim.frame = self.bounds
+    layerAnim.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim.cornerRadius = 8
+
+    let layerAnim2 = CALayer()
+    layerAnim2.frame = self.bounds
+    layerAnim2.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim2.cornerRadius = 8
+
+    let fadeOut = CABasicAnimation(keyPath: "opacity")
+    fadeOut.fromValue = 0.4
+    fadeOut.toValue = 0
+    fadeOut.duration = 1.5
+
+    let radiusAnim = CABasicAnimation(keyPath: "cornerRadius")
+    radiusAnim.fromValue = 8
+    radiusAnim.toValue = [8, 12, 16]
+    radiusAnim.duration = 1.5
+
+    let expandScale = CABasicAnimation()
+    expandScale.keyPath = "transform"
+    expandScale.valueFunction = CAValueFunction(name: CAValueFunctionName.scale)
+    expandScale.fromValue = [1, 1, 1]
+    expandScale.toValue = [1.5, 2, 1.5]
+    expandScale.duration = 1.5
+
+    let fadeAndScale = CAAnimationGroup()
+    fadeAndScale.animations = [fadeOut, radiusAnim, expandScale]
+    fadeAndScale.duration = 1.5
+    fadeAndScale.repeatCount = .infinity
+    fadeAndScale.beginTime = CACurrentMediaTime()
+
+    let fadeAndScale2 = CAAnimationGroup()
+    fadeAndScale2.animations = [fadeOut, radiusAnim, expandScale]
+    fadeAndScale2.duration = 1.5
+    fadeAndScale2.repeatCount = .infinity
+    fadeAndScale2.beginTime = CACurrentMediaTime() + 0.5
+
+    layerAnim.name = "pulsatingAnimation"
+    layerAnim.add(fadeAndScale, forKey: "pulsatingAnimation")
+    
+    layerAnim2.name = "pulsatingAnimation2"
+    layerAnim2.add(fadeAndScale2, forKey: "pulsatingAnimation2")
+
+    layer.insertSublayer(layerAnim, at: 0)
+    layer.insertSublayer(layerAnim2, at: 0)
+  }
+
+//  func stopPulsating() {
+//    layer.removeAnimation(forKey: "pulsatingAnimation")
+//    layer.removeAnimation(forKey: "pulsatingAnimation2")
+//    layer.sublayers?.removeAll(where: { $0.name == "pulsatingAnimation" })
+//    layer.sublayers?.removeAll(where: { $0.name == "pulsatingAnimation2" })
+//  }
+}
+

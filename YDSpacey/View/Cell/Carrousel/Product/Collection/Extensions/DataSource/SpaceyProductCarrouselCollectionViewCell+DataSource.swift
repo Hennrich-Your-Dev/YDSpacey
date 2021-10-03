@@ -60,7 +60,7 @@ extension SpaceyProductCarrouselCollectionViewCell: UICollectionViewDataSource {
     
     let header = collectionView.dequeueReusableSupplementaryView(
       ofKind: kind,
-      withReuseIdentifier: SpaceyProductLoadingFooterView.identifier,
+      withReuseIdentifier: SpaceyProductHeaderView.identifier,
       for: indexPath
     )
     

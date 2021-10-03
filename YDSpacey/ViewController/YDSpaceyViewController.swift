@@ -31,7 +31,7 @@ public class YDSpaceyViewController: UIViewController {
   var textViewIndex = 0
 
   // MARK: Components
-  var collectionView = UICollectionView(
+  public var collectionView = UICollectionView(
     frame: .zero,
     collectionViewLayout: UICollectionViewLayout()
   )
