@@ -7,6 +7,8 @@
 
 import UIKit
 import YDExtensions
+import YDB2WComponents
+import YDB2WAssets
 
 extension SpaceyProductOnCarrouselCell {
   func configureUI() {
@@ -18,7 +20,7 @@ extension SpaceyProductOnCarrouselCell {
     
     configureAddButton()
     
-    configurePriceMultipleTimesLabel()
+    configurePriceInstallmentLabel()
     configurePriceLabel()
     configurePriceOneTimeLabel()
     
@@ -73,6 +75,12 @@ extension SpaceyProductOnCarrouselCell {
   
   private func configureAddButton() {
     contentView.addSubview(addProductButton)
+    
+    addProductButton.callback = { [weak self] _ in
+      guard let self = self else { return }
+      self.onProductButtonAction()
+    }
+    
     NSLayoutConstraint.activate([
       addProductButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
       addProductButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
@@ -80,7 +88,7 @@ extension SpaceyProductOnCarrouselCell {
     ])
   }
   
-  private func configurePriceMultipleTimesLabel() {
+  private func configurePriceInstallmentLabel() {
     contentView.addSubview(priceInstallmentLabel)
     priceInstallmentLabel.font = .systemFont(ofSize: 12)
     priceInstallmentLabel.textColor = Zeplin.black
@@ -136,6 +144,12 @@ extension SpaceyProductOnCarrouselCell {
   
   private func configureRateView() {
     contentView.addSubview(productRate)
+    productRate.settings.emptyImage = Images.starGrey
+    productRate.settings.filledImage = Images.starYellow
+    productRate.settings.fillMode = .half
+    productRate.settings.starMargin = 0
+    productRate.settings.starSize = 12
+    productRate.settings.totalStars = 5
     
     productRate.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([

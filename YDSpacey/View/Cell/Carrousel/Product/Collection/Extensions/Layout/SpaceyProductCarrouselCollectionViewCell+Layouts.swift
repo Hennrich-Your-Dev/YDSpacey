@@ -43,6 +43,7 @@ extension SpaceyProductCarrouselCollectionViewCell {
     livePulseView.backgroundColor = Zeplin.redNight
     livePulseView.layer.cornerRadius = 8
 
+    livePulseView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       livePulseView.topAnchor.constraint(
         equalTo: contentView.topAnchor,
@@ -62,7 +63,8 @@ extension SpaceyProductCarrouselCollectionViewCell {
     message.textAlignment = .center
     message.font = .systemFont(ofSize: 10)
     message.text = "ao vivo"
-
+    
+    message.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       message.centerXAnchor.constraint(equalTo: livePulseView.centerXAnchor),
       message.centerYAnchor.constraint(equalTo: livePulseView.centerYAnchor)
@@ -92,7 +94,7 @@ extension SpaceyProductCarrouselCollectionViewCell {
   private func configureCollectionViewDataSource() {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    layout.headerReferenceSize = CGSize(width: 16, height: collectionView.frame.height)
     layout.itemSize = CGSize(width: 300, height: 204)
     layout.minimumLineSpacing = 12
     
@@ -110,9 +112,9 @@ extension SpaceyProductCarrouselCollectionViewCell {
     )
     
     collectionView.register(
-      SpaceyProductLoadingFooterView.self,
+      SpaceyProductHeaderView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-      withReuseIdentifier: SpaceyProductLoadingFooterView.identifier
+      withReuseIdentifier: SpaceyProductHeaderView.identifier
     )
   }
 }

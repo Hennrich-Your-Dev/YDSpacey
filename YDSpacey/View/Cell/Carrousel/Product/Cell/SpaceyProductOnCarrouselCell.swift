@@ -26,16 +26,7 @@ class SpaceyProductOnCarrouselCell: UICollectionViewCell {
   let priceInstallmentLabel = UILabel()
   let priceLabel = UILabel()
   let priceOneTimeLabel = UILabel()
-  var productRate: CosmosView {
-    let rateView = CosmosView()
-    rateView.settings.emptyImage = Images.starGrey
-    rateView.settings.filledImage = Images.starYellow
-    rateView.settings.fillMode = .half
-    rateView.settings.starMargin = 0
-    rateView.settings.starSize = 12
-    rateView.settings.totalStars = 5
-    return rateView
-  }
+  var productRate = CosmosView()
   
   // MARK: Init
   override init(frame: CGRect) {

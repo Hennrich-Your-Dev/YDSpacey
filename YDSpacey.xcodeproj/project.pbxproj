@@ -248,8 +248,8 @@
 		92E9481027077EE500DC4D72 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				92E948092706B93900DC4D72 /* Extensions */,
 				92E948072706A2FC00DC4D72 /* SpaceyProductCarrouselCollectionViewCell.swift */,
+				92E948092706B93900DC4D72 /* Extensions */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -257,8 +257,8 @@
 		92E9481127077EED00DC4D72 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				923587332707FCE800A986EB /* Extensions */,
 				92E9481227077FDC00DC4D72 /* SpaceyProductOnCarrouselCell.swift */,
+				923587332707FCE800A986EB /* Extensions */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

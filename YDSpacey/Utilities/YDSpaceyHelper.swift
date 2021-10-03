@@ -18,6 +18,7 @@ enum YDSpaceyHelper {
       collectionView.register(SpaceyBannerCollectionViewCell.self)
       collectionView.register(SpaceyTitleCollectionViewCell.self)
       collectionView.register(SpaceyGridCollectionViewCell.self)
+      collectionView.register(SpaceyProductCarrouselCollectionViewCell.self)
 
     } else {
       collectionView.register(SpaceyBannerCollectionViewCell.self)
@@ -33,6 +34,7 @@ enum YDSpaceyHelper {
       collectionView.register(SpaceyTermsOfUseCollectionViewCell.self)
       collectionView.register(SpaceyNextLiveCollectionViewCell.self)
       collectionView.register(SpaceyNextLiveWithTitleAndButtonCollectionViewCell.self)
+      collectionView.register(SpaceyProductCarrouselCollectionViewCell.self)
     }
   }
 
