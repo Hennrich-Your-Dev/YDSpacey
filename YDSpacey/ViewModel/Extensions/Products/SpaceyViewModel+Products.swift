@@ -12,7 +12,7 @@ import YDB2WServices
 // MARK: Product Delegate
 public protocol YDSpaceyViewModelProductDelegate: AnyObject {
   func selectProductOnCarrousel(_ product: YDSpaceyProduct)
-  func addProductToCart(_ product: YDSpaceyProduct)
+  func addProductToCart(_ product: YDSpaceyProduct, with parameters: [String : Any])
 }
 
 extension YDSpaceyViewModel {
@@ -85,7 +85,7 @@ extension YDSpaceyViewModel {
     productDelegate?.selectProductOnCarrousel(product)
   }
   
-  public func addProductToCart(_ product: YDSpaceyProduct) {
-    productDelegate?.addProductToCart(product)
+  public func addProductToCart(_ product: YDSpaceyProduct, with parameters: [String : Any]) {
+    productDelegate?.addProductToCart(product, with: parameters)
   }
 }

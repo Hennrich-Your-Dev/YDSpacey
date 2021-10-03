@@ -266,7 +266,7 @@ extension SpaceyProductCarrouselCollectionViewCell {
     currentProduct.onBasket = onBasket
 
     if onBasket {
-      viewModel?.addProductToCart(currentProduct)
+      viewModel?.addProductToCart(currentProduct, with: parameters)
     }
   }
 }

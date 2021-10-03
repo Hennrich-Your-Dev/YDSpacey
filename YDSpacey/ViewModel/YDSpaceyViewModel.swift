@@ -65,7 +65,7 @@ public protocol YDSpaceyViewModelDelegate: AnyObject {
     onCompletion completion: @escaping (Result<[YDSpaceyProduct], YDServiceError>) -> Void
   )
   func selectProductOnCarrousel(_ product: YDSpaceyProduct)
-  func addProductToCart(_ product: YDSpaceyProduct)
+  func addProductToCart(_ product: YDSpaceyProduct, with parameters: [String : Any])
   func onOpenBanner(with url: String?)
 }
 
