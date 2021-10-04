@@ -45,7 +45,8 @@ extension YDSpaceyViewController {
       cell.config(
         with: indexPath.item,
         headerTitle: component.showcaseTitle,
-        viewModel: viewModel
+        viewModel: viewModel,
+        hasLivePulsing: !(component.showcaseTitle?.isEmpty ?? true)
       )
     }
     
