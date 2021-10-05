@@ -11,6 +11,7 @@ import Alamofire
 import YDB2WIntegration
 import YDB2WModels
 import YDUtilities
+import YDB2WBrandManager
 
 public class YDB2WService {
   // MARK: Properties
@@ -34,6 +35,12 @@ public class YDB2WService {
 
   var youTubeKey = ""
   var storeMaxRadius: Double = 3500
+  
+  // MARK: Computed variables
+  var brandURLCodeName: String {
+    guard let brand = YDBrandManager.shared.brand else { return "" }
+    return brand.codeName
+  }
 
   // MARK: Init
   public init() {

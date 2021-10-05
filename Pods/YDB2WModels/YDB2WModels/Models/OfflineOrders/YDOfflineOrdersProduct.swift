@@ -8,7 +8,7 @@ import Foundation
 
 import YDExtensions
 
-public class YDOfflineOrdersProduct: Decodable {
+public class YDOfflineOrdersProduct: Codable {
   // MARK: Properties
   private var item: String?
   public var howMany: Int = 1

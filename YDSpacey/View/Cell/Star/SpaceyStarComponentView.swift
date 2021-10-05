@@ -96,8 +96,8 @@ extension SpaceyStarComponentView {
 
   func createCosmosSettings() -> CosmosSettings {
     var settings = CosmosSettings()
-    settings.emptyImage = Images.starGrey
-    settings.filledImage = Images.starYellow
+    settings.emptyImage = YDAssets.Images.starGrey
+    settings.filledImage = YDAssets.Images.starYellow
     settings.fillMode = .full
     settings.starMargin = 5
     settings.starSize = 32

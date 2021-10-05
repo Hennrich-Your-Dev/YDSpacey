@@ -9,7 +9,7 @@ import Foundation
 
 public typealias YDOfflineOrdersOrdersList = [YDOfflineOrdersOrder]
 
-public class YDOfflineOrdersOrder: Decodable {
+public class YDOfflineOrdersOrder: Codable {
   public var cupom: Int?
   public var nfe: String?
   public var date: String?

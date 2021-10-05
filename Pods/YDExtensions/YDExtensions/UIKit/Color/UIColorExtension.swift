@@ -43,7 +43,6 @@ public extension UIColor {
 
 // MARK: Zeplin
 public extension UIColor {
-
   struct Zeplin {
     public static var black: UIColor {
       return UIColor(r: 51, g: 51, b: 51) | UIColor(r: 255, g: 255, b: 255)

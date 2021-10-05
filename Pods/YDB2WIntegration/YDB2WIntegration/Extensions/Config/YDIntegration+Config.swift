@@ -16,4 +16,8 @@ extension YDIntegrationHelper {
   public func getNavigationContextParameters() -> [String: String] {
     return configDelegate?.getNavigationContextParameters() ?? [:]
   }
+  
+  public func setUpBrand() {
+    configDelegate?.setUpBrand()
+  }
 }

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.4.4)
   - Cosmos (22.1.0)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
@@ -7,52 +7,57 @@ PODS:
   - KingfisherWebP (1.0.0):
     - Kingfisher (~> 5.8)
     - libwebp (>= 0.5.0)
-  - libwebp (1.2.0):
-    - libwebp/demux (= 1.2.0)
-    - libwebp/mux (= 1.2.0)
-    - libwebp/webp (= 1.2.0)
-  - libwebp/demux (1.2.0):
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
     - libwebp/webp
-  - libwebp/mux (1.2.0):
+  - libwebp/mux (1.2.1):
     - libwebp/demux
-  - libwebp/webp (1.2.0)
-  - YDB2WAssets (1.4.25)
-  - YDB2WComponents (1.4.71):
+  - libwebp/webp (1.2.1)
+  - YDB2WAssets (1.5.2):
+    - YDB2WBrandManager (~> 1.5.0)
+    - YDB2WModels (~> 1.5.0)
+  - YDB2WBrandManager (1.5.1)
+  - YDB2WComponents (1.5.0):
     - Cosmos
-    - YDB2WAssets (~> 1.4.0)
-    - YDB2WModels (~> 1.4.0)
-    - YDExtensions (~> 1.4.0)
-    - YDUtilities (~> 1.4.0)
-  - YDB2WIntegration (1.4.36):
-    - YDB2WModels (~> 1.4.0)
-    - YDExtensions (~> 1.4.0)
-  - YDB2WModels (1.4.60):
-    - YDExtensions (~> 1.4.0)
-  - YDB2WServices (1.4.20):
-    - Alamofire (~> 4.0)
-    - YDB2WIntegration (~> 1.4.0)
-    - YDB2WModels (~> 1.4.0)
-    - YDUtilities (~> 1.4.0)
-  - YDExtensions (1.4.5):
+    - YDB2WAssets (~> 1.5.0)
+    - YDB2WModels (~> 1.5.0)
+    - YDExtensions (~> 1.5.0)
+    - YDUtilities (~> 1.5.0)
+  - YDB2WIntegration (1.5.1):
+    - YDB2WModels (~> 1.5.0)
+    - YDExtensions (~> 1.5.0)
+  - YDB2WModels (1.5.5):
+    - YDExtensions (~> 1.5.0)
+  - YDB2WServices (1.5.1):
+    - Alamofire (= 5.4.4)
+    - YDB2WBrandManager (~> 1.5.0)
+    - YDB2WIntegration (~> 1.5.0)
+    - YDB2WModels (~> 1.5.0)
+    - YDUtilities (~> 1.5.0)
+  - YDExtensions (1.5.1):
     - Kingfisher (~> 5.0)
     - KingfisherWebP (= 1.0.0)
-  - YDUtilities (1.4.16):
-    - Alamofire (~> 4.0)
-    - YDB2WModels (~> 1.4.0)
-    - YDExtensions (~> 1.4.0)
+  - YDUtilities (1.5.1):
+    - Alamofire (= 5.4.4)
+    - YDB2WModels (~> 1.5.0)
+    - YDExtensions (~> 1.5.0)
 
 DEPENDENCIES:
   - Cosmos (= 22.1.0)
-  - YDB2WAssets (~> 1.4.0)
-  - YDB2WComponents (~> 1.4.0)
-  - YDB2WModels (~> 1.4.0)
-  - YDB2WServices (~> 1.4.0)
-  - YDExtensions (~> 1.4.0)
-  - YDUtilities (~> 1.4.0)
+  - YDB2WAssets (~> 1.5.0)
+  - YDB2WComponents (~> 1.5.0)
+  - YDB2WModels (~> 1.5.0)
+  - YDB2WServices (~> 1.5.0)
+  - YDExtensions (~> 1.5.0)
+  - YDUtilities (~> 1.5.0)
 
 SPEC REPOS:
   "git@github.com:Hennrich-Your-Dev/YourDev-Pods.git":
     - YDB2WAssets
+    - YDB2WBrandManager
     - YDB2WComponents
     - YDB2WIntegration
     - YDB2WModels
@@ -67,19 +72,20 @@ SPEC REPOS:
     - libwebp
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   Cosmos: 2795b36ad4bbea1af3050d6d65576ed63875f86a
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   KingfisherWebP: b1ed1dbc5e52547c5bf5f583dd5c46346f97320f
-  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
-  YDB2WAssets: ac413b66c9f841cfaa53897cfaa4bc0209573326
-  YDB2WComponents: be2928cca47179bdb70179ccab862754b0da50a8
-  YDB2WIntegration: 0c2e72f869e0b0b4bd791376a36b24b188e6bfec
-  YDB2WModels: 40010bca82869acca92cd2bd4a81dc54aead003c
-  YDB2WServices: 84ebebc3dacc2c42d2d1217164b642d097ffa032
-  YDExtensions: 0866d90a70fa906c95e5287bfed95ab90cb98bf6
-  YDUtilities: c4b2fce9e0b51f1ed83d5f85be0af27fe425b1c6
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  YDB2WAssets: 01d84b694595f7523d248476f2d7bdf5b248e4fe
+  YDB2WBrandManager: 41075857bd8a1eaed218eb54aca5e8713dbc46eb
+  YDB2WComponents: 65779d35ceca3fd68c4030aa1a3094bfc3d8f7a5
+  YDB2WIntegration: 834813dff5b5f39ad3e4d8f64331728828cb81df
+  YDB2WModels: 5209c8071b9e31d873ea18568c6f3b7d12bb2b2d
+  YDB2WServices: 66010f2f66e82324853e9a4c81596548d1d1a3ee
+  YDExtensions: ec909a1de07ad4bd45185d24069cd81b28df003b
+  YDUtilities: 46a191c3b0db857c5d79d549861d5fe8011e6eb2
 
-PODFILE CHECKSUM: 3f1ab04e870ee1e340b566369586de3f6e5c08cb
+PODFILE CHECKSUM: 88be5e7c5dcd379684e4b7b90457c17549df15c2
 
-COCOAPODS: 1.11.0
+COCOAPODS: 1.11.2

@@ -144,8 +144,8 @@ extension SpaceyProductOnCarrouselCell {
   
   private func configureRateView() {
     contentView.addSubview(productRate)
-    productRate.settings.emptyImage = Images.starGrey
-    productRate.settings.filledImage = Images.starYellow
+    productRate.settings.emptyImage = YDAssets.Images.starGrey
+    productRate.settings.filledImage = YDAssets.Images.starYellow
     productRate.settings.fillMode = .half
     productRate.settings.starMargin = 0
     productRate.settings.starSize = 12
