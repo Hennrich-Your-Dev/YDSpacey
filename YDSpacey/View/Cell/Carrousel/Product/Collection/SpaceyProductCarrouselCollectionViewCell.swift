@@ -9,6 +9,7 @@ import UIKit
 import YDExtensions
 import YDUtilities
 import YDB2WModels
+import YDB2WColors
 
 class SpaceyProductCarrouselCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
@@ -276,12 +277,12 @@ fileprivate extension UIView {
   func startPulsating() {
     let layerAnim = CALayer()
     layerAnim.frame = self.bounds
-    layerAnim.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim.backgroundColor = YDColors.Red.night.cgColor
     layerAnim.cornerRadius = 8
 
     let layerAnim2 = CALayer()
     layerAnim2.frame = self.bounds
-    layerAnim2.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim2.backgroundColor = YDColors.Red.night.cgColor
     layerAnim2.cornerRadius = 8
 
     let fadeOut = CABasicAnimation(keyPath: "opacity")

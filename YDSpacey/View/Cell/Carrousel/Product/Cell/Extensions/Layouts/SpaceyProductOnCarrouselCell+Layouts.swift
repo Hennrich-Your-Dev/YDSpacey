@@ -9,6 +9,7 @@ import UIKit
 import YDExtensions
 import YDB2WComponents
 import YDB2WAssets
+import YDB2WColors
 
 extension SpaceyProductOnCarrouselCell {
   func configureUI() {
@@ -61,7 +62,7 @@ extension SpaceyProductOnCarrouselCell {
   private func configureProductTitleLabel() {
     contentView.addSubview(productTitleLabel)
     productTitleLabel.font = .systemFont(ofSize: 14)
-    productTitleLabel.textColor = Zeplin.grayLight
+    productTitleLabel.textColor = YDColors.Gray.light
     productTitleLabel.textAlignment = .left
     productTitleLabel.numberOfLines = 2
     
@@ -91,7 +92,7 @@ extension SpaceyProductOnCarrouselCell {
   private func configurePriceInstallmentLabel() {
     contentView.addSubview(priceInstallmentLabel)
     priceInstallmentLabel.font = .systemFont(ofSize: 12)
-    priceInstallmentLabel.textColor = Zeplin.black
+    priceInstallmentLabel.textColor = YDColors.black
     priceInstallmentLabel.textAlignment = .left
     
     priceInstallmentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -109,7 +110,7 @@ extension SpaceyProductOnCarrouselCell {
   private func configurePriceLabel() {
     contentView.addSubview(priceLabel)
     priceLabel.font = .boldSystemFont(ofSize: 16)
-    priceLabel.textColor = Zeplin.black
+    priceLabel.textColor = YDColors.black
     priceLabel.textAlignment = .left
     
     priceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +128,7 @@ extension SpaceyProductOnCarrouselCell {
   private func configurePriceOneTimeLabel() {
     contentView.addSubview(priceOneTimeLabel)
     priceOneTimeLabel.font = .systemFont(ofSize: 12)
-    priceOneTimeLabel.textColor = Zeplin.grayLight
+    priceOneTimeLabel.textColor = YDColors.Gray.light
     priceOneTimeLabel.textAlignment = .left
     
     priceOneTimeLabel.translatesAutoresizingMaskIntoConstraints = false

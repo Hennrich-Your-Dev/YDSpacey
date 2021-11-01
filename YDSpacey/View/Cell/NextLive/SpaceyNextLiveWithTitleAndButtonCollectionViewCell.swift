@@ -9,6 +9,7 @@ import UIKit
 import YDB2WModels
 import YDB2WComponents
 import YDExtensions
+import YDB2WColors
 
 class SpaceyNextLiveWithTitleAndButtonCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
@@ -128,7 +129,7 @@ extension SpaceyNextLiveWithTitleAndButtonCollectionViewCell {
   private func configureTitle() {
     contentView.addSubview(titleLabel)
 
-    titleLabel.textColor = Zeplin.black
+    titleLabel.textColor = YDColors.black
     titleLabel.font = .boldSystemFont(ofSize: 24)
     titleLabel.numberOfLines = 2
     titleLabel.textAlignment = .left

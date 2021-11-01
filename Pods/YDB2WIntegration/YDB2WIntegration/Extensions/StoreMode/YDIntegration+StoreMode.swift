@@ -5,7 +5,7 @@
 //  Created by Douglas Hennrich on 08/12/20.
 //
 
-import Foundation
+import UIKit
 
 // MARK: Open store module
 public extension YDIntegrationHelper {
@@ -18,5 +18,12 @@ public extension YDIntegrationHelper {
 public extension YDIntegrationHelper {
   func activateDiscount(offerId: String, completion: ((Bool) -> Void)?) {
     actionDelegate?.activateDiscount(offerId: offerId, completion: completion)
+  }
+}
+
+// MARK: Open Offline Orders
+public extension YDIntegrationHelper {
+  func openOfflineOrders(navigationController: UINavigationController? = nil) {
+    presentationDelegate?.presentOfflineOrders(navigationController: navigationController)
   }
 }

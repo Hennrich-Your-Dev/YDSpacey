@@ -14,11 +14,15 @@ public class YDSpaceyProduct: Codable {
   public var name: String?
   public var price: String?
   public var priceConditions: String?
+  public var priceFrom: String?
   public var ean: String?
   public var rating: YDSpaceyProductRating?
   public var partnerId: String?
   public var stock: Bool = false
   public var onBasket: Bool = true
+  public var couponName: String?
+  public var couponDeeplink: String?
+  public var discountBadgeText: String?
 
   public var productAvailable: Bool {
     if stock || price != nil || ean != nil {
@@ -26,6 +30,17 @@ public class YDSpaceyProduct: Codable {
     }
 
     return false
+  }
+  
+  public var hasCoupon: Bool {
+    guard let couponName = self.couponName,
+          !couponName.isEmpty,
+          let couponDeeplink = self.couponDeeplink,
+          !couponDeeplink.isEmpty else {
+      return false
+    }
+    
+    return true
   }
 
   public init(
@@ -39,7 +54,11 @@ public class YDSpaceyProduct: Codable {
     rating: YDSpaceyProductRating? = nil,
     partnerId: String? = nil,
     stock: String? = nil,
-    onBasket: Bool = false
+    onBasket: Bool = false,
+    couponName: String? = nil,
+    couponDeeplink: String? = nil,
+    priceFrom: String? = nil,
+    discountBadgeText: String? = nil
   ) {
     self.description = description
     self.id = id
@@ -52,6 +71,10 @@ public class YDSpaceyProduct: Codable {
     self.partnerId = partnerId
     self.onBasket = onBasket
     self.stock = stock == "true"
+    self.couponName = couponName
+    self.couponDeeplink = couponDeeplink
+    self.priceFrom = priceFrom
+    self.discountBadgeText = discountBadgeText
   }
 
   public required init(from decoder: Decoder) throws {
@@ -86,6 +109,11 @@ public class YDSpaceyProduct: Codable {
       String.self,
       forKey: .priceConditions
     )
+    
+    priceFrom = try? container.decode(
+      String.self,
+      forKey: .priceFrom
+    )
 
     ean = try? container.decode(
       String.self,
@@ -106,6 +134,14 @@ public class YDSpaceyProduct: Codable {
     }
 
     onBasket = false
+    
+    couponName = try? container.decode(String.self, forKey: .couponName)
+    couponDeeplink = try? container.decode(String.self, forKey: .couponDeeplink)
+    
+    discountBadgeText = try? container.decode(
+      String.self,
+      forKey: .discountBadgeText
+    )
   }
 
   public static func mock() -> YDSpaceyProduct {

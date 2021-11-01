@@ -13,10 +13,10 @@ target 'YDSpacey' do
   use_frameworks!
 
   pod "Cosmos", "22.1.0"
-  pod "YDB2WModels", "~> 1.5.0"
-  pod "YDExtensions", "~> 1.5.0"
-  pod "YDUtilities", "~> 1.5.0"
-  pod "YDB2WServices", "~> 1.5.0"
-  pod "YDB2WAssets", "~> 1.5.0"
-  pod "YDB2WComponents", "~> 1.5.0"
+  pod "YDB2WModels", "~> 1.6.0"
+  pod "YDExtensions", "~> 1.6.0"
+  pod "YDUtilities", "~> 1.6.0"
+  pod "YDB2WServices", "~> 1.6.0"
+  pod "YDB2WAssets", "~> 1.6.0"
+  pod "YDB2WComponents", "~> 1.6.0"
 end

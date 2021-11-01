@@ -8,6 +8,7 @@
 import UIKit
 import YDB2WModels
 import YDExtensions
+import YDB2WColors
 import Kingfisher
 
 class SpaceyBannerCollectionViewCell: UICollectionViewCell {
@@ -132,7 +133,7 @@ extension SpaceyBannerCollectionViewCell {
 
   func configureImageContainer() {
     contentView.addSubview(imageContainer)
-    imageContainer.backgroundColor = UIColor.Zeplin.grayOpaque
+    imageContainer.backgroundColor = YDColors.Gray.opaque
     imageContainer.layer.cornerRadius = 6
     imageContainer.layer.applyShadow()
 
@@ -148,7 +149,7 @@ extension SpaceyBannerCollectionViewCell {
 
   func configureImageView() {
     imageContainer.addSubview(imageView)
-    imageView.backgroundColor = UIColor.Zeplin.grayOpaque
+    imageView.backgroundColor = YDColors.Gray.opaque
     imageView.layer.cornerRadius = 6
     imageView.contentMode = .scaleAspectFill
 

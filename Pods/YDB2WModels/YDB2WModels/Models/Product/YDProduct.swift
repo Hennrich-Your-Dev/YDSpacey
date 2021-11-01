@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import YDB2WColors
 import YDExtensions
 
 public class YDProduct: Codable {
@@ -128,7 +128,7 @@ extension YDProduct {
 
     attributed.addAttribute(
       NSAttributedString.Key.foregroundColor,
-      value: UIColor.Zeplin.grayLight,
+      value: YDColors.Gray.light,
       range: NSRange(location: 0, length: attributed.length)
     )
 

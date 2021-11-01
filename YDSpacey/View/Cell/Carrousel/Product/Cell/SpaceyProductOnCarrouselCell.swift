@@ -12,6 +12,7 @@ import YDB2WAssets
 import YDB2WModels
 import YDUtilities
 import YDB2WComponents
+import YDB2WColors
 
 class SpaceyProductOnCarrouselCell: UICollectionViewCell {
   // MARK: Properties
@@ -161,28 +162,27 @@ extension SpaceyProductOnCarrouselCell {
   private func setAvailable() {
     addProductButton.setEnabled(true)
     addProductButton.setTitle("adicionar à cesta", for: .normal)
-    addProductButton.setTitleColor(Zeplin.colorPrimaryLight, for: .normal)
-    addProductButton.backgroundColor = Zeplin.white
-    addProductButton.layer.borderColor = Zeplin.colorPrimaryLight.cgColor
+    addProductButton.setTitleColor(YDColors.branding, for: .normal)
+    addProductButton.backgroundColor = YDColors.white
+    addProductButton.layer.borderColor = YDColors.branding.cgColor
   }
 
   private func setOnBasket() {
-    addProductButton.backgroundColor = Zeplin.white
-    addProductButton.layer.borderColor = Zeplin.grayLight.cgColor
-    addProductButton.layer.borderColor = Zeplin.grayLight.cgColor
+    addProductButton.backgroundColor = YDColors.white
+    addProductButton.layer.borderColor = YDColors.Gray.light.cgColor
 
     addProductButton.setEnabled(false)
     addProductButton.setTitle("adicionado à cesta", for: .disabled)
-    addProductButton.setTitleColor(Zeplin.grayLight, for: .disabled)
+    addProductButton.setTitleColor(YDColors.Gray.light, for: .disabled)
   }
 
   private func setUnavailable() {
     addProductButton.setEnabled(false)
     addProductButton.setTitle("produto indisponível", for: .disabled)
-    addProductButton.setTitleColor(Zeplin.black, for: .disabled)
+    addProductButton.setTitleColor(YDColors.black, for: .disabled)
 
-    addProductButton.layer.borderColor = Zeplin.grayDisabled.cgColor
+    addProductButton.layer.borderColor = YDColors.Gray.disabled.cgColor
     addProductButton.layer.borderColor = UIColor.clear.cgColor
-    addProductButton.backgroundColor = Zeplin.grayDisabled
+    addProductButton.backgroundColor = YDColors.Gray.disabled
   }
 }

@@ -36,10 +36,10 @@ public class YDB2WService {
   var youTubeKey = ""
   var storeMaxRadius: Double = 3500
   
-  // MARK: Computed variables
-  var brandURLCodeName: String {
+  // MARK: Computed variables  
+  var brandURLName: String {
     guard let brand = YDBrandManager.shared.brand else { return "" }
-    return brand.codeName
+    return brand.urlName
   }
 
   // MARK: Init

@@ -7,6 +7,7 @@
 
 import UIKit
 import YDExtensions
+import YDB2WColors
 
 extension SpaceyProductCarrouselCollectionViewCell {
   func configureUI() {
@@ -25,7 +26,7 @@ extension SpaceyProductCarrouselCollectionViewCell {
     headerLabel.font = .boldSystemFont(ofSize: 24)
     headerLabel.textAlignment = .left
     headerLabel.numberOfLines = 2
-    headerLabel.textColor = Zeplin.black
+    headerLabel.textColor = YDColors.black
     
     headerLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -40,7 +41,7 @@ extension SpaceyProductCarrouselCollectionViewCell {
   private func configureLivePulseView() {
     contentView.addSubview(livePulseView)
 
-    livePulseView.backgroundColor = Zeplin.redNight
+    livePulseView.backgroundColor = YDColors.Red.night
     livePulseView.layer.cornerRadius = 8
     livePulseView.isHidden = true
 
@@ -129,12 +130,12 @@ fileprivate extension UIView {
   func startPulsating() {
     let layerAnim = CALayer()
     layerAnim.frame = self.bounds
-    layerAnim.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim.backgroundColor = YDColors.Red.night.cgColor
     layerAnim.cornerRadius = 8
 
     let layerAnim2 = CALayer()
     layerAnim2.frame = self.bounds
-    layerAnim2.backgroundColor = Zeplin.redNight.cgColor
+    layerAnim2.backgroundColor = YDColors.Red.night.cgColor
     layerAnim2.cornerRadius = 8
 
     let fadeOut = CABasicAnimation(keyPath: "opacity")

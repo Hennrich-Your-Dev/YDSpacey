@@ -6,6 +6,7 @@
 //
 // swiftlint:disable force_unwrapping force_cast
 import UIKit
+import YDB2WColors
 
 public extension UIView {
 
@@ -52,7 +53,7 @@ public extension UIView {
     let loader = UIActivityIndicatorView(style: .whiteLarge)
     loader.startAnimating()
     loader.center = viewLoading.center
-    loader.color = UIColor.customRed
+    loader.color = YDColors.branding
     viewLoading.addSubview(loader)
 
     self.addSubview(viewLoading)
@@ -121,8 +122,8 @@ public extension UIView {
 // MARK: Shimmer
 public extension UIView {
   func startShimmer(
-    colorOne: UIColor = UIColor.Zeplin.graySurface,
-    colorTwo: UIColor = UIColor.Zeplin.grayOpaque,
+    colorOne: UIColor = YDColors.Gray.surface,
+    colorTwo: UIColor = YDColors.Gray.opaque,
     speed: Double = 1,
     delay: Double = 0
   ) {

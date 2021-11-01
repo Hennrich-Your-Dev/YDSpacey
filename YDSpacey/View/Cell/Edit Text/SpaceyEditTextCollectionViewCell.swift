@@ -10,6 +10,7 @@ import UIKit
 import YDB2WModels
 import YDB2WComponents
 import YDExtensions
+import YDB2WColors
 
 class SpaceyEditTextCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
@@ -66,7 +67,7 @@ extension SpaceyEditTextCollectionViewCell {
   func configureCountLabel() {
     contentView.addSubview(charactersCountLabel)
     charactersCountLabel.font = .systemFont(ofSize: 14)
-    charactersCountLabel.textColor = Zeplin.grayLight
+    charactersCountLabel.textColor = YDColors.Gray.light
     charactersCountLabel.textAlignment = .right
 
     charactersCountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +82,7 @@ extension SpaceyEditTextCollectionViewCell {
   func configureEditText() {
     contentView.addSubview(editText)
     editText.delegate = self
-    editText.tintColor = Zeplin.grayLight
+    editText.tintColor = YDColors.Gray.light
     editText.translatesAutoresizingMaskIntoConstraints = false
 
     NSLayoutConstraint.activate([

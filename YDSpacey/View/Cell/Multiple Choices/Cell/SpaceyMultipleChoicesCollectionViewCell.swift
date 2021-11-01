@@ -9,6 +9,7 @@ import UIKit
 
 import YDExtensions
 import YDB2WModels
+import YDB2WColors
 
 class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
   // MARK: Properties
@@ -18,7 +19,7 @@ class SpaceyMultipleChoicesCollectionViewCell: UICollectionViewCell {
     blue: 112 / 255,
     alpha: 1
   ).cgColor
-  let selectedBorderColor = Zeplin.redBranding.cgColor
+  let selectedBorderColor = YDColors.branding.cgColor
   
   // MARK: Components
   lazy var width: NSLayoutConstraint = {
@@ -87,7 +88,7 @@ extension SpaceyMultipleChoicesCollectionViewCell {
 
     //
     ratioView.addSubview(ratioWithinView)
-    ratioWithinView.backgroundColor = Zeplin.redBranding
+    ratioWithinView.backgroundColor = YDColors.branding
     ratioWithinView.layer.cornerRadius = 5
 
     ratioWithinView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +103,7 @@ extension SpaceyMultipleChoicesCollectionViewCell {
   func configureChoiceLabel() {
     contentView.addSubview(choiceLabel)
     choiceLabel.font = .systemFont(ofSize: 14)
-    choiceLabel.textColor = Zeplin.grayLight
+    choiceLabel.textColor = YDColors.Gray.light
     choiceLabel.textAlignment = .left
     choiceLabel.numberOfLines = 0
 

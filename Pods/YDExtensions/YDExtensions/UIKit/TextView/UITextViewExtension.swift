@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YDB2WColors
 
 public extension UITextView {
   func addButtonNext(target: Any?, buttonTitle: String = "Continuar", action: Selector?) {
@@ -24,7 +25,7 @@ public extension UITextView {
                                                 style: .done,
                                                 target: target,
                                                 action: action)
-    next.tintColor = UIColor.Zeplin.redBranding
+    next.tintColor = YDColors.branding
 
     toolBar.items = [ flexSpace, flexSpace, next ]
     toolBar.sizeToFit()

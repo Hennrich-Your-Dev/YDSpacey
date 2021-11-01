@@ -9,6 +9,7 @@ import UIKit
 
 import YDExtensions
 import YDB2WModels
+import YDB2WColors
 
 class SpaceyGradeListCollectionViewCell: UICollectionViewCell {
   // MARK: Components
@@ -68,7 +69,7 @@ extension SpaceyGradeListCollectionViewCell {
   func configureTitleLabel() {
     contentView.addSubview(titleLabel)
     titleLabel.font = .systemFont(ofSize: 14)
-    titleLabel.textColor = Zeplin.black
+    titleLabel.textColor = YDColors.black
     titleLabel.textAlignment = .left
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false

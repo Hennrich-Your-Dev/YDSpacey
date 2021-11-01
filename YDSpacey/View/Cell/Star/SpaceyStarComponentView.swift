@@ -11,6 +11,7 @@ import Cosmos
 import YDExtensions
 import YDB2WAssets
 import YDB2WModels
+import YDB2WColors
 
 public class SpaceyStarComponentView: UIView {
   // MARK: Components
@@ -66,7 +67,7 @@ extension SpaceyStarComponentView {
   func configureTitle() {
     addSubview(titleLabel)
     titleLabel.font = .systemFont(ofSize: 14)
-    titleLabel.textColor = Zeplin.black
+    titleLabel.textColor = YDColors.black
     titleLabel.textAlignment = .left
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false

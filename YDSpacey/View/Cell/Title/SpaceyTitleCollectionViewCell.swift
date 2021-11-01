@@ -8,6 +8,7 @@
 import UIKit
 
 import YDExtensions
+import YDB2WColors
 
 class SpaceyTitleCollectionViewCell: UICollectionViewCell {
   // MARK: Components
@@ -90,7 +91,7 @@ extension SpaceyTitleCollectionViewCell {
   func configureTitleLabel() {
     contentView.addSubview(titleLabel)
 
-    titleLabel.textColor = UIColor.Zeplin.black
+    titleLabel.textColor = YDColors.black
     titleLabel.font = .boldSystemFont(ofSize: 24)
     titleLabel.numberOfLines = 2
     titleLabel.textAlignment = .left
@@ -111,7 +112,7 @@ extension SpaceyTitleCollectionViewCell {
   func configurePulseView() {
     contentView.addSubview(livePulseView)
 
-    livePulseView.backgroundColor = UIColor.Zeplin.redNight
+    livePulseView.backgroundColor = YDColors.Red.night
     livePulseView.layer.cornerRadius = 8
 
     NSLayoutConstraint.activate([
@@ -147,12 +148,12 @@ fileprivate extension UIView {
   func startPulsating() {
     let layerAnim = CALayer()
     layerAnim.frame = self.bounds
-    layerAnim.backgroundColor = UIColor.Zeplin.redNight.cgColor
+    layerAnim.backgroundColor = YDColors.Red.night.cgColor
     layerAnim.cornerRadius = 8
 
     let layerAnim2 = CALayer()
     layerAnim2.frame = self.bounds
-    layerAnim2.backgroundColor = UIColor.Zeplin.redNight.cgColor
+    layerAnim2.backgroundColor = YDColors.Red.night.cgColor
     layerAnim2.cornerRadius = 8
 
     let fadeOut = CABasicAnimation(keyPath: "opacity")

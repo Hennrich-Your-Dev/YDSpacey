@@ -15,6 +15,8 @@ public protocol YDIntegrationHelperPresentationDelegate {
   func presentStoreMode(deeplink: String?)
   func presentLive(navigationController: UINavigationController?, deepLink: String?)
   func presentSelectAddress(completion: ((YDAddress?) -> Void)?)
+  func presentOfflineOrders(navigationController: UINavigationController?)
+  
   func getReactHotsiteView(
     from path: String,
     onCompletion completion: @escaping (_ view: UIView?) -> Void
